@@ -1,0 +1,134 @@
+{
+  "$1656": {
+    "Object Clipping": 0,
+    "Can be jumped on": true,
+    "Dies when jumped on": true,
+    "Hop in/kick shell": false,
+    "Disappears in cloud of smoke": true
+  },
+  "$1662": {
+    "Sprite Clipping": 0,
+    "Use shell as death frame": true,
+    "Fall straight down when killed": false
+  },
+  "$166E": {
+    "Use second graphics page": true,
+    "Palette": 2,
+    "Disable fireball killing": false,
+    "Disable cape killing": false,
+    "Disable water splash": false,
+    "Don't interact with Layer 2": false
+  },
+  "$167A": {
+    "Don't disable cliping when starkilled": true,
+    "Invincible to star/cape/fire/bounce blk.": false,
+    "Process when off screen": false,
+    "Don't change into shell when stunned": false,
+    "Can't be kicked like shell": false,
+    "Process interaction with Mario every frame": false,
+    "Gives power-up when eaten by yoshi": false,
+    "Don't use default interaction with Mario": true
+  },
+  "$1686": {
+    "Inedible": false,
+    "Stay in Yoshi's mouth": true,
+    "Weird ground behaviour": false,
+    "Don't interact with other sprites": false,
+    "Don't change direction if touched": false,
+    "Don't turn into coin when goal passed": false,
+    "Spawn a new sprite": false,
+    "Don't interact with objects": false
+  },
+  "$190F": {
+    "Make platform passable from below": false,
+    "Don't erase when goal passed": false,
+    "Can't be killed by sliding": false,
+    "Takes 5 fireballs to kill": false,
+    "Can be jumped on with upwards Y speed": false,
+    "Death frame two tiles high": true,
+    "Don't turn into a coin with silver POW": false,
+    "Don't get stuck in walls (carryable sprites)": true
+  },
+  "AsmFile": "PlayerSwitchingShell.asm",
+  "ActLike": 6,
+  "Type": 1,
+  "Extra Property Byte 1": 0,
+  "Extra Property Byte 2": 0,
+  "Additional Byte Count (extra bit clear)": 1,
+  "Additional Byte Count (extra bit set)": 1,
+  "Map16": "",
+  "Displays": [
+    {
+      "Description": "Shell Jumping With This Shell Changes Player Between Player 1 (Mario) & Player 2 (Luigi)",
+      "ExtraBit": false,
+      "Tiles": [
+        {
+          "X offset": 0,
+          "Y offset": 0,
+          "map16 tile": 48
+        },
+        {
+          "X offset": 0,
+          "Y offset": -8,
+          "map16 tile": 8
+        }
+      ],
+      "X": 0,
+      "Y": 0,
+      "DisplayText": "",
+      "UseText": false
+    },
+    {
+      "Description": "Shell Jumping With This Spiny Shell Changes Player Between Player 1 (Mario) & Player 2 (Luigi)",
+      "ExtraBit": true,
+      "Tiles": [
+        {
+          "X offset": 0,
+          "Y offset": 0,
+          "map16 tile": 296
+        },
+        {
+          "X offset": 0,
+          "Y offset": -8,
+          "map16 tile": 8
+        }
+      ],
+      "X": 0,
+      "Y": 0,
+      "DisplayText": "",
+      "UseText": false
+    }
+  ],
+  "Collection": [
+    {
+      "Name": "Switch To Player 1 Shell (Regular)",
+      "ExtraBit": false,
+      "Extra Property Byte 1": 0
+    },
+    {
+      "Name": "Switch To Player 2 Shell (Regular)",
+      "ExtraBit": false,
+      "Extra Property Byte 1": 1
+    },
+    {
+      "Name": "Player Switching Shell (Regular)",
+      "ExtraBit": false,
+      "Extra Property Byte 1": 10
+    },
+    {
+      "Name": "Switch To Player 1 Shell (Spiny)",
+      "ExtraBit": true,
+      "Extra Property Byte 1": 0
+    },
+    {
+      "Name": "Switch To Player 2 Shell (Spiny)",
+      "ExtraBit": true,
+      "Extra Property Byte 1": 1
+    },
+    {
+      "Name": "Player Switching Shell (Spiny)",
+      "ExtraBit": true,
+      "Extra Property Byte 1": 10
+    }
+  ]
+}

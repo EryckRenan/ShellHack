@@ -1,0 +1,322 @@
+; Kicked shells
+04 0012 0,0,30 0,0,10A
+05 0012 0,0,31 0,0,10A
+06 0012 0,0,32 0,0,10A
+07 0012 0,0,33 0,0,10A
+08 0012 0,0,21E 0,0,10A
+04 0010 A green shell that spawns kicked towards the player.
+05 0010 A red shell that spawns kicked towards the player.
+06 0010 A blue hell that spawns kicked towards the player.
+07 0010 A yellow shell that spawns kicked towards the player.
+08 0010 A double hit grey/green shell that spawns kicked towards the player.
+
+; Green Parakoopa Shell
+DF 0002 0,0,21E
+DF 0000 A Green Para-Koopa shell, takes two hits to stop. Appears grey but turns green after the first hit.
+
+; Kicked Buzzy Beetle
+11 0012 0,0,D 0,0,10A
+11 0010 A Buzzy Beetle which spawns kicked towards the player.
+
+; Classic Piranha
+1A 0012 8,-15,21B 8,-31,16
+1A 0000 Classic Piranha plant. Will be red and ignore Mario if it's extra bit is set. It's currently set to hide.
+1A 0010 Classic Piranha plant. Will be red and ignore Mario if it's extra bit is set. It's currently set to ignore.
+
+; Upside-Down Piranha
+2A 0012 8,15,21C 8,31,2B
+2A 0000 An upside-down Piranha plant. Will be red and ignore Mario if it's extra bit is set. It's currently set to hide.
+2A 0010 An upside-down Piranha plant. Will be red and ignore Mario if it's extra bit is set. It's currently set to ignore.
+
+; Dry Bones, stay on ledge
+32 0012 0,1,46 -8,-15,36 0,-24,10A
+32 0000 A dry bones that stays on ledges that will stop throwing bones if its extra bit is set. It's currently set to throw bones.
+32 0010 A dry bones that stays on ledges that will stop throwing bones if its extra bit is set. It's currently set to not throw bones.
+
+; Growing pipe
+49 0000 A pipe end that will rise up 4 tiles and then sink, will be exit-enabled if it's extra bit is set. It's currently a normal pipe.
+49 0012 0,0,A4 16,0,A5 0,-8,10A
+49 0010 A pipe end that will rise up 4 tiles and then sink, will be exit-enabled if it's extra bit is set. It's currently an exit-enabled pipe.
+
+; Ground monty mole
+4D 0012 0,1,A7 0,1,A8 0,0,10A
+4E 0012 0,1,A7 -4,-4,B1 -4,8,B0 12,-4,B3 12,8,B2 0,0,10A
+
+4D 0000 A ground dwelling monty mole that will either follow Mario or walk with a hop based on its x-position, and dig quickly or slowly based on its extra bit setting.\n - It's currently set to dig quickly.\n -
+4D 0100 A ground dwelling monty mole that will either follow Mario or walk with a hop based on its x-position, and dig quickly or slowly based on its extra bit setting.\n - It's currently set to dig quickly.\n -
+4D 0010 A ground dwelling monty mole that will either follow Mario or walk with a hop based on its x-position, and dig quickly or slowly based on its extra bit setting.\n - It's currently set to dig slowly.\n - It's currently set to follow.
+4D 0110 A ground dwelling monty mole that will either follow Mario or walk with a hop based on its x-position, and dig quickly or slowly based on its extra bit setting.\n - It's currently set to dig slowly.\n - It's currently set to walk with a hop.
+4E 0000 A ledge dwelling monty mole that will either follow Mario or walk with a hop based on its x-position, and dig quickly or slowly based on its extra bit setting.\n - It's currently set to dig quickly.\n -
+4E 0100 A ledge dwelling monty mole that will either follow Mario or walk with a hop based on its x-position, and dig quickly or slowly based on its extra bit setting.\n - It's currently set to dig quickly.\n -
+4E 0010 A ledge dwelling monty mole that will either follow Mario or walk with a hop based on its x-position, and dig quickly or slowly based on its extra bit setting.\n - It's currently set to dig slowly.\n - It's currently set to follow.
+4E 0110 A ledge dwelling monty mole that will either follow Mario or walk with a hop based on its x-position, and dig quickly or slowly based on its extra bit setting.\n - It's currently set to dig slowly.\n - It's currently set to walk with a hop.
+
+; Hammer Brother
+9B 0012 0,-15,1DC 16,-15,1DD 0,-30,1CC 16,-30,1CD -16,-15,1DB 0,-24,10A
+9B 0000 A hammer brother that flies around (requires sprite 9C) throwing hammers that will change its throw frequency when the extra bit is set. It's currently set to infrequently.
+9B 0010 A hammer brother that flies around (requires sprite 9C) throwing hammers that will change its throw frequency when the extra bit is set. It's currently set to frequently.
+
+; Rex
+AB 0000 A rex. It will be squished if it's extra bit is set.
+AB 0010 A squished rex. It will be a normal rex if it's extra bit is clear.
+AB 0012 0,1,21D
+
+; Bullet Bill
+1C 0000 A bullet bill. It will play a sound effect if it's extra bit is set. Currently silent
+1C 0010 A bullet bill. It will play a sound effect if it's extra bit is set. Currently set to play sound effect.
+1C 0012 0,0,025 0,0,10A
+
+; Disco shell
+DA 0012 0,0,224 0,0,114
+DB 0012 0,0,224 0,0,114
+DC 0012 0,0,224 0,0,114
+DD 0012 0,0,224 0,0,114
+DF 0012 0,0,224 0,0,114
+
+DA 0010 A Disco Shell.
+DB 0010 A Disco Shell.
+DC 0010 A Disco Shell.
+DD 0010 A Disco Shell.
+DF 0010 A Disco Shell.
+
+; Triple ball n' chain
+E0 0000 3 platforms on chains that move will be a triple ball n' chain if the extra bit is set. Changes direction based on it's X position.
+E0 0010 A triple ball n' chain on chains will be 3 platforms on chains if the extra bit is clear. Changes direction based on it's X position.
+E0 0012 -1,16,1D6 -3,32,1D6 -16,48,1C4 0,48,1C5 -16,64,1D4 0,64,1D5 -12,-10,1D6 -24,-20,1D6 -48,-40,1C4 -32,-40,1C5 -48,-24,1D4 -32,-24,1D5 15,-6,1D6 30,-12,1D6 40,-32,1C4 56,-32,1C5 40,-16,1D4 56,-16,1D5
+E0 0112 1,16,1D6 3,32,1D6 0,48,1C4 16,48,1C5 0,64,1D4 16,64,1D5 12,-10,1D6 24,-20,1D6 32,-40,1C4 48,-40,1C5 32,-24,1D4 48,-24,1D5 -15,-6,1D6 -30,-12,1D6 -56,-28,1C4 -40,-28,1C5 -56,-12,1D4 -40,-12,1D5
+
+; Throwblock
+53 0002 0,-1,215
+53 0012 0,-1,215 0,-8,10A
+53 0000 A stationary throwblock sprite with infinite timer.
+53 0010 A throwblock sprite that spawns kicked towards the player.
+
+; Poison mushroom
+85 0002 0,0,214
+85 0012 0,0,225 0,-8,10A
+85 0000 A poison mushroom. Hurts or kills depending on extra bit settings. Currently set to Hurt.
+85 0010 A poison mushroom. Hurts or kills depending on extra bit settings. Currently set to Kill.
+00 0020 A Green Multi Bounce Shell.\nThe first extra byte determines the number of bounces before it disappears (0A = infinite bounces).
+00 0022 0,0,30 0,0,10A
+00 0030 A Green Multi Bounce Shell which spawns kicked towards Mario.\nThe first extra byte determines the number of bounces before it disappears (0A = infinite bounces).\nThe second extra byte determines the spawn X speed.
+00 0032 0,0,30 0,0,10A 8,0,10A
+01 0020 A shell that won't interact with other sprites.\nExtra Byte 1: Palette number.\nExtra Byte 2: Base kick speed.
+01 0022 0,1,400
+02 0020 Spiny Shell which can be picked up and thrown.\nThe extra byte determines the color palette (09-0F) used for the shell (0C = Red).
+02 0022 0,0,401
+03 0020 A MotorShell which spawns in the initial form of a shell.
+03 0022 -8,-8,413 0,0,412
+03 0030 A MotorShell which spawns in the initial form of spiny shell.
+03 0032 -8,-8,412 0,0,413 -8,-7,414
+04 0020 This version of the Flyin Disco Shell was modified by spooonsss
+04 0022 -16,0,6 16,0,7 0,0,405
+05 0020 This version of the Flyin Disco Shell was modified by spooonsss, then the json/gfx were tweaked by Cracka to disable the can be jumped on flag.
+05 0022 -16,0,6 16,0,7 0,0,406
+06 0020 A Disco Spiny Shell.
+06 0022 0,0,407
+07 0020 A MotorShell which spawns in the initial form of a shell.
+07 0022 -8,-8,426 0,0,425
+07 0030 A MotorShell which spawns in the initial form of spiny shell.
+07 0032 -8,-8,425 0,0,426 -8,-7,427
+08 0020 A disco shell that is inactive until kicked or tossed and then becomes a regular disco shell
+08 0022 0,0,408
+09 0020 A disco shell that moves away from Mario instead of chasing
+09 0022 0,0,409
+0A 0020 A koopa which, when stomped, will turn to a rainbow shell.
+0A 0022 0,-16,40A 0,0,40B
+0B 0020 Ghost Spiny Shell which can be picked up and thrown.\nThe extra byte determines the color palette (09-0F) used for the shell (0C = Red).
+0B 0022 0,0,40C
+0C 0020 An invincible shellboard that Mario can ride.
+0C 0022 -14,-12,216 3,-13,216 5,3,216 0,0,40D -12,4,216
+0D 0020 A Green Koopa.
+0D 0022 0,-14,10 0,2,20
+0D 0030 A Green Shell.
+0D 0032 0,1,30
+0E 0020 A Disco Shell that is activated based on On/Off switches. If switch is Off, will spawn as stunned. If stunned can be carried while pressing On switch & will not hurt player until after being kicked or dropped.
+0E 0022 0,0,40E
+0F 0020 Rideable platform that also acts like a disco shell. Usable with vanilla platform graphics (SP3 13).
+0F 0022 0,0,40F -24,0,7C -8,0,7D 8,0,7D 24,0,7E
+10 0020 A Disco Spiny Shell.
+10 0022 0,0,410
+11 0020 A disco shell that skips along water/lava, allowing it to be ridden across
+11 0022 0,0,411
+13 0020 A shell that stays in place like being on a 1F0 but without the need for one which can get in the way of tricks or other sprites.
+13 0022 0,0,30
+14 0020 This is the original version of the Flyin Disco Shell by RussianMan
+14 0022 -16,0,6 16,0,7 0,0,418
+15 0020 This version of the Flyin Disco Shell was modified by Bucket, to match the regular Disco shell's speed and physics a _bit_ closer.
+15 0022 -16,0,6 16,0,7 0,0,419
+16 0020 A shell that flashes and follows the player, much like state shells are in when Yellow Shellless Koopas hop into a shell. This also gives Yoshi the Fire, Flying, and Ground Pound abilities when eaten.
+16 0022 8,-8,1E 0,0,41A
+17 0030 A Shell That Switches The Shell Orientation From Regular To Flipped Upside Down.
+17 0032 0,0,41B 4,0,41C
+18 0030 A Shell That Increases The Value Of A Set Freeram Address By 01 Every Shell Jump Interaction.
+18 0032 0,0,41D 4,0,41E
+19 0030 A Shell That Switches Palette Colors Depending On Freeram Values.
+19 0032 0,0,41F 4,0,420
+20 30030 Switch On/Off To On\n- Extra Byte 1: Sets On/Off State\n(00 = On. 01 = Off, 0A = Toggle Opposite)\n- Extra Byte 2: Shell Type\n(00 = Regular, 60 = 1 Bounce, 80 = Infinite Bounces)
+20 30032 0,0,421 4,-4,423
+20 30130 Switch On/Off To Off\n- Extra Byte 1: Sets On/Off State\n(00 = On. 01 = Off, 0A = Toggle Opposite)\n- Extra Byte 2: Shell Type\n(00 = Regular, 60 = 1 Bounce, 80 = Infinite Bounces)
+20 30132 4,-4,423 0,0,32
+20 30A30 Toggle On/Off To Opposite\n- Extra Byte 1: Sets On/Off State\n(00 = On. 01 = Off, 0A = Toggle Opposite)\n- Extra Byte 2: Shell Type\n(00 = Regular, 60 = 1 Bounce, 80 = Infinite Bounces)
+20 30A32 4,-4,423 0,0,421 0,0,422
+21 30030 Switch On/Off To On\n- Extra Byte 1: Sets On/Off State\n(00 = On. 01 = Off, 0A = Toggle Opposite)\n- Extra Byte 2: Shell Type\n(00 = Regular, 60 = 1 Bounce, 80 = Infinite Bounces)
+21 30032 0,0,428 4,-4,42A 0,0,10A
+21 30130 Switch On/Off To Off\n- Extra Byte 1: Sets On/Off State\n(00 = On. 01 = Off, 0A = Toggle Opposite)\n- Extra Byte 2: Shell Type\n(00 = Regular, 60 = 1 Bounce, 80 = Infinite Bounces)
+21 30132 4,-4,42A 0,0,32 0,0,10A
+21 30230 Toggle On/Off To Opposite\n- Extra Byte 1: Sets On/Off State\n(00 = On. 01 = Off, 0A = Toggle Opposite)\n- Extra Byte 2: Shell Type\n(00 = Regular, 60 = 1 Bounce, 80 = Infinite Bounces)
+21 30232 4,-4,42A 0,0,428 0,0,429 0,0,10A
+23 30030 Star Power Timer Shell:\n- Extra Byte 1: Sets Timer Type\n(00 = Star Power, 01 = Start Power - Invincible To Star Power, 02 = Blue P-Switch, 03 = Invulnerability)\n- Extra Byte 2: Shell Type\n(00 = Regular, 60 = 1 Bounce, 80 = Infinite Bounces)
+23 30032 6,-8,213 0,0,33
+23 30230 Blue P-Switch Timer Shell:\n- Extra Byte 1: Sets Timer Type\n(00 = Star Power, 01 = Start Power - Invincible To Star Power, 02 = Blue P-Switch, 03 = Invulnerability)\n- Extra Byte 2: Shell Type\n(00 = Regular, 60 = 1 Bounce, 80 = Infinite Bounces)
+23 30232 8,-8,42E 0,0,32
+23 30130 Star Power Timer (Invincible) Shell:\n- Extra Byte 1: Sets Timer Type\n(00 = Star Power, 01 = Start Power - Invincible To Star Power, 02 = Blue P-Switch, 03 = Invulnerability)\n- Extra Byte 2: Shell Type\n(00 = Regular, 60 = 1 Bounce, 80 = Infinite Bounces)
+23 30132 6,-8,213 0,0,33 0,0,10A
+23 30330 Invulnerability Timer Shell:\n- Extra Byte 1: Sets Timer Type\n(00 = Star Power, 01 = Start Power - Invincible To Star Power, 02 = Blue P-Switch, 03 = Invulnerability)\n- Extra Byte 2: Shell Type\n(00 = Regular, 60 = 1 Bounce, 80 = Infinite Bounces)
+23 30332 8,-8,430 0,0,42F
+24 40020 Regular Powerup Shell that makes player small upon shell interaction.\n\nExtra Bit:\nClear = Normal Shell\nSet = Spiny Shell.\n\nExtra Byte:\n00 = Small\n01 = Big\n02 = Cape\n03 = Fire.
+24 40022 12,-4,10A 0,0,32
+24 40030 Spiny Powerup Shell that makes player small upon shell interaction.\n\nExtra Bit:\nClear = Normal Shell\nSet = Spiny Shell.\n\nExtra Byte:\n00 = Small\n01 = Big\n02 = Cape\n03 = Fire.
+24 40032 12,-4,10A 0,0,431
+24 40120 Regular Powerup Shell that makes player Big upon shell interaction.\n\nExtra Bit:\nClear = Normal Shell\nSet = Spiny Shell.\n\nExtra Byte:\n00 = Small\n01 = Big\n02 = Cape\n03 = Fire.
+24 40122 8,-8,101 0,0,31
+24 40130 Spiny Powerup Shell that makes player Big upon shell interaction.\n\nExtra Bit:\nClear = Normal Shell\nSet = Spiny Shell.\n\nExtra Byte:\n00 = Small\n01 = Big\n02 = Cape\n03 = Fire.
+24 40132 8,-8,101 0,0,432
+24 40220 Regular Powerup Shell that gives the player cape powerup upon shell interaction.\n\nExtra Bit:\nClear = Normal Shell\nSet = Spiny Shell.\n\nExtra Byte:\n00 = Small\n01 = Big\n02 = Cape\n03 = Fire.
+24 40222 8,-8,106 0,0,33
+24 40230 Spiny Powerup Shell that gives the player cape powerup upon shell interaction.\n\nExtra Bit:\nClear = Normal Shell\nSet = Spiny Shell.\n\nExtra Byte:\n00 = Small\n01 = Big\n02 = Cape\n03 = Fire.
+24 40232 8,-8,106 0,0,433
+24 40320 Regular Powerup Shell that gives the player fire powerup upon shell interaction.\n\nExtra Bit:\nClear = Normal Shell\nSet = Spiny Shell.\n\nExtra Byte:\n00 = Small\n01 = Big\n02 = Cape\n03 = Fire.
+24 40322 8,-8,212 0,0,435
+24 40330 Spiny Powerup Shell that gives the player fire powerup upon shell interaction.\n\nExtra Bit:\nClear = Normal Shell\nSet = Spiny Shell.\n\nExtra Byte:\n00 = Small\n01 = Big\n02 = Cape\n03 = Fire.
+24 40332 8,-8,212 0,0,434
+25 30130 Shell Jump Interaction Displays Message Info Box 1\n- Extra Byte 1: Message #\n(01 = Message 1, 02 = Message 2, 03 = Yoshi Message, 0A = Switch Between Message 1 & 2)\n- Extra Byte 2: Shell Type\n(00 = Regular, 60 = 1 Bounce)
+25 30132 8,-8,10B 0,0,32 16,-8,10C
+25 30230 Shell Jump Interaction Displays Message Info Box 2\n- Extra Byte 1: Message #\n(01 = Message 1, 02 = Message 2, 03 = Yoshi Message, 0A = Switch Between Message 1 & 2)\n- Extra Byte 2: Shell Type\n(00 = Regular, 60 = 1 Bounce)
+25 30232 8,-8,10B 0,0,32 16,-8,10D
+25 30330 Shell Jump Interaction Displays Message Info Box From When Yoshi Is First Released\n- Extra Byte 1: Message #\n(01 = Message 1, 02 = Message 2, 03 = Yoshi Message, 0A = Switch Between Message 1 & 2)\n- Extra Byte 2: Shell Type\n(00 = Regular, 60 = 1 Bounce)
+25 30332 16,-16,90 8,-8,10B 0,0,32
+25 30A30 Shell Jump Interaction Alternates Between Displaying Message Info Box 1 & 2\n- Extra Byte 1: Message #\n(01 = Message 1, 02 = Message 2, 03 = Yoshi Message, 0A = Switch Between Message 1 & 2)\n- Extra Byte 2: Shell Type\n(00 = Regular, 60 = 1 Bounce)
+25 30A32 8,-8,10B 0,0,32 16,-8,10A
+26 0030 A Shell That Switches The Shell Orientation From Regular To Flipped Upside Down.
+26 0032 0,0,436 4,0,437
+27 0030 A Shell That Changes Palettes Upon Interaction.
+27 0032 0,0,424
+28 40020 Regular Auto Spin-Jump Shell that switches between regular shell and spiny shell depending on spin/jump type & automatically switches players jump type after interaction. Can be set to use 2 palettes or rotate through disco palettes.\n\nExtra Bit:\nClear = 2 Palettes\nSet = Disco Palette.\n\nExtra Byte 1:\n00 = Stationary/Carryable\n01 = Kicked/Disco\n\nExtra Byte 2:\n00 = Regular Shell\n01 = Disco Shell
+28 40022 8,-8,43A 0,0,32
+28 40130 Disco Auto Spin-Jump Shell that switches between regular shell and spiny shell depending on spin/jump type & automatically switches players jump type after interaction. Can be set to use 2 palettes or rotate through disco palettes.\n\nExtra Bit:\nClear = 2 Palettes\nSet = Disco Palette.\n\nExtra Byte 1:\n00 = Stationary/Carryable\n01 = Kicked/Disco\n\nExtra Byte 2:\n00 = Regular Shell\n01 = Disco Shell
+28 40132 8,-8,439 0,0,438
+29 0030 1 Bounce Spiny Shell
+29 0032 0,0,43B 12,-4,10A
+2A 0020 Spin-Jump Spiny Shell
+2A 0022 0,0,30 0,-8,8
+2A 0030 Spin-Jump Regular Shell
+2A 0032 0,0,128 0,-8,8
+2B 0020 Spin-Jump Spiny Shell
+2B 0022 0,0,30 0,-8,8
+2B 0030 Spin-Jump Regular Shell
+2B 0032 0,0,128 0,-8,8
+2C 0020 Spiny Jump Shell
+2C 0022 0,0,30 0,-8,8
+2C 0030 Spiny Jump Shell
+2C 0032 0,0,128 0,-8,8
+60 0020 CustomThrowBlock (extra bit clear)
+60 0022 0,0,0
+60 0030 CustomThrowBlock (extra bit set)
+60 0032 0,0,0
+61 0020 A modified version of the buzzy beetle with a few customization options. A summary of each extra byte is included here, but check the asm file for more detailed descriptions and examples.\nExtra Byte 1: Walk speed.\nExtra Byte 2: Kick speed.\nExtra Byte 3: Miscellaneous properties.\nExtra Byte 4: Spawn state.
+61 0022 0,1,C1 4,-16,114
+70 0020 A Buzzy Beetle that flies through the air and can carry the player. Rises when stood on.\n - first extra byte sets the direction. \n - second extra byte controls speed. (Default: $0C)
+70 0022 0,0,43C 8,-2,7
+70 0030 A Buzzy Beetle that flies through the air and can carry the player. Sinks when stood on.\n - first extra byte sets the direction. \n - second extra byte controls speed. (Default: $0C)
+70 0032 0,0,43C 10,-2,7
+71 0020 Para Spiny (left/right)
+71 0022 0,0,E 8,-6,7
+71 0030 Para Spiny (up/down)
+71 0032 0,0,E 8,-6,7
+72 0020 This is a spiny that uses parachute to descend.
+72 0022 -6,2,F -6,-14,56
+73 0020 FlyingThrowBlock (extra bit clear)
+73 0022 0,0,0
+73 0030 FlyingThrowBlock (extra bit set)
+73 0032 0,0,0
+7C 0020 yoshi_blue (extra bit clear)
+7C 0022 0,0,0
+7C 0030 yoshi_blue (extra bit set)
+7C 0032 0,0,0
+7D 0020 yoshi_red (extra bit clear)
+7D 0022 0,0,0
+7D 0030 yoshi_red (extra bit set)
+7D 0032 0,0,0
+7E 0020 yoshi_yellow (extra bit clear)
+7E 0022 0,0,0
+7E 0030 yoshi_yellow (extra bit set)
+7E 0032 0,0,0
+7F 0020 yoshi_white (extra bit clear)
+7F 0022 0,0,0
+7F 0030 yoshi_white (extra bit set)
+7F 0032 0,0,0
+80 0020 Platform Megapack:\n\nExtra Byte 1:\n00 Brown Boost Platform.\n01 Gold Boost Platform, can jump infinitely.\n02 Grey Falling Platform, 2 tiles wide.\n03 Grey Falling Platform, 4 tiles wide.\n04 Grey, upwards Falling Platform, 2 tiles wide.\n05 Grey, upwards Falling Platform, 4 tiles wide.\n06 Grey, rightwards Falling Platform, 2 tiles wide.\n07 Grey, rightwards Falling Platform, 4 tiles wide.\n08 Grey, leftwards Falling Platform, 2 tiles wide.\n09 Grey, leftwards Falling Platform, 4 tiles wide.\n-\n0A Grey Falling Platform, drifts to the left. 3 tiles wide.\n0B Grey Falling Platform, drifts to the right. 3 tiles wide.\n-\n0C Vertically-wrapping Brown platform, going down. 2 tiles wide.\n0D Vertically-wrapping Brown platform, going down. 4 tiles wide.\n0E Vertically-wrapping Brown platform, going up. 2 tiles wide.\n0F Vertically-wrapping Brown platform, going up. 4 tiles wide.\n-\n10 Grey falling platform, 1-tile big, falling down.\n11 Grey falling platform, 1-tile big, falling up.\n12 Grey falling platform, 1-tile big, falling right.\n13 Grey falling platform, 1-tile big, falling left.\n-\n14 Vertical Wrapping Platform, 1-tile big, going down.\n15 Vertical Wrapping Platform, 1-tile big, going up.
+80 0022 0,0,EC 16,0,EE 8,4,7C 24,4,7E
+81 0020 BlockBridge (extra bit clear)
+81 0022 0,0,0
+81 0030 BlockBridge (extra bit set)
+81 0032 0,0,0
+8E 30030 Bubble Shell:\n- Extra Byte 1: Shell Value (00 = Green, 01 = Red, 02 = Blue, 03 = Yellow)\n- Extra Byte 2: Spawn Direction (00 = Right, 01 = Left, 02 = Towards Player, 03-FF = Away From Player)
+8E 30032 0,0,1AE 16,0,1AF 0,16,1BE 16,16,1BF 8,12,30
+8E 30130 Bubble Shell:\n- Extra Byte 1: Shell Value (00 = Green, 01 = Red, 02 = Blue, 03 = Yellow)\n- Extra Byte 2: Spawn Direction (00 = Right, 01 = Left, 02 = Towards Player, 03-FF = Away From Player)
+8E 30132 8,12,31 0,0,1AE 0,16,1BE 16,16,1BF 16,0,1AF
+8E 30230 Bubble Shell:\n- Extra Byte 1: Shell Value (00 = Green, 01 = Red, 02 = Blue, 03 = Yellow)\n- Extra Byte 2: Spawn Direction (00 = Right, 01 = Left, 02 = Towards Player, 03-FF = Away From Player)
+8E 30232 8,12,32 16,0,1AF 16,16,1BF 0,16,1BE 0,0,1AE
+8E 30330 Bubble Shell:\n- Extra Byte 1: Shell Value (00 = Green, 01 = Red, 02 = Blue, 03 = Yellow)\n- Extra Byte 2: Spawn Direction (00 = Right, 01 = Left, 02 = Towards Player, 03-FF = Away From Player)
+8E 30332 8,12,33 16,0,1AF 16,16,1BF 0,16,1BE 0,0,1AE
+8F 0020 A Bro throwing green shells while jumping.
+8F 0022 8,-16,30 0,0,441 0,-8,440
+97 0020 PipeSpawner (extra bit clear)
+97 0022 0,0,0
+97 0030 PipeSpawner (extra bit set)
+97 0032 0,0,0
+98 0020 AnyFishingBoo (extra bit clear)
+98 0022 0,0,0
+98 0030 AnyFishingBoo (extra bit set)
+98 0032 0,0,0
+99 0020 CannonSpawner (extra bit clear)
+99 0022 0,0,0
+99 0030 CannonSpawner (extra bit set)
+99 0032 0,0,0
+9A 0020 CannonSpawner_Extended (extra bit clear)
+9A 0022 0,0,0
+9A 0030 CannonSpawner_Extended (extra bit set)
+9A 0032 0,0,0
+9B 0020 Line-Guided Any Sprite
+9B 0022 0,0,0
+9C 0020 Disco_AnySprite (extra bit clear)
+9C 0022 0,0,0
+9C 0030 Disco_AnySprite (extra bit set)
+9C 0032 0,0,0
+9D 0020 A sprite that spawns another sprite in an offset position. For regular sprites, the X/Y-dependent properties will be read in the original position of this custom sprite.\nExtra Byte 1: Regular or custom sprite number.\nExtra Byte 2: 'Extra Bit' information of the sprite. Set it to 0 or 1 for a regular sprite, or set it to 2 or 3 for a custom sprite with the Extra Bit clear or set, respectively.\nExtra Byte 3: X position offset in pixels.\nExtra Byte 4: Y position offset in pixels.\nExtra Bit: If clear, the offset will be additive, so the sprite will be moved down and right from the custom sprite's position. If set, it will subtract from the custom sprite's position and move up and left instead.\nExtra Bytes 5-8: Correspond to Extra Bytes 1-4 of the spawned custom sprite. Can be ignored if not applicable.
+9D 0022 0,0,0
+9E 0020 A sprite which spawns another sprite and makes it stay on the same X or Y position as Mario.
+9E 0022 0,0,0
+9F 0020 Kills sprites
+9F 0022 0,-8,114 16,-8,114 0,8,114 16,8,114
+A0 0020 donut_sprite (extra bit clear)
+A0 0022 0,0,0
+A0 0030 donut_sprite (extra bit set)
+A0 0032 0,0,0
+B3 0020 LevelHubCursorMain (extra bit clear)
+B3 0022 0,0,0
+B3 0030 LevelHubCursorMain (extra bit set)
+B3 0032 0,0,0
+B4 0020 LevelHubCursor (extra bit clear)
+B4 0022 0,0,0
+B4 0030 LevelHubCursor (extra bit set)
+B4 0032 0,0,0
+C0 0020 random_shell (extra bit clear)
+C0 0022 0,0,0
+C0 0030 random_shell (extra bit set)
+C0 0032 0,0,0
+C1 0020 ShellShooter (extra bit clear)
+C1 0022 0,0,0
+C1 0030 ShellShooter (extra bit set)
+C1 0032 0,0,0

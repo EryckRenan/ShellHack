@@ -1,0 +1,122 @@
+v5.12
+- major upgrades to the retry system
+- fix issue with Mario dying in the screen scrolling pipes sometimes
+- big refactoring of the UberASM Objects system
+- new objects for the new retry features, no spin jump
+- big reorganization of UberASM objects to sort them more sanely
+- include more informative UberASM Tool list
+- split up the X-Speed Fixes patch into one for speed oscillation and no jump fixes
+- reconfigure the autosave and clear checkpoints ASM to use the retry API
+- new graphic for the any-sprite ON-OFF to disambiguate it from the coins
+- removed the vine sac ExGraphics, improved the graphic for the single-use bounce block
+- adjusted the global exanimation and shuffled around ExGraphics tile locations
+
+v5.11
+- updated the tools to their latest versions (not Lunar Magic though)
+- rework the freeram clearing resource
+- fix outdated teleport_direct routine
+- upgraded question mark blocks
+- adjust some of the tweaks
+- add patch to sprite spawn frame rule
+- add uberasm object to make Mario invisible
+
+v5.10
+- change Sprite Scroll fix patch to use a large a freeram bank
+- rework the build system setup to better accommodate exporting and migration between updates
+- make use of Callisto header functionality to do away with relative links in resources
+- general improvements to basic documentation in the Readme
+- add documentation covering upgrading the baserom
+
+v5.9
+- moved screen scrolling pipe freeram to custom bank
+- swapped out baserom item release patch with betalogic version
+- fixed uberasm objects being run in the wrong time
+- fix a bunch of inconsistent logic in the ON/OFF blocks
+- clean up and update block descriptions for clarity
+- reorganize screen scrolling pipe block tiles
+- replace rope fix patch with RAM-toggleable one
+- added gfx tweak for Chuck shoulder and Super Koopa
+- added list file format clarifications
+- added pair of uberasm objects to init on/off state
+- added button to the usertoolbar for exit-enabled tiles
+- update Callisto to v0.4.0
+
+v5.8
+- fix issues in the triple ball n' chain, candle bg fix and line guide act as patches
+- fix issue with collectable on/off blocks and wall run
+- update block duplication fix patch to 1.6
+- update Callisto to 0.2.15 and AddMusicK to 1.0.10
+- update UberASM retry to 0.6.0
+- rework global block graphics to avoid palette conflict with graphic resources
+- add basic autosave on overworld feature
+
+v5.7
+- retry indicator now as a sprite tile component for when the layer 3 HUD is hidden and can be toggled on with an UberASM object
+- some changes to sprite tiles were required for this
+- UberASM objects have been expanded to include initial player state objects
+- retry documentation has been improved, with a new Tips page
+- nitpicky changes were made to retry settings
+
+v5.6
+- new layer 3 status bar indicator for levels that use retry
+- big set of edits to the baserom's documentation to clean it up and improve it
+- clean up of the tweaks.asm code; added tweak for animation resetting
+- tidying up of the UberASM objects code
+- new UberASM object for Disabling cape flight
+- new UberASM object for Disabling screen shake
+- cleared out unneeded, unmodified tools files
+
+v5.5
+- cleaned up the screen-scrolling pipes ASM
+- new visuals for pass-through death block
+- revamped the ExGraphics and ExAnimation
+- added new collectable "coin" on/off blocks
+- updated retry system to 0.5.2
+- updated the clear checkpoints asm to run on OW and use any combo of keys
+- updated tile descriptions for blocks
+- updated usertoolbar script
+- new documentation for the features in the baserom
+
+v5.4
+- added patch related buttons to the toolbar
+- added LM back and forward buttons
+- added throw block bumper block
+- added safety mechanism to the retry system for clearing CP
+- documentation updates
+- fix monty mole display and descriptions
+- revamped the baserom's included levels
+- update Callisto to 0.2.11
+
+v5.3
+- fix FreeRAM conflict between ExNSTL and turnaround patch
+- update FreeRAM documentation
+- make springboard fixes patch ram-toggleable (midairs are back)
+- fix usertoolbar actions hiding Callisto output
+- README updates; new page about initialization
+
+v5.2
+- add new "Baserom Basics" documentation
+- other README edits
+- README now has an online component.
+- added statusbar toggle uberasm to library
+- added RAM-toggled spin jump fireballs patch
+- reconfigure Retry prompt tile address settings
+- drop unneeded "Free Up 69" patch
+- fixed P-Switch spawning from custom question blocks
+- added goal point reward fix patch
+
+v5.1
+- fix small issue in the usertoolbar
+- update Callisto to 0.2.9
+- update to Lunar Magic 3.40
+- fix incorrect tile in retry settings
+
+v5.0
+- new Callisto-based workflow Baserom
+- entirely revamped uberasm objects system
+- rewrote all documentation in html
+- initialization script is now in Powershell
+- updated ExGraphics and Map16
+- leaner baserom overall
+- tidied up block code
+- major tool updates to UberASMTool 2.0 and AddMusicK 1.0.9

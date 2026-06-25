@@ -1,0 +1,265 @@
+{
+  "$1656": {
+    "Object Clipping": 0,
+    "Can be jumped on": true,
+    "Dies when jumped on": true,
+    "Hop in/kick shell": false,
+    "Disappears in cloud of smoke": true
+  },
+  "$1662": {
+    "Sprite Clipping": 0,
+    "Use shell as death frame": true,
+    "Fall straight down when killed": false
+  },
+  "$166E": {
+    "Use second graphics page": true,
+    "Palette": 5,
+    "Disable fireball killing": false,
+    "Disable cape killing": false,
+    "Disable water splash": false,
+    "Don't interact with Layer 2": false
+  },
+  "$167A": {
+    "Don't disable cliping when starkilled": true,
+    "Invincible to star/cape/fire/bounce blk.": false,
+    "Process when off screen": false,
+    "Don't change into shell when stunned": false,
+    "Can't be kicked like shell": false,
+    "Process interaction with Mario every frame": false,
+    "Gives power-up when eaten by yoshi": false,
+    "Don't use default interaction with Mario": true
+  },
+  "$1686": {
+    "Inedible": false,
+    "Stay in Yoshi's mouth": true,
+    "Weird ground behaviour": false,
+    "Don't interact with other sprites": false,
+    "Don't change direction if touched": false,
+    "Don't turn into coin when goal passed": false,
+    "Spawn a new sprite": false,
+    "Don't interact with objects": false
+  },
+  "$190F": {
+    "Make platform passable from below": false,
+    "Don't erase when goal passed": false,
+    "Can't be killed by sliding": false,
+    "Takes 5 fireballs to kill": false,
+    "Can be jumped on with upwards Y speed": false,
+    "Death frame two tiles high": true,
+    "Don't turn into a coin with silver POW": false,
+    "Don't get stuck in walls (carryable sprites)": true
+  },
+  "AsmFile": "PowerupShell.asm",
+  "ActLike": 6,
+  "Type": 1,
+  "Extra Property Byte 1": 0,
+  "Extra Property Byte 2": 0,
+  "Additional Byte Count (extra bit clear)": 1,
+  "Additional Byte Count (extra bit set)": 1,
+  "Map16": "gA2cDIENnQyAEZwQgRGdEIAJnAiBCZ0IgAGcAIEBnQCMAJwAjQCdAA==",
+  "Displays": [
+    {
+      "Description": "Regular Powerup Shell that makes player small upon shell interaction.\n\nExtra Bit:\nClear = Normal Shell\nSet = Spiny Shell.\n\nExtra Byte:\n00 = Small\n01 = Big\n02 = Cape\n03 = Fire.",
+      "ExtraBit": false,
+      "Tiles": [
+        {
+          "X offset": 12,
+          "Y offset": -4,
+          "map16 tile": 266
+        },
+        {
+          "X offset": 0,
+          "Y offset": 0,
+          "map16 tile": 50
+        }
+      ],
+      "Value": 0,
+      "Index": 1,
+      "DisplayText": "",
+      "UseText": false
+    },
+    {
+      "Description": "Spiny Powerup Shell that makes player small upon shell interaction.\n\nExtra Bit:\nClear = Normal Shell\nSet = Spiny Shell.\n\nExtra Byte:\n00 = Small\n01 = Big\n02 = Cape\n03 = Fire.",
+      "ExtraBit": true,
+      "Tiles": [
+        {
+          "X offset": 12,
+          "Y offset": -4,
+          "map16 tile": 266
+        },
+        {
+          "X offset": 0,
+          "Y offset": 0,
+          "map16 tile": 768
+        }
+      ],
+      "Value": 0,
+      "Index": 1,
+      "DisplayText": "",
+      "UseText": false
+    },
+    {
+      "Description": "Regular Powerup Shell that makes player Big upon shell interaction.\n\nExtra Bit:\nClear = Normal Shell\nSet = Spiny Shell.\n\nExtra Byte:\n00 = Small\n01 = Big\n02 = Cape\n03 = Fire.",
+      "ExtraBit": false,
+      "Tiles": [
+        {
+          "X offset": 8,
+          "Y offset": -8,
+          "map16 tile": 257
+        },
+        {
+          "X offset": 0,
+          "Y offset": 0,
+          "map16 tile": 49
+        }
+      ],
+      "Value": 1,
+      "Index": 1,
+      "DisplayText": "",
+      "UseText": false
+    },
+    {
+      "Description": "Spiny Powerup Shell that makes player Big upon shell interaction.\n\nExtra Bit:\nClear = Normal Shell\nSet = Spiny Shell.\n\nExtra Byte:\n00 = Small\n01 = Big\n02 = Cape\n03 = Fire.",
+      "ExtraBit": true,
+      "Tiles": [
+        {
+          "X offset": 8,
+          "Y offset": -8,
+          "map16 tile": 257
+        },
+        {
+          "X offset": 0,
+          "Y offset": 0,
+          "map16 tile": 769
+        }
+      ],
+      "Value": 1,
+      "Index": 1,
+      "DisplayText": "",
+      "UseText": false
+    },
+    {
+      "Description": "Regular Powerup Shell that gives the player cape powerup upon shell interaction.\n\nExtra Bit:\nClear = Normal Shell\nSet = Spiny Shell.\n\nExtra Byte:\n00 = Small\n01 = Big\n02 = Cape\n03 = Fire.",
+      "ExtraBit": false,
+      "Tiles": [
+        {
+          "X offset": 8,
+          "Y offset": -8,
+          "map16 tile": 262
+        },
+        {
+          "X offset": 0,
+          "Y offset": 0,
+          "map16 tile": 51
+        }
+      ],
+      "Value": 2,
+      "Index": 1,
+      "DisplayText": "",
+      "UseText": false
+    },
+    {
+      "Description": "Spiny Powerup Shell that gives the player cape powerup upon shell interaction.\n\nExtra Bit:\nClear = Normal Shell\nSet = Spiny Shell.\n\nExtra Byte:\n00 = Small\n01 = Big\n02 = Cape\n03 = Fire.",
+      "ExtraBit": true,
+      "Tiles": [
+        {
+          "X offset": 8,
+          "Y offset": -8,
+          "map16 tile": 262
+        },
+        {
+          "X offset": 0,
+          "Y offset": 0,
+          "map16 tile": 770
+        }
+      ],
+      "Value": 2,
+      "Index": 1,
+      "DisplayText": "",
+      "UseText": false
+    },
+    {
+      "Description": "Regular Powerup Shell that gives the player fire powerup upon shell interaction.\n\nExtra Bit:\nClear = Normal Shell\nSet = Spiny Shell.\n\nExtra Byte:\n00 = Small\n01 = Big\n02 = Cape\n03 = Fire.",
+      "ExtraBit": false,
+      "Tiles": [
+        {
+          "X offset": 8,
+          "Y offset": -8,
+          "map16 tile": 530
+        },
+        {
+          "X offset": 0,
+          "Y offset": 0,
+          "map16 tile": 772
+        }
+      ],
+      "Value": 3,
+      "Index": 1,
+      "DisplayText": "",
+      "UseText": false
+    },
+    {
+      "Description": "Spiny Powerup Shell that gives the player fire powerup upon shell interaction.\n\nExtra Bit:\nClear = Normal Shell\nSet = Spiny Shell.\n\nExtra Byte:\n00 = Small\n01 = Big\n02 = Cape\n03 = Fire.",
+      "ExtraBit": true,
+      "Tiles": [
+        {
+          "X offset": 8,
+          "Y offset": -8,
+          "map16 tile": 530
+        },
+        {
+          "X offset": 0,
+          "Y offset": 0,
+          "map16 tile": 771
+        }
+      ],
+      "Value": 3,
+      "Index": 1,
+      "DisplayText": "",
+      "UseText": false
+    }
+  ],
+  "Collection": [
+    {
+      "Name": "Regular Small Shell",
+      "ExtraBit": false,
+      "Extra Property Byte 1": 0
+    },
+    {
+      "Name": "Regular Big Shell",
+      "ExtraBit": false,
+      "Extra Property Byte 1": 1
+    },
+    {
+      "Name": "Regular Cape Shell",
+      "ExtraBit": false,
+      "Extra Property Byte 1": 2
+    },
+    {
+      "Name": "Regular Fire Shell",
+      "ExtraBit": false,
+      "Extra Property Byte 1": 3
+    },
+    {
+      "Name": "Spiny Small Shell",
+      "ExtraBit": true,
+      "Extra Property Byte 1": 0
+    },
+    {
+      "Name": "Spiny Big Shell",
+      "ExtraBit": true,
+      "Extra Property Byte 1": 1
+    },
+    {
+      "Name": "Spiny Cape Shell",
+      "ExtraBit": true,
+      "Extra Property Byte 1": 2
+    },
+    {
+      "Name": "Spiny Fire Shell",
+      "ExtraBit": true,
+      "Extra Property Byte 1": 3
+    }
+  ],
+  "DisplayType": "ExByte"
+}

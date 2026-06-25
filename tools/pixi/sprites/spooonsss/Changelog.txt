@@ -1,0 +1,19 @@
+~Flyin' Disco Shell~
+
+(DD/MM/YYYY)
+V.1.0 (17.03.2019)
+- Initial release
+
+V.1.0.1 (15.05.2019)
+- Fixed strange offscreen glitch that marked sprite as "process offscreen" and "spawn when nearby" which leads to sprite staying alive offscreen AND it's duplication when approaching it's spawn point.
+
+V.1.1 (11.09.2021)
+- Made use of PIXI's new print state, which fixes sprite interaction (for example one flying disco shell vs. another flying disco shell would result in one staying alive, even though both should be dead)
+- (Mod edit:) Fixed a bug where following movement had a tendency to break for speeds above $40.
+
+v.1.2 (20.08.2024) (spooonsss)
+- Draw after moving to match vanilla shell
+- Set 'don't get stuck in walls bit' to set position after striking a block correctly
+- Use correct mario position for SubHorzPos to follow mario accurately
+- Update position based on speed before SubHorzPos to follow mario accurately
+- X-flip shell tile when facing left to match vanilla graphics

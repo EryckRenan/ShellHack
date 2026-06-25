@@ -1,0 +1,28 @@
+
+		How To Setup The Baserom:
+
+	1) Move this folder to somewhere easily accessable on your computer
+
+	2) Obtain a clean, headered copy of vanilla Super Mario World ROM (USA version)
+
+		If you're unsure if your .smc meets the above criteria, the tool linked in the resources folder can confirm:
+			https://www.smwcentral.net/?p=onlinetools&tool=romclean
+
+	3) Rename to clean.smc and placed in the "resources" folder
+
+	4) Initialize the Baserom by clicking !initialize_baserom.bat
+
+	5) Press [1] then [Enter] to download and setup all the baserom tools
+
+	6) Once all the tools are setup, Press [2] then [Enter] to run the first build of the baserom
+
+	7) After that, press [0] then [Enter] to escape the menu, followed by any key to exit.
+
+	8) In the buildtool folder run callisto.exe (& optionally pin to taskbar for future ease of access)
+
+	9) The primary commands in callisto will be pressing the following:
+
+		- [U] then [Enter] which runs all programs to search for any updates to lists.txt or new resources
+		- [E] then [Enter] which opens Lunar Magic for editing the ROM
+		- [S] then [Enter] to save your work, this is an alternative to pressing save in Lunar Magic
+		- [R] then [Enter] this is really only necessary if something breaks, or if an ASAR patch is added

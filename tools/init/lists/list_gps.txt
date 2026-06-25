@@ -1,0 +1,1010 @@
+; GPS CUSTOM BLOCKS LIST --------------------------------------------
+; Place your custom blocks in this list file like so:
+;
+;    <map16 tile number>:<block act-as> custom_block.asm
+;
+; Lines with a ; at the start are comments that are ignored by GPS
+; -------------------------------------------------------------------
+
+; Add your blocks here
+; Be sure not to use a tile value already in use below
+
+; 400:130 example.asm
+
+
+; BASEROM RESERVED BLOCKS BELOW -------------------------------------
+; The following blocks are largely on Pages 02 and 03 of Map16
+; To be safe, start listing your additions on Page 04 (400).
+; -------------------------------------------------------------------
+
+; PAGE 02 OF MAP16 --------------------------------------------------
+; 200-20A - reserved for layer 3 Tide act-as feature
+; 209-28F - occupied with vanilla Tiles
+
+; 290-291 Mario/Sprite Only
+
+; Custom Global Blocks
+
+0292:0130 global/breakable_by_item.asm
+0295:0130 walljump.asm
+0293:0100 global/donut_lift.asm
+0350:0130 global/bumper.asm
+0360:0025 global/bumper.asm
+;0296-029A
+029B:0025 on_off/collectable_set_to_on.asm
+029C:0025 on_off/collectable_set_to_off.asm
+;029D-029D
+;029E Set to Act As 029F (Death Block)
+029F:0130 global/hurt_death.asm
+02A0:0025 global/fake_spiny.asm
+02A1:0025 global/fake_disappearing_spiny.asm
+02A2:0025 global/fake_swooper.asm
+02A3:0130 global/single_use_bounce_block.asm
+02A4:0130 global/endless_throwblock.asm
+02A5:0025 global/remove_powerup.asm
+;02A6-02A8
+;02A9 reserved by baserom
+;02AA
+02AB:0025 on_off/set_to_on.asm
+02AC:0025 on_off/set_to_off.asm
+;02AD-02BA
+02BB:0130 on_off/passthrough_when_off.asm
+02BC:0130 on_off/passthrough_when_on.asm
+02BD:0025 global/hurt_death+sprite_passthrough.asm
+;02BE-02CC
+02CD:0025 global/sprite_killer.asm
+;02CE-02EF
+;02F0-02FF Question Blocks
+;0300-032F Screen Scrolling Pipes
+;0330-034F Directional Indicators & Screen Scrolling Pipes
+;?
+;0358-035B
+;035C-035F Screen Scrolling Pipes
+;?
+;036F Screen Scrolling Pipes
+;?
+;0376-037F Screen Scrolling Pipes
+;?
+;0385-038F Screen Scrolling Pipes
+;?
+;0376-037F Screen Scrolling Pipes
+;?
+;03A5-03AF Screen Scrolling Pipes
+;?
+;03C0-03C5 Camera Scrolling
+;03C6-03CF Line Guides
+;?
+;03D6-03DF Line Guides
+;?
+;03E6-03EF Line Guides
+;?
+;03F6-03FF Line Guides
+
+; Camera Scrolling
+03C0:0025 camera/scroll_left.asm
+03C1:0025 camera/scroll_right.asm
+03C2:0025 camera/horz_start.asm
+03C3:0025 camera/horz_stop.asm
+03C4:0025 camera/vert_start.asm
+03C5:0025 camera/vert_stop.asm
+
+; Custom Question Blocks (Moved Down From Row 2B To 2F)
+02F0:0130 question_blocks/74_mushroom.asm
+02F1:0130 question_blocks/75_fire_flower.asm
+02F2:0130 question_blocks/77_feather.asm
+02F3:0130 question_blocks/35_egg.asm
+02F4:0130 question_blocks/79_vine.asm
+02F5:0130 question_blocks/7D_p-balloon.asm
+02F6:0130 question_blocks/80_key.asm
+02F7:0130 question_blocks/53_throw_block.asm
+02F8:0130 question_blocks/85_poison_mushroom.asm
+02F9:0130 question_blocks/85_poison_mushroom+extra-bit.asm
+02FA:0130 question_blocks/0F_goomba.asm
+02FB:0130 question_blocks/18_fish.asm
+02FC:0130 question_blocks/3E_blue_pswitch.asm
+02FD:0130 question_blocks/3E_silver_pswitch.asm
+02FE:0130 question_blocks/2F_spring.asm
+02FF:0130 question_blocks/81_roulette_power-up.asm
+
+; PAGE 03 OF MAP16 --------------------------------------------------
+
+; Screen Scrolling Pipes
+
+; Large Vertical Two-Way Pipe
+0300:0130 screen_scrolling_pipes/vertical_top_pipe_cap_L.asm
+0301:0130 screen_scrolling_pipes/vertical_top_pipe_cap_R.asm
+0310:0130 screen_scrolling_pipes/pass_if_in_pipe.asm
+0311:0130 screen_scrolling_pipes/pass_if_in_pipe.asm
+0320:0130 screen_scrolling_pipes/vertical_bottom_pipe_cap_L.asm
+0321:0130 screen_scrolling_pipes/vertical_bottom_pipe_cap_R.asm
+; Large Horizontal Two-Way Pipe
+0302:0130 screen_scrolling_pipes/pass_if_in_pipe.asm
+0303:0130 screen_scrolling_pipes/pass_if_in_pipe.asm
+0304:0130 screen_scrolling_pipes/pass_if_in_pipe.asm
+0312:0130 screen_scrolling_pipes/horizontal_left_pipe_cap_B.asm
+0313:0130 screen_scrolling_pipes/pass_if_in_pipe.asm
+0314:0130 screen_scrolling_pipes/horizontal_right_pipe_cap_B.asm
+; Small Vertical Two-Way Pipe
+0305:0130 screen_scrolling_pipes/vertical_top_pipe_cap_small.asm
+0315:0130 screen_scrolling_pipes/pass_if_in_pipe.asm
+0325:0130 screen_scrolling_pipes/vertical_bottom_pipe_cap_small.asm
+; Small Horizontal Two-Way Pipe
+0322:0130 screen_scrolling_pipes/horizontal_left_pipe_cap_small.asm
+0323:0130 screen_scrolling_pipes/pass_if_in_pipe.asm
+0324:0130 screen_scrolling_pipes/horizontal_right_pipe_cap_small.asm
+
+; Large Vertical One-Way Pipe (Downward)
+0306:0130 screen_scrolling_pipes/vertical_top_pipe_cap_L.asm
+0307:0130 screen_scrolling_pipes/vertical_top_pipe_cap_R.asm
+0316:0130 screen_scrolling_pipes/pass_if_in_pipe.asm
+0317:0130 screen_scrolling_pipes/pass_if_in_pipe.asm
+0326:0130 screen_scrolling_pipes/vertical_bottom_pipe_cap_L_exit.asm
+0327:0130 screen_scrolling_pipes/vertical_bottom_pipe_cap_R_exit.asm
+; Large Horizontal One-Way Pipe (Leftward)
+0308:0130 screen_scrolling_pipes/pass_if_in_pipe.asm
+0309:0130 screen_scrolling_pipes/pass_if_in_pipe.asm
+030A:0130 screen_scrolling_pipes/pass_if_in_pipe.asm
+0318:0130 screen_scrolling_pipes/horizontal_left_pipe_cap_B_exit.asm
+0319:0130 screen_scrolling_pipes/pass_if_in_pipe.asm
+031A:0130 screen_scrolling_pipes/horizontal_right_pipe_cap_B.asm
+; Small Vertical One-Way Pipe (Downward)
+030B:0130 screen_scrolling_pipes/vertical_top_pipe_cap_small.asm
+031B:0130 screen_scrolling_pipes/pass_if_in_pipe.asm
+032B:0130 screen_scrolling_pipes/vertical_bottom_pipe_cap_small_exit.asm
+; Small Horizontal One-Way Pipe (Leftward)
+0328:0130 screen_scrolling_pipes/horizontal_left_pipe_cap_small.asm
+0329:0130 screen_scrolling_pipes/pass_if_in_pipe.asm
+032A:0130 screen_scrolling_pipes/horizontal_right_pipe_cap_B_exit.asm
+
+; Large Vertical One-Way Pipe (Upward)
+0336:0130 screen_scrolling_pipes/vertical_top_pipe_cap_L_exit.asm
+0337:0130 screen_scrolling_pipes/vertical_top_pipe_cap_R_exit.asm
+0346:0130 screen_scrolling_pipes/vertical_bottom_pipe_cap_L.asm
+0347:0130 screen_scrolling_pipes/vertical_bottom_pipe_cap_R.asm
+; Large Horizontal One-Way Pipe (Rightward)
+0338:0130 screen_scrolling_pipes/pass_if_in_pipe.asm
+0339:0130 screen_scrolling_pipes/pass_if_in_pipe.asm
+0348:0130 screen_scrolling_pipes/horizontal_left_pipe_cap_B.asm
+0349:0130 screen_scrolling_pipes/horizontal_right_pipe_cap_B_exit.asm
+; Small Vertical One-Way Pipe (Upward)
+033B:0130 screen_scrolling_pipes/vertical_top_pipe_cap_small_exit.asm
+034B:0130 screen_scrolling_pipes/vertical_bottom_pipe_cap_small.asm
+; Small Horizontal One-Way Pipe (Rightward)
+033A:0130 screen_scrolling_pipes/horizontal_left_pipe_cap_B_exit.asm
+034A:0130 screen_scrolling_pipes/horizontal_right_pipe_cap_small.asm
+
+; Turn Block (Right-Up)
+030C:0130 screen_scrolling_pipes/pass_if_in_pipe.asm
+030D:0130 screen_scrolling_pipes/pass_if_in_pipe.asm
+031C:0130 screen_scrolling_pipes/turn_up-right.asm
+031D:0130 screen_scrolling_pipes/pass_if_in_pipe.asm
+; Turn Block (Right-Down)
+030E:0130 screen_scrolling_pipes/pass_if_in_pipe.asm
+030F:0130 screen_scrolling_pipes/pass_if_in_pipe.asm
+031E:0130 screen_scrolling_pipes/pass_if_in_pipe.asm
+031F:0130 screen_scrolling_pipes/turn_right-down.asm
+; Turn Block (Left-Up)
+032C:0130 screen_scrolling_pipes/pass_if_in_pipe.asm
+032D:0130 screen_scrolling_pipes/pass_if_in_pipe.asm
+033C:0130 screen_scrolling_pipes/turn_left-up.asm
+033D:0130 screen_scrolling_pipes/pass_if_in_pipe.asm
+; Turn Block (Left-Down)
+032E:0130 screen_scrolling_pipes/pass_if_in_pipe.asm
+032F:0130 screen_scrolling_pipes/pass_if_in_pipe.asm
+033E:0130 screen_scrolling_pipes/pass_if_in_pipe.asm
+033F:0130 screen_scrolling_pipes/turn_down-left.asm
+
+; Small Turn Blocks
+034C:0130 screen_scrolling_pipes/turn_up-right_small.asm
+034D:0130 screen_scrolling_pipes/turn_right-down_small.asm
+035C:0130 screen_scrolling_pipes/turn_left-up_small.asm
+035D:0130 screen_scrolling_pipes/turn_down-left_small.asm
+
+; Pass if In Pipe
+036F:0130 screen_scrolling_pipes/pass_if_in_pipe.asm
+
+; Filter Pipe
+0332-0335:0130 screen_scrolling_pipes/pass_if_in_pipe+item_filter.asm
+0342-0345:0130 screen_scrolling_pipes/pass_if_in_pipe+item_filter.asm
+
+; ##### Custom Blocks Added To Baserom From Here Down #####
+
+; P-Switch Blocks
+02E9:0025 p-switches/OffSolid-PSwitch.asm
+02EA:0025 p-switches/OnSolid-PSwitch.asm
+02E8:0025 p-switches/ClearBlueP-SwitchTimer.asm
+
+; Star Power Blocks
+02D8:0025 powerups/ClearStarPowerTimer.asm
+02D9:0025 powerups/SolidWhenStarPowerActive.asm
+02DA:0025 powerups/SolidWhenStarPowerInactive.asm
+
+; On/Off Blocks
+02DC:0025 on_off/OnDeathBlock.asm
+02DB:0025 on_off/OffDeathBlock.asm
+02CC:0025 mario_sprite_only/sprite_solid.asm
+02CB:0025 mario_sprite_only/sprite_solid_off_trigger.asm
+02EB:0130 on_off/OnSwitch-SingleHitSynchronized.asm
+02EC:0130 on_off/OffSwitch-SingleHitSynchronized.asm
+
+; Key Lock Blocks
+;16x32
+02A6:0130 key_lock_blocks/16x32_V_Keyblk_T.asm
+02B6:0130 key_lock_blocks/16x32_V_Keyblk_B.asm
+;16x48
+02A7:0130 key_lock_blocks/16x48_V_Keyblk_T.asm
+02B7:0130 key_lock_blocks/16x48_V_Keyblk_M.asm
+02C7:0130 key_lock_blocks/16x48_V_Keyblk_B.asm
+;32x16
+02B4:0130 key_lock_blocks/32x16_H_Keyblk_L.asm
+02B5:0130 key_lock_blocks/32x16_H_Keyblk_R.asm
+;48x16 
+02C4:0130 key_lock_blocks/48x16_H_Keyblk_L.asm
+02C5:0130 key_lock_blocks/48x16_H_Keyblk_M.asm
+02C6:0130 key_lock_blocks/48x16_H_Keyblk_R.asm
+
+
+; Mario/Sprite Only
+0290:0130 mario_sprite_only/mario_passable.asm
+0291:0130 mario_sprite_only/sprite_passable.asm
+
+; 02B0:0106 one way up (act as cloud)
+02B1:0025 global/one_way_right.asm
+02C0:0025 global/one_way_left.asm
+02C1:0025 global/one_way_down.asm
+
+02D0:0025 one_way/SpriteOneWay-AllowGoingUp.asm
+02D1:0025 one_way/SpriteOneWay-AllowGoingRight.asm
+02E0:0025 one_way/SpriteOneWay-AllowGoingLeft.asm
+02E1:0025 one_way/SpriteOneWay-AllowGoingDown.asm
+
+02B2:0025 one_way/MarioOneWay-KillIfGoDown.asm
+02B3:0025 one_way/MarioOneWay-KillIfGoLeft.asm
+02C2:0025 one_way/MarioOneWay-KillIfGoRight.asm
+02C3:0025 one_way/MarioOneWay-KillIfGoUp.asm
+
+02D2:0025 one_way/SpriteKillerOneWay-AllowGoingUp.asm
+02D3:0025 one_way/SpriteKillerOneWay-AllowGoingRight.asm
+02E2:0025 one_way/SpriteKillerOneWay-AllowGoingLeft.asm
+02E3:0025 one_way/SpriteKillerOneWay-AllowGoingDown.asm
+
+02D4:0025 one_way/one_way_solid_from_above_when_on_below_when_off.asm
+02D5:0025 one_way/one_way_solid_from_right_when_on_left_when_off.asm
+02E4:0025 one_way/one_way_solid_from_left_when_on_right_when_off.asm
+02E5:0025 one_way/one_way_solid_from_below_when_on_above_when_off.asm
+
+0296:0025 mario_sprite_only/SpriteOnlyTriangle-RightwardsKicked.asm
+0297:0025 mario_sprite_only/SpriteOnlyTriangle-LeftwardsKicked.asm
+02A8:0025 mario_sprite_only/sprite_bounce.asm
+03F0:0025 mario_sprite_only/ShellSolid-Mario&DiscoPassable.asm
+03F1:0025 mario_sprite_only/ShellPassable-Mario&DiscoSolid.asm
+03F2:0025 mario_sprite_only/DiscoSolid-Mario&ShellPassable.asm
+03F3:0025 mario_sprite_only/DiscoPassable-Mario&ShellSolid.asm
+03F4:0025 mario_sprite_only/ShellOnly.asm
+
+; Snagged from Flux (52B)
+03D5:0130 flux/MusicPlaylistTurnOnBlock.asm
+
+; Boost Blocks
+0355:0025 boost_blocks/boost_downright.asm
+0356:0025 boost_blocks/boost_right.asm
+0357:0025 boost_blocks/boost_down.asm
+0358:0025 boost_blocks/boost_downleft.asm
+0365:0025 boost_blocks/boost_upright.asm
+0366:0025 boost_blocks/boost_up.asm
+0367:0025 boost_blocks/boost_left.asm
+0368:0025 boost_blocks/boost_upleft.asm
+
+; Cracka & Misc. Blockreator
+03BE:0025 RightFacingDeathTriangle.asm
+03BF:0025 LeftFacingDeathTriangle.asm
+03BB:012F DeathOnOff.asm
+03BC:012F HurtDeathBreakableByItem.asm
+0393:0025 5livestopass.asm
+0394:0130 Experimental/player_passable_conditional.asm
+0359:0130 OnOffLeft.asm
+035A:0130 OnOffRight.asm
+0369:012F HurtDeathOnOffLeft.asm
+036A:012F HurtDeathOnOffRight.asm
+03BD:0130 HurtDeathTurnblock.asm
+0370:0025 Experimental/TwoTileWide(32x16)Coin-Left.asm
+0371:0025 Experimental/TwoTileWide(32x16)Coin-Right.asm
+042D:0025 Experimental/TwoTileWide(32x16)SpawnCarriedShell-Left.asm
+042E:0025 Experimental/TwoTileWide(32x16)SpawnCarriedShell-Right.asm
+041C:0025 Experimental/TwoTileTall(16x32)SpawnCarriedShell-Top.asm
+042C:0025 Experimental/TwoTileTall(16x32)SpawnCarriedShell-Bottom.asm
+041A:0025 Experimental/FourTileCentered(32x32)SpawnCarriedShell-UL.asm
+041B:0025 Experimental/FourTileCentered(32x32)SpawnCarriedShell-UR.asm
+042A:0025 Experimental/FourTileCentered(32x32)SpawnCarriedShell-DL.asm
+042B:0025 Experimental/FourTileCentered(32x32)SpawnCarriedShell-DR.asm
+044D:0025 Experimental/TwoTileWide(32x16)Coin-Left.asm
+044E:0025 Experimental/TwoTileWide(32x16)Coin-Right.asm
+045A:0025 Experimental/TwoTileTall(16x32)Coin-Top.asm
+046A:0025 Experimental/TwoTileTall(16x32)Coin-Bottom.asm
+
+; Sticky, Bounce, & Bumpers
+0351:0130 ShellStop.asm
+0361:0025 ShellStop.asm
+0352:0130 ShellStop2.asm
+0362:0025 ShellStop2.asm
+0353:0130 mutation/disco/freeze-shell.asm
+0363:0025 mutation/disco/freeze-shell.asm
+0354:0130 mario_sprite_only/StickySideWall.asm
+0354:0025 mario_sprite_only/StickySideWall.asm
+03D0:0025 stickyceiling130.asm
+03D1:0025 stickyceiling1F0.asm
+03D2:0025 on_off/StickyCeilingOnOff.asm
+03D3:0025 on_off/StickyCeilingBlueP-Timer.asm
+03D4:0025 on_off/StickyCeilingStarPowerTimer.asm
+
+
+; Collectables
+029D:01F0 Collectable.asm
+0298:0025 ForceJumpTypeAsJump.asm
+0299:0025 ForceJumpTypeAsSpin.asm
+029A:0025 SwitchJumpType.asm
+02A9:0025 p-switches/CoinActivatesP-SwitchTimer.asm
+02AA:0025 powerups/CoinActivatesStarPower.asm
+03E0:0025 ForcePlayerDirectionLeft.asm
+03E1:0025 SwitchPlayerDirection.asm
+03E2:0025 ForcePlayerDirectionRight.asm
+03E3:0025 CoinCollectableByShell.asm
+;03E4 Collectable Green Coin
+03B0:01F0 turn-to-stunned-disco1F0.asm
+;03A0 Collectable Above Disco 1F0
+03B1:01F0 ForceJumpTypeAsJump1F0.asm
+03B2:01F0 ForceJumpTypeAsSpin1F0.asm
+
+; Mutation
+02B8:0025 mutation/disco/turn-into-disco.asm
+02B9:0025 mutation/disco/turn-kicked-from-disco.asm
+02BA:0025 mutation/disco/turn-stunned-from-disco.asm
+02C8:0130 mutation/disco/turn-into-disco.asm
+02C9:0130 mutation/disco/turn-kicked-from-disco.asm
+02CA:0130 mutation/disco/turn-stunned-from-disco.asm
+;02D5:0025 BLANK
+03B3:0025 mutation/koopa_transform.asm
+03B9:0025 mutation/disco/turn-to-stunned-disco.asm
+03BA:0130 mutation/disco/turn-to-stunned-disco.asm
+03B4:0025 mutation/disco/remove-sprite-interaction.asm
+03B5:0025 mutation/disco/make-immune-to-star-cape-fire.asm
+03B6:0025 mutation/disco/make-process-offscreen.asm
+03B7:0025 mutation/disco/make-dont-turn-to-coin-after-goal-passed.asm
+03B8:0025 mutation/disco/remove-sprites-default-player-interaction.asm
+
+; Spawn Carried Items
+0400:0049 spawn_carried_items/SpawnCarryableVanillaShells.asm
+0401:004A spawn_carried_items/SpawnCarryableVanillaShells.asm
+0402:004B spawn_carried_items/SpawnCarryableVanillaShells.asm
+0403:004C spawn_carried_items/SpawnCarryableVanillaShells.asm
+0404:004D spawn_carried_items/SpawnCarryableVanillaShells.asm
+0405:004E spawn_carried_items/SpawnCarryableVanillaShells.asm
+
+0406:0025 spawn_carried_items/SpawnCarriedGhostShell.asm
+0407:0025 spawn_carried_items/SpawnCarriedDiscoShell.asm
+0408:0025 spawn_carried_items/SpawnCarriedSpinyShell.asm
+0409:0025 spawn_carried_items/SpawnCarriedGhostSpinyShell.asm
+040A:0025 spawn_carried_items/SpawnCarriedDiscoSpinyShell.asm
+040B:0025 spawn_carried_items/SpawnCarriedMotorShell.asm
+040C:0025 spawn_carried_items/SpawnCarriedGhostMotorShell.asm
+040D:0025 spawn_carried_items/SpawnCarriedDiscoMotorShell.asm
+040E:0025 spawn_carried_items/SpawnCarriedCustomizableShell.asm
+
+0410:0025 spawn_carried_items/SpawnCarried1BounceShell.asm
+0411:0025 spawn_carried_items/SpawnCarried2BounceShell.asm
+0412:0025 spawn_carried_items/SpawnCarried3BounceShell.asm
+0413:0025 spawn_carried_items/SpawnCarried4BounceShell.asm
+0414:0025 spawn_carried_items/SpawnCarried5BounceShell.asm
+0415:0025 spawn_carried_items/SpawnCarried6BounceShell.asm
+0416:0025 spawn_carried_items/SpawnCarried7BounceShell.asm
+0417:0025 spawn_carried_items/SpawnCarried8BounceShell.asm
+0418:0025 spawn_carried_items/SpawnCarried9BounceShell.asm
+0419:0025 spawn_carried_items/SpawnCarriedInfiniteBounceShell.asm
+
+;			Ghost Throwblock
+
+0420:0048 spawn_carried_items/SpawnCarryableSprite.asm
+0421:004C spawn_carried_items/SpawnCarryableSprite.asm
+0422:004D spawn_carried_items/SpawnCarryableSprite.asm
+0423:004E spawn_carried_items/SpawnCarryableSprite.asm
+0424:004F spawn_carried_items/SpawnCarryableSprite.asm
+0425:0050 spawn_carried_items/SpawnCarryableSprite.asm
+0426:0049 spawn_carried_items/SpawnCarryableSprite.asm
+0427:0025 spawn_carried_items/SpawnCarriedGhostThrowblock.asm
+0428:0025 spawn_carried_items/SpawnCarriedDiscoThrowblock.asm
+
+; Spawn Carried Items (On Yoshi)
+0460:0025 spawn_carried_items/SpawnCarriedGreenShellYoshi.asm
+0461:0025 spawn_carried_items/SpawnCarriedRedShellYoshi.asm
+0462:0025 spawn_carried_items/SpawnCarriedBlueShellYoshi.asm
+0463:0025 spawn_carried_items/SpawnCarriedYellowShellYoshi.asm
+0464:0025 spawn_carried_items/SpawnCarriedSpinyShellYoshi.asm
+0465:0025 spawn_carried_items/SpawnCarriedDiscoShellYoshi.asm
+0466:0025 spawn_carried_items/SpawnCarriedGhostShellYoshi.asm
+
+; Spawn Carried Items (Conditional)
+0467:0025 spawn_carried_items/SpawnCarriedShellWhileCarryingItem.asm
+
+; Speed Control
+02D6:0025 mario_sprite_only/sprite_speed_limit_slow.asm
+02D7:0025 mario_sprite_only/sprite_speed_limit_fast.asm
+02E6:0025 mario_sprite_only/sprite_speed_limit_down.asm
+02E7:0025 mario_sprite_only/spriteboostblock.asm
+
+; FLUX Level Hub
+7D65:025 LevelHubTeleportDoors.asm
+7D66:026 LevelHubTeleportDoors.asm
+7D67:027 LevelHubTeleportDoors.asm
+7D68:028 LevelHubTeleportDoors.asm
+7D69:029 LevelHubTeleportDoors.asm
+7D6A:02A LevelHubTeleportDoors.asm
+7D6B:02B LevelHubTeleportDoors.asm
+7D6C:02C LevelHubTeleportDoors.asm
+7D6D:02D LevelHubTeleportDoors.asm
+7D6E:02E LevelHubTeleportDoors.asm
+7D6F:02F LevelHubTeleportDoors.asm
+7D70:030 LevelHubTeleportDoors.asm
+7D71:031 LevelHubTeleportDoors.asm
+7D72:032 LevelHubTeleportDoors.asm
+7D73:033 LevelHubTeleportDoors.asm
+7D74:034 LevelHubTeleportDoors.asm
+7D75:035 LevelHubTeleportDoors.asm
+7D76:036 LevelHubTeleportDoors.asm
+7D77:037 LevelHubTeleportDoors.asm
+7D78:038 LevelHubTeleportDoors.asm
+7D79:039 LevelHubTeleportDoors.asm
+7D7A:03A LevelHubTeleportDoors.asm
+7D7B:03B LevelHubTeleportDoors.asm
+7D7C:03C LevelHubTeleportDoors.asm
+7D7D:03D LevelHubTeleportDoors.asm
+7D7E:03E LevelHubTeleportDoors.asm
+7D7F:03F LevelHubTeleportDoors.asm
+7D80:040 LevelHubTeleportDoors.asm
+7D81:041 LevelHubTeleportDoors.asm
+7D82:042 LevelHubTeleportDoors.asm
+7D83:043 LevelHubTeleportDoors.asm
+7D84:044 LevelHubTeleportDoors.asm
+7D85:045 LevelHubTeleportDoors.asm
+7D86:046 LevelHubTeleportDoors.asm
+7D87:047 LevelHubTeleportDoors.asm
+7D88:048 LevelHubTeleportDoors.asm
+7D89:049 LevelHubTeleportDoors.asm
+7D8A:04A LevelHubTeleportDoors.asm
+7D8B:04B LevelHubTeleportDoors.asm
+7D8C:04C LevelHubTeleportDoors.asm
+7D8D:04D LevelHubTeleportDoors.asm
+7D8E:04E LevelHubTeleportDoors.asm
+7D8F:04F LevelHubTeleportDoors.asm
+7D90:050 LevelHubTeleportDoors.asm
+7D91:051 LevelHubTeleportDoors.asm
+7D92:052 LevelHubTeleportDoors.asm
+7D93:053 LevelHubTeleportDoors.asm
+7D94:054 LevelHubTeleportDoors.asm
+7D95:055 LevelHubTeleportDoors.asm
+7D96:056 LevelHubTeleportDoors.asm
+7D97:057 LevelHubTeleportDoors.asm
+7D98:058 LevelHubTeleportDoors.asm
+7D99:059 LevelHubTeleportDoors.asm
+7D9A:05A LevelHubTeleportDoors.asm
+7D9B:05B LevelHubTeleportDoors.asm
+7D9C:05C LevelHubTeleportDoors.asm
+7D9D:05D LevelHubTeleportDoors.asm
+7D9E:05E LevelHubTeleportDoors.asm
+7D9F:05F LevelHubTeleportDoors.asm
+7DA0:060 LevelHubTeleportDoors.asm
+7DA1:061 LevelHubTeleportDoors.asm
+7DA2:062 LevelHubTeleportDoors.asm
+7DA3:063 LevelHubTeleportDoors.asm
+7DA4:064 LevelHubTeleportDoors.asm
+7DA5:065 LevelHubTeleportDoors.asm
+7DA6:066 LevelHubTeleportDoors.asm
+7DA7:067 LevelHubTeleportDoors.asm
+7DA8:068 LevelHubTeleportDoors.asm
+7DA9:069 LevelHubTeleportDoors.asm
+7DAA:06A LevelHubTeleportDoors.asm
+7DAB:06B LevelHubTeleportDoors.asm
+7DAC:06C LevelHubTeleportDoors.asm
+7DAD:06D LevelHubTeleportDoors.asm
+7DAE:06E LevelHubTeleportDoors.asm
+7DAF:06F LevelHubTeleportDoors.asm
+7DB0:070 LevelHubTeleportDoors.asm
+7DB1:071 LevelHubTeleportDoors.asm
+7DB2:072 LevelHubTeleportDoors.asm
+7DB3:073 LevelHubTeleportDoors.asm
+7DB4:074 LevelHubTeleportDoors.asm
+7DB5:075 LevelHubTeleportDoors.asm
+7DB6:076 LevelHubTeleportDoors.asm
+7DB7:077 LevelHubTeleportDoors.asm
+7DB8:078 LevelHubTeleportDoors.asm
+7DB9:079 LevelHubTeleportDoors.asm
+7DBA:07A LevelHubTeleportDoors.asm
+7DBB:07B LevelHubTeleportDoors.asm
+7DBC:07C LevelHubTeleportDoors.asm
+7DBD:07D LevelHubTeleportDoors.asm
+7DBE:07E LevelHubTeleportDoors.asm
+7DBF:07F LevelHubTeleportDoors.asm
+7DC0:080 LevelHubTeleportDoors.asm
+7DC1:081 LevelHubTeleportDoors.asm
+7DC2:082 LevelHubTeleportDoors.asm
+7DC3:083 LevelHubTeleportDoors.asm
+7DC4:084 LevelHubTeleportDoors.asm
+7DC5:085 LevelHubTeleportDoors.asm
+7DC6:086 LevelHubTeleportDoors.asm
+7DC7:087 LevelHubTeleportDoors.asm
+7DC8:088 LevelHubTeleportDoors.asm
+7DC9:089 LevelHubTeleportDoors.asm
+7DCA:08A LevelHubTeleportDoors.asm
+7DCB:08B LevelHubTeleportDoors.asm
+7DCC:08C LevelHubTeleportDoors.asm
+7DCD:08D LevelHubTeleportDoors.asm
+7DCE:08E LevelHubTeleportDoors.asm
+7DCF:08F LevelHubTeleportDoors.asm
+7DD0:090 LevelHubTeleportDoors.asm
+7DD1:091 LevelHubTeleportDoors.asm
+7DD2:092 LevelHubTeleportDoors.asm
+7DD3:093 LevelHubTeleportDoors.asm
+7DD4:094 LevelHubTeleportDoors.asm
+7DD5:095 LevelHubTeleportDoors.asm
+7DD6:096 LevelHubTeleportDoors.asm
+7DD7:097 LevelHubTeleportDoors.asm
+7DD8:098 LevelHubTeleportDoors.asm
+7DD9:099 LevelHubTeleportDoors.asm
+7DDA:09A LevelHubTeleportDoors.asm
+7DDB:09B LevelHubTeleportDoors.asm
+7DDC:09C LevelHubTeleportDoors.asm
+7DDD:09D LevelHubTeleportDoors.asm
+7DDE:09E LevelHubTeleportDoors.asm
+7DDF:09F LevelHubTeleportDoors.asm
+7DE0:0A0 LevelHubTeleportDoors.asm
+7DE1:0A1 LevelHubTeleportDoors.asm
+7DE2:0A2 LevelHubTeleportDoors.asm
+7DE3:0A3 LevelHubTeleportDoors.asm
+7DE4:0A4 LevelHubTeleportDoors.asm
+7DE5:0A5 LevelHubTeleportDoors.asm
+7DE6:0A6 LevelHubTeleportDoors.asm
+7DE7:0A7 LevelHubTeleportDoors.asm
+7DE8:0A8 LevelHubTeleportDoors.asm
+7DE9:0A9 LevelHubTeleportDoors.asm
+7DEA:0AA LevelHubTeleportDoors.asm
+7DEB:0AB LevelHubTeleportDoors.asm
+7DEC:0AC LevelHubTeleportDoors.asm
+7DED:0AD LevelHubTeleportDoors.asm
+7DEE:0AE LevelHubTeleportDoors.asm
+7DEF:0AF LevelHubTeleportDoors.asm
+7DF0:0B0 LevelHubTeleportDoors.asm
+7DF1:0B1 LevelHubTeleportDoors.asm
+7DF2:0B2 LevelHubTeleportDoors.asm
+7DF3:0B3 LevelHubTeleportDoors.asm
+7DF4:0B4 LevelHubTeleportDoors.asm
+7DF5:0B5 LevelHubTeleportDoors.asm
+7DF6:0B6 LevelHubTeleportDoors.asm
+7DF7:0B7 LevelHubTeleportDoors.asm
+7DF8:0B8 LevelHubTeleportDoors.asm
+7DF9:0B9 LevelHubTeleportDoors.asm
+7DFA:0BA LevelHubTeleportDoors.asm
+7DFB:0BB LevelHubTeleportDoors.asm
+7DFC:0BC LevelHubTeleportDoors.asm
+7DFD:0BD LevelHubTeleportDoors.asm
+7DFE:0BE LevelHubTeleportDoors.asm
+7DFF:0BF LevelHubTeleportDoors.asm
+
+
+7E01:001 LevelHubTeleportDoors.asm
+7E02:002 LevelHubTeleportDoors.asm
+7E03:003 LevelHubTeleportDoors.asm
+7E04:004 LevelHubTeleportDoors.asm
+7E05:005 LevelHubTeleportDoors.asm
+7E06:006 LevelHubTeleportDoors.asm
+7E07:007 LevelHubTeleportDoors.asm
+7E08:008 LevelHubTeleportDoors.asm
+7E09:009 LevelHubTeleportDoors.asm
+7E0A:00A LevelHubTeleportDoors.asm
+7E0B:00B LevelHubTeleportDoors.asm
+7E0C:00C LevelHubTeleportDoors.asm
+7E0D:00D LevelHubTeleportDoors.asm
+7E0E:00E LevelHubTeleportDoors.asm
+7E0F:00F LevelHubTeleportDoors.asm
+7E10:010 LevelHubTeleportDoors.asm
+7E11:011 LevelHubTeleportDoors.asm
+7E12:012 LevelHubTeleportDoors.asm
+7E13:013 LevelHubTeleportDoors.asm
+7E14:014 LevelHubTeleportDoors.asm
+7E15:015 LevelHubTeleportDoors.asm
+7E16:016 LevelHubTeleportDoors.asm
+7E17:017 LevelHubTeleportDoors.asm
+7E18:018 LevelHubTeleportDoors.asm
+7E19:019 LevelHubTeleportDoors.asm
+7E1A:01A LevelHubTeleportDoors.asm
+7E1B:01B LevelHubTeleportDoors.asm
+7E1C:01C LevelHubTeleportDoors.asm
+7E1D:01D LevelHubTeleportDoors.asm
+7E1E:01E LevelHubTeleportDoors.asm
+7E1F:01F LevelHubTeleportDoors.asm
+7E20:020 LevelHubTeleportDoors.asm
+7E21:021 LevelHubTeleportDoors.asm
+7E22:022 LevelHubTeleportDoors.asm
+7E23:023 LevelHubTeleportDoors.asm
+7E24:024 LevelHubTeleportDoors.asm
+
+7E25:101 LevelHubTeleportDoors.asm
+7E26:102 LevelHubTeleportDoors.asm
+7E27:103 LevelHubTeleportDoors.asm
+7E28:104 LevelHubTeleportDoors.asm
+7E29:105 LevelHubTeleportDoors.asm
+7E2A:106 LevelHubTeleportDoors.asm
+7E2B:107 LevelHubTeleportDoors.asm
+7E2C:108 LevelHubTeleportDoors.asm
+7E2D:109 LevelHubTeleportDoors.asm
+7E2E:10A LevelHubTeleportDoors.asm
+7E2F:10B LevelHubTeleportDoors.asm
+7E30:10C LevelHubTeleportDoors.asm
+7E31:10D LevelHubTeleportDoors.asm
+7E32:10E LevelHubTeleportDoors.asm
+7E33:10F LevelHubTeleportDoors.asm
+7E34:110 LevelHubTeleportDoors.asm
+7E35:111 LevelHubTeleportDoors.asm
+7E36:112 LevelHubTeleportDoors.asm
+7E37:113 LevelHubTeleportDoors.asm
+7E38:114 LevelHubTeleportDoors.asm
+7E39:115 LevelHubTeleportDoors.asm
+7E3A:116 LevelHubTeleportDoors.asm
+7E3B:117 LevelHubTeleportDoors.asm
+7E3C:118 LevelHubTeleportDoors.asm
+7E3D:119 LevelHubTeleportDoors.asm
+7E3E:11A LevelHubTeleportDoors.asm
+7E3F:11B LevelHubTeleportDoors.asm
+7E40:11C LevelHubTeleportDoors.asm
+7E41:11D LevelHubTeleportDoors.asm
+7E42:11E LevelHubTeleportDoors.asm
+7E43:11F LevelHubTeleportDoors.asm
+7E44:120 LevelHubTeleportDoors.asm
+7E45:121 LevelHubTeleportDoors.asm
+7E46:122 LevelHubTeleportDoors.asm
+7E47:123 LevelHubTeleportDoors.asm
+7E48:124 LevelHubTeleportDoors.asm
+7E49:125 LevelHubTeleportDoors.asm
+7E4A:126 LevelHubTeleportDoors.asm
+7E4B:127 LevelHubTeleportDoors.asm
+7E4C:128 LevelHubTeleportDoors.asm
+7E4D:129 LevelHubTeleportDoors.asm
+7E4E:12A LevelHubTeleportDoors.asm
+7E4F:12B LevelHubTeleportDoors.asm
+7E50:12C LevelHubTeleportDoors.asm
+7E51:12D LevelHubTeleportDoors.asm
+7E52:12E LevelHubTeleportDoors.asm
+7E53:12F LevelHubTeleportDoors.asm
+7E54:130 LevelHubTeleportDoors.asm
+7E55:131 LevelHubTeleportDoors.asm
+7E56:132 LevelHubTeleportDoors.asm
+7E57:133 LevelHubTeleportDoors.asm
+7E58:134 LevelHubTeleportDoors.asm
+7E59:135 LevelHubTeleportDoors.asm
+7E5A:136 LevelHubTeleportDoors.asm
+7E5B:137 LevelHubTeleportDoors.asm
+7E5C:138 LevelHubTeleportDoors.asm
+7E5D:139 LevelHubTeleportDoors.asm
+7E5E:13A LevelHubTeleportDoors.asm
+7E5F:13B LevelHubTeleportDoors.asm
+
+7E65:0C0 LevelHubTeleportDoors.asm
+7E66:0C1 LevelHubTeleportDoors.asm
+7E67:0C2 LevelHubTeleportDoors.asm
+7E68:0C3 LevelHubTeleportDoors.asm
+7E69:0C4 LevelHubTeleportDoors.asm
+7E6A:0C5 LevelHubTeleportDoors.asm
+7E6B:0C6 LevelHubTeleportDoors.asm
+7E6C:0C7 LevelHubTeleportDoors.asm
+7E6D:0C8 LevelHubTeleportDoors.asm
+7E6E:0C9 LevelHubTeleportDoors.asm
+7E6F:0CA LevelHubTeleportDoors.asm
+7E70:0CB LevelHubTeleportDoors.asm
+7E71:0CC LevelHubTeleportDoors.asm
+7E72:0CD LevelHubTeleportDoors.asm
+7E73:0CE LevelHubTeleportDoors.asm
+7E74:0CF LevelHubTeleportDoors.asm
+7E75:0D0 LevelHubTeleportDoors.asm
+7E76:0D1 LevelHubTeleportDoors.asm
+7E77:0D2 LevelHubTeleportDoors.asm
+7E78:0D3 LevelHubTeleportDoors.asm
+7E79:0D4 LevelHubTeleportDoors.asm
+7E7A:0D5 LevelHubTeleportDoors.asm
+7E7B:0D6 LevelHubTeleportDoors.asm
+7E7C:0D7 LevelHubTeleportDoors.asm
+7E7D:0D8 LevelHubTeleportDoors.asm
+7E7E:0D9 LevelHubTeleportDoors.asm
+7E7F:0DA LevelHubTeleportDoors.asm
+7E80:0DB LevelHubTeleportDoors.asm
+7E81:0DC LevelHubTeleportDoors.asm
+7E82:0DD LevelHubTeleportDoors.asm
+7E83:0DE LevelHubTeleportDoors.asm
+7E84:0DF LevelHubTeleportDoors.asm
+7E85:0E0 LevelHubTeleportDoors.asm
+7E86:0E1 LevelHubTeleportDoors.asm
+7E87:0E2 LevelHubTeleportDoors.asm
+7E88:0E3 LevelHubTeleportDoors.asm
+7E89:0E4 LevelHubTeleportDoors.asm
+7E8A:0E5 LevelHubTeleportDoors.asm
+7E8B:0E6 LevelHubTeleportDoors.asm
+7E8C:0E7 LevelHubTeleportDoors.asm
+7E8D:0E8 LevelHubTeleportDoors.asm
+7E8E:0E9 LevelHubTeleportDoors.asm
+7E8F:0EA LevelHubTeleportDoors.asm
+7E90:0EB LevelHubTeleportDoors.asm
+7E91:0EC LevelHubTeleportDoors.asm
+7E92:0ED LevelHubTeleportDoors.asm
+7E93:0EE LevelHubTeleportDoors.asm
+7E94:0EF LevelHubTeleportDoors.asm
+7E95:0F0 LevelHubTeleportDoors.asm
+7E96:0F1 LevelHubTeleportDoors.asm
+7E97:0F2 LevelHubTeleportDoors.asm
+7E98:0F3 LevelHubTeleportDoors.asm
+7E99:0F4 LevelHubTeleportDoors.asm
+7E9A:0F5 LevelHubTeleportDoors.asm
+7E9B:0F6 LevelHubTeleportDoors.asm
+7E9C:0F7 LevelHubTeleportDoors.asm
+7E9D:0F8 LevelHubTeleportDoors.asm
+7E9E:0F9 LevelHubTeleportDoors.asm
+7E9F:0FA LevelHubTeleportDoors.asm
+7EA0:0FB LevelHubTeleportDoors.asm
+7EA1:0FC LevelHubTeleportDoors.asm
+7EA2:0FD LevelHubTeleportDoors.asm
+7EA3:0FE LevelHubTeleportDoors.asm
+7EA4:0FF LevelHubTeleportDoors.asm
+7EA5:13C LevelHubTeleportDoors.asm
+7EA6:13D LevelHubTeleportDoors.asm
+7EA7:13E LevelHubTeleportDoors.asm
+7EA8:13F LevelHubTeleportDoors.asm
+7EA9:140 LevelHubTeleportDoors.asm
+7EAA:141 LevelHubTeleportDoors.asm
+7EAB:142 LevelHubTeleportDoors.asm
+7EAC:143 LevelHubTeleportDoors.asm
+7EAD:144 LevelHubTeleportDoors.asm
+7EAE:145 LevelHubTeleportDoors.asm
+7EAF:146 LevelHubTeleportDoors.asm
+7EB0:147 LevelHubTeleportDoors.asm
+7EB1:148 LevelHubTeleportDoors.asm
+7EB2:149 LevelHubTeleportDoors.asm
+7EB3:14A LevelHubTeleportDoors.asm
+7EB4:14B LevelHubTeleportDoors.asm
+7EB5:14C LevelHubTeleportDoors.asm
+7EB6:14D LevelHubTeleportDoors.asm
+7EB7:14E LevelHubTeleportDoors.asm
+7EB8:14F LevelHubTeleportDoors.asm
+7EB9:150 LevelHubTeleportDoors.asm
+7EBA:151 LevelHubTeleportDoors.asm
+7EBB:152 LevelHubTeleportDoors.asm
+7EBC:153 LevelHubTeleportDoors.asm
+7EBD:154 LevelHubTeleportDoors.asm
+7EBE:155 LevelHubTeleportDoors.asm
+7EBF:156 LevelHubTeleportDoors.asm
+7EC0:157 LevelHubTeleportDoors.asm
+7EC1:158 LevelHubTeleportDoors.asm
+7EC2:159 LevelHubTeleportDoors.asm
+7EC3:15A LevelHubTeleportDoors.asm
+7EC4:15B LevelHubTeleportDoors.asm
+7EC5:15C LevelHubTeleportDoors.asm
+7EC6:15D LevelHubTeleportDoors.asm
+7EC7:15E LevelHubTeleportDoors.asm
+7EC8:15F LevelHubTeleportDoors.asm
+7EC9:160 LevelHubTeleportDoors.asm
+7ECA:161 LevelHubTeleportDoors.asm
+7ECB:162 LevelHubTeleportDoors.asm
+7ECC:163 LevelHubTeleportDoors.asm
+7ECD:164 LevelHubTeleportDoors.asm
+7ECE:165 LevelHubTeleportDoors.asm
+7ECF:166 LevelHubTeleportDoors.asm
+7ED0:167 LevelHubTeleportDoors.asm
+7ED1:168 LevelHubTeleportDoors.asm
+7ED2:169 LevelHubTeleportDoors.asm
+7ED3:16A LevelHubTeleportDoors.asm
+7ED4:16B LevelHubTeleportDoors.asm
+7ED5:16C LevelHubTeleportDoors.asm
+7ED6:16D LevelHubTeleportDoors.asm
+7ED7:16E LevelHubTeleportDoors.asm
+7ED8:16F LevelHubTeleportDoors.asm
+7ED9:170 LevelHubTeleportDoors.asm
+7EDA:171 LevelHubTeleportDoors.asm
+7EDB:172 LevelHubTeleportDoors.asm
+7EDC:173 LevelHubTeleportDoors.asm
+7EDD:174 LevelHubTeleportDoors.asm
+7EDE:175 LevelHubTeleportDoors.asm
+7EDF:176 LevelHubTeleportDoors.asm
+7EE0:177 LevelHubTeleportDoors.asm
+7EE1:178 LevelHubTeleportDoors.asm
+7EE2:179 LevelHubTeleportDoors.asm
+7EE3:17A LevelHubTeleportDoors.asm
+7EE4:17B LevelHubTeleportDoors.asm
+7EE5:17C LevelHubTeleportDoors.asm
+7EE6:17D LevelHubTeleportDoors.asm
+7EE7:17E LevelHubTeleportDoors.asm
+7EE8:17F LevelHubTeleportDoors.asm
+7EE9:180 LevelHubTeleportDoors.asm
+7EEA:181 LevelHubTeleportDoors.asm
+7EEB:182 LevelHubTeleportDoors.asm
+7EEC:183 LevelHubTeleportDoors.asm
+7EED:184 LevelHubTeleportDoors.asm
+7EEE:185 LevelHubTeleportDoors.asm
+7EEF:186 LevelHubTeleportDoors.asm
+7EF0:187 LevelHubTeleportDoors.asm
+7EF1:188 LevelHubTeleportDoors.asm
+7EF2:189 LevelHubTeleportDoors.asm
+7EF3:18A LevelHubTeleportDoors.asm
+7EF4:18B LevelHubTeleportDoors.asm
+7EF5:18C LevelHubTeleportDoors.asm
+7EF6:18D LevelHubTeleportDoors.asm
+7EF7:18E LevelHubTeleportDoors.asm
+7EF8:18F LevelHubTeleportDoors.asm
+7EF9:190 LevelHubTeleportDoors.asm
+7EFA:191 LevelHubTeleportDoors.asm
+7EFB:192 LevelHubTeleportDoors.asm
+7EFC:193 LevelHubTeleportDoors.asm
+7EFD:194 LevelHubTeleportDoors.asm
+7EFE:195 LevelHubTeleportDoors.asm
+7EFF:196 LevelHubTeleportDoors.asm
+7F00:197 LevelHubTeleportDoors.asm
+7F01:198 LevelHubTeleportDoors.asm
+7F02:199 LevelHubTeleportDoors.asm
+7F03:19A LevelHubTeleportDoors.asm
+7F04:19B LevelHubTeleportDoors.asm
+7F05:19C LevelHubTeleportDoors.asm
+7F06:19D LevelHubTeleportDoors.asm
+7F07:19E LevelHubTeleportDoors.asm
+7F08:19F LevelHubTeleportDoors.asm
+7F09:1A0 LevelHubTeleportDoors.asm
+7F0A:1A1 LevelHubTeleportDoors.asm
+7F0B:1A2 LevelHubTeleportDoors.asm
+7F0C:1A3 LevelHubTeleportDoors.asm
+7F0D:1A4 LevelHubTeleportDoors.asm
+7F0E:1A5 LevelHubTeleportDoors.asm
+7F0F:1A6 LevelHubTeleportDoors.asm
+7F10:1A7 LevelHubTeleportDoors.asm
+7F11:1A8 LevelHubTeleportDoors.asm
+7F12:1A9 LevelHubTeleportDoors.asm
+7F13:1AA LevelHubTeleportDoors.asm
+7F14:1AB LevelHubTeleportDoors.asm
+7F15:1AC LevelHubTeleportDoors.asm
+7F16:1AD LevelHubTeleportDoors.asm
+7F17:1AE LevelHubTeleportDoors.asm
+7F18:1AF LevelHubTeleportDoors.asm
+7F19:1B0 LevelHubTeleportDoors.asm
+7F1A:1B1 LevelHubTeleportDoors.asm
+7F1B:1B2 LevelHubTeleportDoors.asm
+7F1C:1B3 LevelHubTeleportDoors.asm
+7F1D:1B4 LevelHubTeleportDoors.asm
+7F1E:1B5 LevelHubTeleportDoors.asm
+7F1F:1B6 LevelHubTeleportDoors.asm
+7F20:1B7 LevelHubTeleportDoors.asm
+7F21:1B8 LevelHubTeleportDoors.asm
+7F22:1B9 LevelHubTeleportDoors.asm
+7F23:1BA LevelHubTeleportDoors.asm
+7F24:1BB LevelHubTeleportDoors.asm
+7F25:1BC LevelHubTeleportDoors.asm
+7F26:1BD LevelHubTeleportDoors.asm
+7F27:1BE LevelHubTeleportDoors.asm
+7F28:1BF LevelHubTeleportDoors.asm
+7F29:1C0 LevelHubTeleportDoors.asm
+7F2A:1C1 LevelHubTeleportDoors.asm
+7F2B:1C2 LevelHubTeleportDoors.asm
+7F2C:1C3 LevelHubTeleportDoors.asm
+7F2D:1C4 LevelHubTeleportDoors.asm
+7F2E:1C5 LevelHubTeleportDoors.asm
+7F2F:1C6 LevelHubTeleportDoors.asm
+7F30:1C7 LevelHubTeleportDoors.asm
+7F31:1C8 LevelHubTeleportDoors.asm
+7F32:1C9 LevelHubTeleportDoors.asm
+7F33:1CA LevelHubTeleportDoors.asm
+7F34:1CB LevelHubTeleportDoors.asm
+7F35:1CC LevelHubTeleportDoors.asm
+7F36:1CD LevelHubTeleportDoors.asm
+7F37:1CE LevelHubTeleportDoors.asm
+7F38:1CF LevelHubTeleportDoors.asm
+7F39:1D0 LevelHubTeleportDoors.asm
+7F3A:1D1 LevelHubTeleportDoors.asm
+7F3B:1D2 LevelHubTeleportDoors.asm
+7F3C:1D3 LevelHubTeleportDoors.asm
+7F3D:1D4 LevelHubTeleportDoors.asm
+7F3E:1D5 LevelHubTeleportDoors.asm
+7F3F:1D6 LevelHubTeleportDoors.asm
+7F40:1D7 LevelHubTeleportDoors.asm
+7F41:1D8 LevelHubTeleportDoors.asm
+7F42:1D9 LevelHubTeleportDoors.asm
+7F43:1DA LevelHubTeleportDoors.asm
+7F44:1DB LevelHubTeleportDoors.asm
+7F45:1DC LevelHubTeleportDoors.asm
+7F46:1DD LevelHubTeleportDoors.asm
+7F47:1DE LevelHubTeleportDoors.asm
+7F48:1DF LevelHubTeleportDoors.asm
+7F49:1E0 LevelHubTeleportDoors.asm
+7F4A:1E1 LevelHubTeleportDoors.asm
+7F4B:1E2 LevelHubTeleportDoors.asm
+7F4C:1E3 LevelHubTeleportDoors.asm
+7F4D:1E4 LevelHubTeleportDoors.asm
+7F4E:1E5 LevelHubTeleportDoors.asm
+7F4F:1E6 LevelHubTeleportDoors.asm
+7F50:1E7 LevelHubTeleportDoors.asm
+7F51:1E8 LevelHubTeleportDoors.asm
+7F52:1E9 LevelHubTeleportDoors.asm
+7F53:1EA LevelHubTeleportDoors.asm
+7F54:1EB LevelHubTeleportDoors.asm
+7F55:1EC LevelHubTeleportDoors.asm
+7F56:1ED LevelHubTeleportDoors.asm
+7F57:1EE LevelHubTeleportDoors.asm
+7F58:1EF LevelHubTeleportDoors.asm
+7F59:1F0 LevelHubTeleportDoors.asm
+7F5A:1F1 LevelHubTeleportDoors.asm
+7F5B:1F2 LevelHubTeleportDoors.asm
+7F5C:1F3 LevelHubTeleportDoors.asm
+7F5D:1F4 LevelHubTeleportDoors.asm
+7F5E:1F5 LevelHubTeleportDoors.asm
+7F5F:1F6 LevelHubTeleportDoors.asm
+7F60:1F7 LevelHubTeleportDoors.asm
+7F61:1F8 LevelHubTeleportDoors.asm
+7F62:1F9 LevelHubTeleportDoors.asm
+7F63:1FA LevelHubTeleportDoors.asm
+7F64:1FB LevelHubTeleportDoors.asm
+7F65:1FC LevelHubTeleportDoors.asm
+7F66:1FD LevelHubTeleportDoors.asm
+7F67:1FE LevelHubTeleportDoors.asm
+7F68:1FF LevelHubTeleportDoors.asm
+
+; Addtional Tile Descriptions
+@dsc
+
+200 0 Tile that can be used with Lunar Magic's Layer 3 tide Act As feature.
+201 0 Tile that can be used with Lunar Magic's Layer 3 tide Act As feature.
+202 0 Tile that can be used with Lunar Magic's Layer 3 tide Act As feature.
+203 0 Tile that can be used with Lunar Magic's Layer 3 tide Act As feature.
+204 0 Tile that can be used with Lunar Magic's Layer 3 tide Act As feature.
+205 0 Tile that can be used with Lunar Magic's Layer 3 tide Act As feature.
+206 0 Tile that can be used with Lunar Magic's Layer 3 tide Act As feature.
+207 0 Tile that can be used with Lunar Magic's Layer 3 tide Act As feature.
+208 0 Tile that can be used with Lunar Magic's Layer 3 tide Act As feature.
+209 0 Tile that can be used with Lunar Magic's Layer 3 tide Act As feature.
+20A 0 Tile that can be used with Lunar Magic's Layer 3 tide Act As feature.
+330 0 Arrow pointing down.
+331 0 Arrow pointing left.
+340 0 Arrow pointing right.
+341 0 Arrow pointing up.
+3C6 0 Upper left part of large circular line guide.
+3C7 0 Upper left part of large circular line guide.
+3D6 0 Upper left part of large circular line guide.
+3D7 0 Upper left part of large circular line guide.
+3E6 0 Lower left part of large circular line guide.
+3E7 0 Lower left part of large circular line guide.
+3F6 0 Lower left part of large circular line guide.
+3F7 0 Lower left part of large circular line guide.
+3C8 0 Upper right part of large circular line guide.
+3C9 0 Upper right part of large circular line guide.
+3D8 0 Upper right part of large circular line guide.
+3D9 0 Upper right part of large circular line guide.
+3E8 0 Lower right part of large circular line guide.
+3E9 0 Lower right part of large circular line guide.
+3F8 0 Lower right part of large circular line guide.
+3F9 0 Lower right part of large circular line guide.
+3CE 0 Upper left part of small circular line guide.
+3CF 0 Upper right part of small circular line guide.
+3DE 0 Lower left part of small circular line guide.
+3DF 0 Lower right part of small circular line guide.
+3CA 0 Horizontal line guide. Sprite can be placed one tile ABOVE and still be on the line.
+3DA 0 Horizontal line guide. Sprite can be placed one tile BELOW and still be on the line.
+3CB 0 Horizontal line guide end.
+3DB 0 Horizontal line guide end.
+3EA 0 Vertical line guide. Sprite can be placed one tile LEFT and still be on the line.
+3EB 0 Vertical line guide. Sprite can be placed one tile RIGHT and still be on the line.
+3FA 0 Vertical line guide end.
+3FB 0 Vertical line guide end.
+3EC 0 -45 degree line guide.
+3ED 0 45 degree line guide.
+3FC 0 45 degree ON/OFF line guide.
+3FD 0 -45 degree ON/OFF line guide.
+3CC 0 Part of leftward steep line guide.
+3DC 0 Part of leftward steep line guide.
+3CD 0 Part of rightward steep line guide.
+3DD 0 Part of rightward steep line guide.
+3EE 0 Part of rightward gradual line guide.
+3EF 0 Part of rightward gradual line guide.
+3FE 0 Part of leftward gradual line guide.
+3FF 0 Part of leftward gradual line guide.
+
+; Don't add blocks here!
+; Blocks must be added to the list above the "@dsc" section.

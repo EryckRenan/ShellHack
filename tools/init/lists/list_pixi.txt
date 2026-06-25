@@ -1,0 +1,164 @@
+;===================================================
+; PIXI SPRITES LIST
+;===================================================
+; This list file specifies sprites to be inserted by
+; PIXI, broken down below by type of sprite.
+;===================================================
+
+
+;===================================================
+; CUSTOM SPRITES (.cfg or .json)
+;---------------------------------------------------
+; Each sprite can be inserted into the list by their
+; sprite number and the name of the CFG/JSON file,
+; for example: "00 sprite_name.cfg".
+;===================================================
+SPRITE:
+
+; Normal Sprites (00-BF)
+
+; Stunned/Kicked/Normal/Spiny/Ghost/Disco
+00 MultiBounceShellGreen.json
+01 GhostShell.json
+02 dtothefourth/SP4 02/SpinyShell.json
+03 dtothefourth/SP4 02/MotorShell.json
+04 spooonsss/FlyinDiscoShell(spooonsss).json
+05 Cracka/spooonsss/FlyinDiscoSpinyShell.json
+06 dtothefourth/SP4 02/DiscoSpinyShell.json
+07 dtothefourth/SP4 02/DiscoMotorShell.json
+08 dtothefourth/WaitingDiscoShell.json
+09 dtothefourth/AvoidingDiscoShell.json
+0A ShadyKoopa.json
+0B dtothefourth/SP4 02/GhostSpinyShell.json
+0C InvincibleShellboard.json
+0D SpinBoostShell.json
+0E dtothefourth/OnOffDiscoShell.json
+0F dtothefourth/SP3 13/DiscoPlatform.json
+10 dtothefourth/SP4 02/GhostDiscoSpinyShell.json
+11 dtothefourth/SurfingDiscoShell.json
+; 12 Didn't get around to make Spiny version of Surfing Disco Shell
+13 dtothefourth/StoppedShell.json
+14 FlyinDiscoShell.json
+15 FlyinDiscoShell(Bucket).json
+16 Super Sheffy World 2/LRTriggersBouncingDiscoShell.json
+17 Cracka/Experimental/OrientationFlippingShell.json
+18 Cracka/Experimental/Freeram/FreeramShell.json
+19 Cracka/Experimental/Freeram/Panga/PangaShell.json
+; [18-1F] Available
+
+; Reusable Interaction Shells
+20 Cracka/Reusable/OnOffShell.json
+21 Cracka/Reusable/OnOffSpecialShell.json
+; 22 Need To Update SpinJump Reusable
+23 Cracka/Reusable/TimerShell.json
+;14 Need To Update PowerupShell To Reusable
+24 Cracka/Brakkie/PowerupShell.json
+25 Cracka/Reusable/MessageInfoBoxShell.json
+26 Cracka/Reusable/OrientationFlippingShell.json
+27 Cracka/Reusable/PaletteChangingShell.json
+28 Cracka/Brakkie/AutoSpin-JumpShell.json
+29 Cracka/Brakkie/1BounceSpinyShell.json
+
+; 1 Bounce Interaction (With Spiny Option)
+2A Cracka/Brakkie/Spin-JumpShell.json
+2B Cracka/Brakkie/SpinShell.json
+2C Cracka/Brakkie/SpinyJumpShell.json
+; [2C-5F] Available
+
+; Custom/Enhanced/Disassemblies
+60 dtothefourth/CustomThrowBlock/Sprite/CustomThrowBlock.cfg
+61 customizable-buzzy-beetle.json
+
+; [62-6F] Available
+
+; Flying/Falling Sprites
+70 para_buzzy.json
+71 ParaSpiny.json
+72 parachute_spiny/ParachuteSpiny.json
+73 dtothefourth/FlyingThrowBlock/FlyingThrowBlock.cfg
+
+; [74-7B] Available
+
+; Yoshi Variants
+7C yoshi/yoshi_blue.cfg
+7D yoshi/yoshi_red.cfg
+7E yoshi/yoshi_yellow.cfg
+; Need to test if white yoshi works on overworld (not an issue for most kaizo levels that don't allow powerups or yoshi on Overworld via Retry Patch)
+7F yoshi/yoshi_white.cfg
+
+; Misc. Platforms
+80 dtothefourth/platform_megapack/platform_megapack.json
+81 dtothefourth/ProgrammableBlockBridge/BlockBridge.cfg
+
+; [82-8D] Available
+
+; Misc. Shell Variants
+8E Cracka/SP4 (02)/BubbleShells.json
+8F baseBroBombAndShell_v1.0/shell_bro.json
+
+; [90-96] Available
+
+; Sprite Wrappers
+97 dtothefourth/PipeSpawner.cfg
+98 dtothefourth/AnySpriteFishingBoo/AnyFishingBoo.cfg
+99 dtothefourth/CannonSpawner.cfg
+9A dtothefourth/CannonSpawner_Extended.cfg
+9B Lineguided_AnySprite.json
+9C dtothefourth/Disco_AnySprite.cfg
+9D SpriteOffsetter.json
+9E XYFollowSprite.json
+9F SpriteKiller-Invisible.json
+
+; RHR Donut block
+A0 donut_sprite.cfg
+
+; [A0-B2] Available
+
+; Flux Level Hub Cursor
+B3 Flux/LevelHubCursorMain.cfg
+B4 Flux/LevelHubCursor.cfg
+
+; [B5-BF] Available
+
+; Shooter Sprites (C0-CF)
+
+C0 random_shell.cfg
+C1 ShellShooter.cfg
+
+; Generator Sprites (D0-DF)
+
+
+;===================================================
+; OTHER SPRITES (.asm)
+;---------------------------------------------------
+; Other types of sprite supported by PIXI are shown
+; below. They can be listed by sprite number and the
+; name of the asm file, e.g. "00 sprite_name.asm".
+;===================================================
+
+; Extended Sprites (00-FF)
+EXTENDED:
+
+
+; Cluster Sprites (00-FF)
+CLUSTER:
+
+
+; Minor Extended Sprites (00-FF)
+MINOREXTENDED:
+
+
+; Bounce Sprites (00-FF)
+BOUNCE:
+01 TurnblockBounce.asm
+
+; Smoke Sprites (00-FF)
+SMOKE:
+
+
+; Spinning Coin Sprites (00-FF)
+SPINNINGCOIN:
+
+
+; Score Sprites (00-FF)
+SCORE:

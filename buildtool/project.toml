@@ -1,0 +1,41 @@
+# This config file contains settings for the whole project
+[settings]
+
+    # the root of your project (don't change)
+    # configured to be relative to the Callisto .exe
+    project_root = "../"
+
+    # Conflict reporting
+    check_conflicts = "hijacks"
+    conflict_log_file = "buildtool/conflicts.txt"
+
+    # path to the clean SMW rom file
+    clean_rom = "resources/clean.smc"
+
+    # Any symbols from the build order (see build.toml)
+    # listed here will not be considered when
+    # reporting conflicts, this lets you configure the verbosity
+    # of callisto's conflict reporting to your liking
+    ignored_conflict_symbols = [
+        "InitialPatch",
+
+        "Overworld",
+        "TitleScreen",
+        "Credits",
+        "GlobalExAnimation",
+
+        "SharedPalettes",
+
+        "ExGraphics",
+        "Graphics",
+
+        "Levels",
+
+        "Map16"
+    ]
+
+[resources]
+
+    # The file to be automatically included whenever
+    # you use 'incsrc "callisto.asm"' in any resource
+    callisto_header = "shared/callisto/header.asm"

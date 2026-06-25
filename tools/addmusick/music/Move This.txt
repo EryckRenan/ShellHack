@@ -1,0 +1,49 @@
+#amk 4
+
+#spc
+{
+#title "Move This"
+#game "DHS"
+#comment "Ported by Samantha & Ahrion"
+}
+
+#samples
+{
+#MoveThis
+"Move This/17.brr"
+"Move This/18.brr"
+"Move This/20.brr"
+"Move This/21.brr"
+"Move This/23.brr"
+"Move This/24.brr"
+}
+
+#instruments
+{
+"Move This/17.brr" $00 $00 $7F $01 $FC ; @30
+"Move This/18.brr" $00 $00 $7F $01 $FC ; @31
+"Move This/20.brr" $00 $00 $7F $01 $FC ; @32
+"Move This/21.brr" $00 $00 $7F $01 $FC ; @33
+"Move This/23.brr" $00 $00 $7F $01 $FC ; @34
+"Move This/24.brr" $00 $00 $7F $01 $FC ; @35
+}
+
+w150 t52
+$F4 $02
+/
+
+#0 o5 v235 y12 
+
+[[
+(1)[@30 v235 c8 v99 c8 v235 c8 v99 c16 @31 v235 c8 v99 c8 v235 c8 v99 c16 v235 c8] (2)[v99 c8 @32 v235 c8 v99 c8 v235 c8 v99 c16 @33 v235 c8 v99 c16 @34 v235 c8 v99 c8]
+(1) v99 c16 @32 v235 c8c8 v99 c16 @33 v235 c8 v99 c8 v64 c16 v235 c8 v99 c16 @35 v235 c8
+]]3
+
+#1 o5 y8
+ 
+r8
+[[
+(15)[@30 v235 c8 v99 c8 v235 c8 v99 c16 @31 v235 c8 v99 c16 v235 c8 v99 c8]
+(16)[@32 v235 c8 v99 c8 v235 c8 v99 c16 @33 v235 c8 v99 c8 v235 c8 v99 c16 @35 v235 c8 v99 c8]
+(15) @32 v235 c8c8c8 v99 c8 v64 c16 @33 v235 c8 v99 c16 @34 v235 c8 v99 c4
+]]3

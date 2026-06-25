@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Baserom Features - Romhack Races Baserom</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="./img/flop.gif" type="image/x-icon">
+<link rel="stylesheet" type="text/css" href="./style.css">
+</head>
+<body>
+<header><div class="home"><a href="./index.html">🏠</a></div><span>Baserom Features</span></header>
+<section>
+<p>The baserom has a few useful features that are included either for quality of life reasons, are part of other features, or are there to help making levels easier.</p>
+<h3 id="#">Contents</h3>
+<ul>
+    <li><a href="#uberasm-objects">UberASM Objects</a></li>
+    <li><a href="#retry-system">Retry System + Multiple Checkpoints</a></li>
+    <li><a href="#dragon-coin-saving">Dragon Coin Saving</a></li>
+    <li><a href="#sprite-status-bar">Sprite Status Bar</a></li>
+    <li><a href="#clear-checkpoints">Clear Saved Checkpoints</a></li>
+    <li><a href="#ow-autosave">Autosave on Overworld</a></li>
+</ul>
+<hr>
+<h3 id="uberasm-objects">UberASM Objects</h3>
+<p>There is framework of custom objects (built on ObjecTool) in the baserom to allow you to toggle or activate some simple utility features, but the <a href="./UberASM Objects.html">UberASM Objects</a> page goes into greater detail on this feature.</p>
+<hr>
+<h3 id="retry-system">Retry System + Multiple Checkpoints</h3>
+<p>The baserom comes with an <a href="https://github.com/kkevinm/retry-system/" target="_blank">UberASM version of the Retry System</a> that performs better and has more features than the Asar patch version you can get from SMW Central. You can read more about the Retry System in its <a href="../retry_system/index.html">included documentation</a>.</p>
+
+<h4>Configuring</h4>
+<p>The Retry System is configured to use vanilla death routine globally but different retry types can be set per-level with <a href="./UberASM Objects.html#retry-objects">UberASM Objects</a>.</p>
+
+<p>To change the Retry System's settings you can edit its configuration files in <span class="dir">tools/uberasmtool/retry_config</span>.</p>
+<ul>
+    <li><code>settings_global.asm</code> &ndash; Change the global settings for the Retry System.</li>
+    <li><code>settings_local.asm</code> &ndash; Change the per-level settings for the Retry System.</li>
+</ul>
+<p>After making changes to any of the above, run "Update" in Callisto to insert the UberASM changes in your project.</p>
+<h4>Multiple Checkpoints</h4>
+<p>A feature of the Retry System a custom checkpoint that you can insert into levels to allow for more than just the single vanilla midpoint. You can read more about it in the <a href="../retry_system/midway_instruction.html">included documentation</a>.</p>
+<hr>
+<h3 id="dragon-coin-saving">Dragon Coin Saving</h3>
+<p>This is pretty self-explanatory: the baserom has been patched to save dragon (Yoshi) coins as they are collected, but only if a player reached a checkpoint or goal point. If you would like to reconfigure how dragon coins save, open "sram_tables.asm" found in the <span class="dir">tools/uberasmtool/retry_config"</span> and change <code>!DragonCoinSaving = 1</code> to equal zero (0).</p>
+<p>This patch has some other features that are not on by default, like changing the collected dragon coin into something else (you may have seen outline coins in other hacks) and those can be configured in the "dragon_coin_save.asm" file found in <span class="dir">resources/patches/features</span>.</p>
+<hr>
+<h3 id="sprite-status-bar">Sprite Status Bar</h3>
+<p>As part of the Retry System, there is a per-level sprite-tile-based status bar which allows you to display parts of the HUD while the vanilla layer 3 status bar is hidden and with layer 3 backgrounds, you can see it active in the <a href="./Levels.html#demo-level">Demo Level</a>: </p>
+<center><img src="./img/sprite_status_bar.png" alt="Screenshot of the sprite status bar in action in-game" title="Screenshot of the sprite status bar in action in-game"></center>
+<h4>Configuring</h4>
+<p>This feature is part of the Retry System, in this baserom you can set a level to use these status items individually with <a href="./UberASM Objects.html#retry-objects">UberASM Objects</a>. Alternatively, there is a more advanced setup available for use with UberASM. You can read about that in the <a href="../retry_system/api.html#configure_sprite_status_bar">retry API documentation</a>.</p>
+<small>Version 5.11 and earlier of baserom had a more complicated setup.</small>
+<hr>
+<h3 id="clear-checkpoints">Clear Saved Checkpoints</h3>
+<p>Included in the baserom is an UberASM "safety mechanism" that clears all collected checkpoints (both midways and those given by the Retry System) and saves the game when the player presses a key combo. This is to fix any save files and release the player from any potential checkpoint-related softlocks.</p>
+<p>This UberASM runs on the overworld and can be invoked with the following key combo: <span class="key">L</span> + <span class="key">R</span> + <span class="key">Select</span>. Pressing this will play a sound to indicate checkpoints have been cleared and the game has been saved.</p>
+<h4>Configuring</h4>
+<p>If you would like to change the key combination you can do so by editing the "clear_saved_checkpoints.asm" in the <span class="dir">tools/uberasmtool/gamemode</span> folder. Keep in mind, using either any of the face buttons (ABXY) in this combo while on the Overworld will enter a level.</p>
+<h4>Disabling</h4>
+<p>If you would like to disable this feature, you can remove it from the <code>gamemode:</code> section of UberASM Tool's list file in the <span class="dir">tools/uberasmtool</span> folder, look for the line you see below.</p>
+<pre>
+gamemode:
+    ...
+    0E <i>clear_saved_checkpoints.asm</i>, ow_auto_save.asm
+    ...
+</pre>
+<small>Found in version 5.4 of baserom or later. (Runs in gamemode 14 in version 5.4).</small>
+<hr>
+<h3 id="ow-autosave">Autosave on Overworld</h3>
+<p>The baserom has a basic UberASM feature to autosave the game when you return to or move Mario on the overworld. If you would like to disable this feature, you can remove it from the <code>gamemode:</code> section of UberASM Tool's list file in the <span class="dir">tools/uberasmtool</span> folder, look for the line you see below.</p>
+<pre>
+gamemode:
+    ...
+    0E clear_saved_checkpoints.asm, <i>ow_auto_save.asm</i>
+    ...
+</pre>
+<small>Found in version 5.8 of baserom or later.</small>
+</section>
+<hr>
+<a href="#" class="go-to-top"></a>
+</body>
+</html>

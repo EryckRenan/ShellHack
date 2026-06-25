@@ -1,0 +1,78 @@
+Level Extended Animation Frames:
+
+Slot:		Type:			Trigger:		Destination:		GFX Source:		Map16:		Description:
+Slot 00		4 8x8s: line	POW				BG2: 270			ExGFX61			2E9			P-Switch Activated Block (When Not Activated Passable)
+Slot 01		4 8x8s: line	POW				BG2: 274			ExGFX61			2EA			P-Switch Activated Block (When Activated Solid)
+Slot 02		4 8x8s: line	Have Star		BG2: 278			ExGFX61			2D9			Star Power Activated Block (When Not Activated Passable)
+Slot 03		4 8x8s: line	Have Star		BG2: 27C			ExGFX61			2DA			Star Power Activated Block (When Activated Solid)
+Slot 04		4 8x8s: line	ON/OFF			BG3: 2D0			ExGFX61			2DC			ON/OFF Solid/Passable Death Block (When ON Solid/Death)
+																				2CC			ON/OFF Sprite Only Solid/Passable Block (When ON Solid)
+Slot 05		4 8x8s: line	ON/OFF			BG3: 2D4			ExGFX61			2DB			ON/OFF Solid/Passable Death Block (When ON Passable)
+																				2CB			ON/OFF Sprite Only Solid/Passable Block (When ON Passable)
+Slot 06		4 8x8s: line	None			BG2: 26C			ExGFX61			2B8			Turn Shell Into Disco Shell Block (Passable) ***Also Requites Slots 11-13 For Palette***
+																				2C8			Turn Shell Into Disco Shell Block (Solid) ***Also Requites Slots 11-13 For Palette***
+Slot 07		*4 8x8s: line	None			BG2: 250			ExGFX61			2D0			Sprite Only One Way Directional Blocks (Allow Up)
+																				2D1			Sprite Only One Way Directional Blocks (Allow Right)
+																				2E0			Sprite Only One Way Directional Blocks (Allow Left)
+																				2E1			Sprite Only One Way Directional Blocks (Allow Down)
+																				2D2			Sprite Killer One Way Directional Blocks (Allow Up)
+																				2D3			Sprite Killer One Way Directional Blocks (Allow Right)
+																				2E2			Sprite Killer One Way Directional Blocks (Allow Left)
+																				2E3			Sprite Killer One Way Directional Blocks (Allow Down)
+Slot 08		2 8x8s: line	None			BG2: 260			ExGFXFFF		40C			Spawn Carryable Ghost MotorShell Block
+																				40D			Spawn Carryable Disco MotorShell Block
+Slot 09		2 8x8s: line	None			BG2: 262			ExGFXFFF		408			Spawn Carryable Spiny Shell Block *** Animation Not Technically Needed***	
+Slot 0A		4 8x8s: line	ON/OFF			BG2: 258			ExGFXFFF		2EC			ON/OFF Switch Block (Only Usable To Activate OFF)
+Slot 0B		4 8x8s: line	ON/OFF			BG2: 25C			ExGFXFFF		2EB			ON/OFF Switch Block (Only Usable To Activate ON)
+Slot 0C		4 8x8s: line	ON/OFF			BG2: 268			ExGFXFFF		2D4			ON/OFF One Way Directional Blocks (When ON Allow Up)
+																				2D5			ON/OFF One Way Directional Blocks (When ON Allow Right)
+Slot 0D		4 8x8s: line	ON/OFF			BG2: 264			ExGFXFFF		2E4			ON/OFF One Way Directional Blocks (When ON Allow Left)
+																				2E5			ON/OFF One Way Directional Blocks (When ON Allow Down)
+Slot 0E		4 8x8s: line	ON/OFF			BG2: 254			ExGFXFFF					ON/OFF Solid/Passable Alternate GFX (When ON Solid) ***Could Add Inverse Option, Was Also Never Assigned Formal Map16 Tile***
+Slot 0F		2 8x8s:line		ON/OFF			BG3: 2C0			ExGFXFFF		450			ON/OFF Switch (Only Triggered From Left Side)
+																				451			ON/OFF Switch (Only Triggered From Right Side)
+																				460			Hurt/Death ON/OFF Switch (Only Triggered From Left Side)
+																				461			Hurt/Death ON/OFF Switch (Only Triggered From Right Side)
+Slot 10		4 8x8: line		Custom 0		BG3: 2C4			ExGFXFFF		***This Doesn't Have A Designated GFX or Map16, It's For Use With Custom Trigger
+
+Slot 11		Palette			None			Palette: 5D			N/A				N/A			Dark Rainbow Palette Used For Disco Related Blocks
+Slot 12		Palette			None			Palette: 5E			N/A				N/A			Medium Rainbow Palette Used For Disco Related Blocks
+Slot 13		Palette			None			Palette: 5D			N/A				N/A			Light Rainbow Palette Used For Disco Related Blocks
+
+Affected Tiles By Above 3 Slots:
+																				2B8			Turn Shell Into Disco Shell Block (Passable)
+																				2C8			Turn Shell Into Disco Shell Block (Solid)
+																				3B0			1F0 Turns Above Shell Into Disco
+																				3F0			Solid To: Non Disco, Passable By: Mario & Disco
+																				3F1			Passable By: Non Disco, Solid To: Mario & Disco
+																				3F2			Passable By: Non Disco & Mario, Solid To: Disco
+																				3F3			Solid To: Non Disco & Mario, Passable By: Disco
+																				407			Spawn Carried Disco Shell
+																				40A			Spawn Carried Disco Spiny
+																				40D			Spawn Carried Disco MotorShell
+																				428			Spawn Carried Disco Throwblock
+
+Slot 18		2 8x8s: line	None			BG2: 244			ExGFXFFF		40C			Spawn Carried Ghost MotorShell
+Slot 19		2 8x8s: line	None			BG2: 246			ExGFXFFF		40D			Spawn Carried Disco MotorShell
+
+Global:
+Slot 00		10 8x8s: line	ON/OFF			BG3: 2F0			ExGFX61			2AB			ON/OFF Coin/Toggle (Only Turns ON)
+																				2AC			ON/OFF Coin/Toggle (Only Turns OFF)
+																				2BB			ON/OFF Solid/Passable (Passable When ON)
+																				2BC			ON/OFF Solid/Passable (Solid When ON)
+Slot 01		4 8x8s: line	None			BG3: 2DC							2A2			Bat Block
+Slot 02		Palette+ Working None			Palette 78
+											Palette 79
+Slot 03		4 8x8s: line	None			BG3: 2E4			ExGFX61			2A8			Sprite Only Note Block
+Slot 04		4 8x8s: line	None			BG3: 2E0			ExGFX61			29E			Alternate Death Block GFX
+Slot 05		4 8x8s: line	None			BG3: 2D8			ExGFX61			2B0			One Way (Allow Up)
+																				2B1			One Way (Allow Right)
+																				2C0			One Way (Allow Left)
+																				2C1			One Way (Allow Up)
+																				2B2			One Way Mario Hurt/Death Block (Allow Up)
+																				2B3			One Way Mario Hurt/Death Block (Allow Right)
+																				2C2			One Way Mario Hurt/Death Block (Allow Left)
+																				2C3			One Way Mario Hurt/Death Block (Allow Up)
+Slot 06		8 8x8s: line	None			BG3: 2E8			ExGFX61			29B			ON Coin
+																				29C			OFF Coin
+

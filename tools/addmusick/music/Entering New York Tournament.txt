@@ -1,0 +1,78 @@
+#amk 4
+
+#spc
+{
+    #title "Entering New York Tournament"
+    #game "Rap Jam: Volume One"
+    #author "Michel Winogradoff"
+    #comment "port by halberd/lordlydumbass"
+}
+
+#define optimized 0 ;If set to 1, optimized samples will be used. This optimization is not necessary for all SMW samples to be included, but frees up extra space in ARAM.
+
+#path "entering new york tournament"
+
+#if optimized == 1
+#samples
+{
+    #optimized
+    "bass-opt.brr"
+    "chime-opt.brr"
+    "drum loop.brr"
+    "hat-opt.brr"
+}
+
+#instruments
+{
+    "bass-opt.brr" $FF $E0 $00 $07 $F8
+    "chime-opt.brr" $FF $E0 $00 $07 $A9
+    "drum loop.brr" $FF $E0 $00 $07 $A8
+    "hat-opt.brr" $FF $E0 $00 $08 $16
+}
+#endif
+
+#if optimized == 0
+
+#samples
+{
+    #optimized
+    "bass.brr"
+    "chime.brr"
+    "drum loop.brr"
+    "hat.brr"
+}
+
+#instruments
+{
+    "bass.brr" $FF $E0 $00 $07 $F8
+    "chime.brr" $FF $E0 $00 $07 $A9
+    "drum loop.brr" $FF $E0 $00 $07 $A8
+    "hat.brr" $FF $E0 $00 $08 $16
+}
+#endif
+
+
+w220 t35
+
+"bassloop1=@30 o4 v212 c+4.^32r16. v150 <g+8r8 v122 g+8r8 v150 c+4.r8a4r8a16.r32"
+"bassloop2=@30 o3 v150 r4.a8r8a16.r8^32 v170 e16.r4.^32 v150 e8r4g+8r8"
+
+#0
+@32 v250 o3 [[c1c1]]2
+
+#1
+@33 o3 [[v200 f+8f+8 v170 f+8f+8]]8
+
+#2
+bassloop1 bassloop2
+
+#3
+bassloop2 bassloop1
+
+#4
+@31 o3 (1)[v100 d4^16.r32c4^32r16. v122 c8.^32 v100 r8^32<b8.^32r8^32] v80 b8^32r16.b8r8
+(1) b8^32r16.b8r8
+
+#5
+@31 (2)[o2 v100 r8^16.f+4^16r32g4^16.r32 v80] f+4.g8.r8a8^32r16. v100 >c8
+(2) <f+4r8 v100 g8.^32r16.a8^32r16.>c16.r32

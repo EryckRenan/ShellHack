@@ -1,0 +1,25 @@
+#amk 4
+
+#path "ILikeTurtles"
+
+#samples
+{
+	"ILikeTurtles.brr"
+
+}
+
+#instruments
+{
+	 "ILikeTurtles.brr" $FF $E0 $B8 $07 $A8 ; @30
+}
+
+
+#option noLoop
+
+
+w160
+
+t38
+
+
+#0 @30 o4 y10 c1^1

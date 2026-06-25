@@ -1,0 +1,204 @@
+04	Green Shell (kicked)
+05	Red Shell (kicked)
+06	Blue Shell (kicked)
+07	Yellow Shell (kicked)
+08	Double Bounce shell (kicked)
+11	Buzzy Beetle (kicked)
+DA	Disco Shell
+1C	Bullet Bill, plays sound
+1A	Classic Piranha Plant, red (ignores Mario)
+2A	Upside down Piranha Plant, red (ignores Mario)
+32	Dry bones, stay on ledge (doesn't throw bones)
+49	Growing/shrinking pipe end. (exit-enabled)
+4D	Ground dwelling monty mole (digs slowly)
+4E	Ledge dwelling Monty Mole (digs slowly)
+53	Throw Block
+53	Throw Block (kicked)
+85	Poison Mushroom, hurts the player
+85	Poison Mushroom, kills the player
+9B	Hammer Brother (throws frequently)
+AB	Rex, squished
+E0	Triple Ball n' Chain
+00	Green Multi Bounce Shell
+	Green Multi Bounce Shell (infinite bounces)
+	Green Multi Bounce Shell (spawn kicked)
+	Green Multi Bounce Shell (spawn kicked, infinite bounce)
+01	Ghost Shell (Stunned)
+	Ghost Shell (Kicked)
+02	Spiny Shell
+03	Motor Shell (Spawns As Shell)
+	Motor Shell (Spawns As Spiny Shell)
+04	Flyin Disco Shell (By spooonsss)
+05	Flyin Disco Shell (By spooonsss)
+06	Disco Spiny Shell
+07	Motor Shell (Spawns As Shell)
+	Motor Shell (Spawns As Spiny Shell)
+08	Waiting Disco Shell
+09	Avoiding Disco Shell
+0A	Shady Koopa
+0B	Ghost Spiny Shell
+0C	Invincible Shellboard (Carryable)
+	Invincible Shellboard (Kicked)
+0D	Green Koopa
+	Green Shell (stationary)
+	Green Shell (stationary, Koopa inside)
+	Green Shell (kicked)
+	Disco Shell
+0E	On Off Disco Shell
+0F	Disco Platform
+10	Disco Spiny Shell
+11	Surfing Disco Shell
+13	Stopped Shell
+14	Flyin Disco Shell (By RussianMan)
+15	Flyin Disco Shell (By Bucket)
+16	L/R Triggers Bouncing Disco
+17	Orientation Flipping Shell
+	Orientation Flipping Shell (∞ Bounces)
+	Orientation Flipping Shell (Spawns Flipped)
+	Orientation Flipping Shell (Spawns Flipped ∞ Bounces)
+18	Freeram Shell
+	Freeram Shell (∞ Bounces)
+	Freeram Shell (Spawns Flipped)
+	Freeram Shell (Spawns Flipped ∞ Bounces)
+19	Panga Shell
+	Panga Shell (∞ Bounces)
+	Panga Shell (Spawns Flipped)
+	Panga Shell (Spawns Flipped ∞ Bounces)
+20	Switch On/Off To On Shell
+	Switch On/Off To On Shell (1 Bounce)
+	Switch On/Off To On Shell (∞ Bounces)
+	Switch On/Off To Off Shell
+	Switch On/Off To Off Shell (1 Bounce)
+	Switch On/Off To Off Shell (∞ Bounces)
+	Toggle On/Off Shell
+	Toggle On/Off Shell (1 Bounce)
+	Toggle On/Off Shell (∞ Bounces)
+21	Switch On/Off To On (Special) Shell
+	Switch On/Off To Off (Special) Shell
+	Toggle On/Off (Special) Shell
+23	Set Star Power Timer Shell
+	Set Star Power Timer Shell (1 Bounce)
+	Set Star Power Timer Shell (∞ Bounces)
+	Set Star Power Timer Invincible Shell
+	Set Star Power Timer Invincible Shell (1 Bounce)
+	Set Star Power Timer Invincible Shell (∞ Bounces)
+	Set Blue P-Switch Timer Shell
+	Set Blue P-Switch Timer Shell (1 Bounce)
+	Set Blue P-Switch Timer Shell (∞ Bounces)
+	Set Invulnerability Timer Shell
+	Set Invulnerability Timer Shell (1 Bounce)
+	Set Invulnerability Timer Shell (∞ Bounces)
+24	Regular Small Shell
+	Regular Big Shell
+	Regular Cape Shell
+	Regular Fire Shell
+	Spiny Small Shell
+	Spiny Big Shell
+	Spiny Cape Shell
+	Spiny Fire Shell
+25	Message Info Box 1 Shell
+	Message Info Box 1 Shell (1 Bounce)
+	Message Info Box 2 Shell
+	Message Info Box 2 Shell (1 Bounce)
+	Yoshi Message Info Box Shell
+	Yoshi Message Info Box Shell (1 Bounce)
+	Switching Message Info Box Shell
+26	Orientation Flipping Shell
+	Orientation Flipping Shell (∞ Bounces)
+	Orientation Flipping Shell (Spawns Flipped)
+	Orientation Flipping Shell (Spawns Flipped ∞ Bounces)
+27	Palette Switching Shell
+	Palette Switching Shell (∞ Bounces)
+28	Auto Spin-Jump Shell (2 Palette/Stunned/Regular)
+	Auto Spin-Jump Shell (2 Palette/Kicked/Regular)
+	Auto Spin-Jump Shell (2 Palette/Stunned/Disco)
+	Auto Spin-Jump Shell (2 Palette/Kicked/Disco)
+	Auto Spin-Jump Shell (Disco Palette/Stunned/Disco)
+	Auto Spin-Jump Shell (Disco Palette/Kicked/Disco)
+29	1 Bounce Spiny Shell
+2A	Jump Normal Shell
+	Spin Normal Shell
+	Jump Spiny Shell
+	Spin Spiny Shell
+2B	Jump Normal Shell
+	Spin Normal Shell
+	Jump Spiny Shell
+	Spin Spiny Shell
+2C	Spiny Jump Shell
+60	CustomThrowBlock (extra bit clear)
+	CustomThrowBlock (extra bit set)
+61	Customizable Buzzy Beetle (Normal)
+	Customizable Buzzy Beetle (Stunned)
+	Customizable Buzzy Beetle (Kicked)
+70	Para Buzzy (Flies towards Mario, rises when stood on)
+	Para Buzzy (Flies left, rises when stood on)
+	Para Buzzy (Flies right, rises when stood on)
+	Para Buzzy (Flies away from Mario, rises when stood on)
+	Para Buzzy (Flies towards Mario, sinks when stood on)
+	Para Buzzy (Flies left, sinks when stood on)
+	Para Buzzy (Flies right, sinks when stood on)
+	Para Buzzy (Flies away from Mario, sinks when stood on)
+71	Para Spiny (left/right)
+	Para Spiny (up/down)
+72	Parachute Spiny
+73	FlyingThrowBlock (extra bit clear)
+	FlyingThrowBlock (extra bit set)
+7C	yoshi_blue (extra bit clear)
+	yoshi_blue (extra bit set)
+7D	yoshi_red (extra bit clear)
+	yoshi_red (extra bit set)
+7E	yoshi_yellow (extra bit clear)
+	yoshi_yellow (extra bit set)
+7F	yoshi_white (extra bit clear)
+	yoshi_white (extra bit set)
+80	Platform Megapack
+81	BlockBridge (extra bit clear)
+	BlockBridge (extra bit set)
+8E	Bubble Shell (Green Moving Right)
+	Bubble Shell (Green Moving Left)
+	Bubble Shell (Green Moving Towards Player)
+	Bubble Shell (Green Moving Away From Player)
+	Bubble Shell (Red Moving Right)
+	Bubble Shell (Red Moving Left)
+	Bubble Shell (Red Moving Towards Player)
+	Bubble Shell (Red Moving Away From Player)
+	Bubble Shell (Blue Moving Right)
+	Bubble Shell (Blue Moving Left)
+	Bubble Shell (Blue Moving Towards Player)
+	Bubble Shell (Blue Moving Away From Player)
+	Bubble Shell (Yellow Moving Right)
+	Bubble Shell (Yellow Moving Left)
+	Bubble Shell (Yellow Moving Towards Player)
+	Bubble Shell (Yellow Moving Away From Player)
+8F	Shell Bro
+97	PipeSpawner (extra bit clear)
+	PipeSpawner (extra bit set)
+98	AnyFishingBoo (extra bit clear)
+	AnyFishingBoo (extra bit set)
+99	CannonSpawner (extra bit clear)
+	CannonSpawner (extra bit set)
+9A	CannonSpawner_Extended (extra bit clear)
+	CannonSpawner_Extended (extra bit set)
+9B	Line-Guided Any Sprite (Vanilla)
+	Line-Guided Any Sprite (Vanilla, Extra Bit set))
+	Line-Guided Any Sprite (Vanilla, Carryable)
+	Line-Guided Any Sprite (Custom)
+	Line-Guided Any Sprite (Custom, Extra Bit set)
+	Line-Guided Any Sprite (Custom, Carryable)
+	Line-Guided Any Sprite (Custom, Extra Bit set, Carryable)
+9C	Disco_AnySprite (extra bit clear)
+	Disco_AnySprite (extra bit set)
+9D	Sprite offsetter.
+9E	X Follow Sprite
+	Y Follow Sprite
+9F	Sprite Killer- Invisible
+A0	donut_sprite (extra bit clear)
+	donut_sprite (extra bit set)
+B3	LevelHubCursorMain (extra bit clear)
+	LevelHubCursorMain (extra bit set)
+B4	LevelHubCursor (extra bit clear)
+	LevelHubCursor (extra bit set)
+C0	random_shell (extra bit clear)
+	random_shell (extra bit set)
+C1	ShellShooter (extra bit clear)
+	ShellShooter (extra bit set)

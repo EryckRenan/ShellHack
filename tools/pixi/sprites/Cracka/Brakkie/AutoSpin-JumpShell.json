@@ -1,0 +1,201 @@
+{
+  "$1656": {
+    "Object Clipping": 0,
+    "Can be jumped on": true,
+    "Dies when jumped on": true,
+    "Hop in/kick shell": false,
+    "Disappears in cloud of smoke": true
+  },
+  "$1662": {
+    "Sprite Clipping": 0,
+    "Use shell as death frame": true,
+    "Fall straight down when killed": false
+  },
+  "$166E": {
+    "Use second graphics page": true,
+    "Palette": 5,
+    "Disable fireball killing": false,
+    "Disable cape killing": false,
+    "Disable water splash": false,
+    "Don't interact with Layer 2": false
+  },
+  "$167A": {
+    "Don't disable cliping when starkilled": true,
+    "Invincible to star/cape/fire/bounce blk.": false,
+    "Process when off screen": false,
+    "Don't change into shell when stunned": false,
+    "Can't be kicked like shell": false,
+    "Process interaction with Mario every frame": false,
+    "Gives power-up when eaten by yoshi": false,
+    "Don't use default interaction with Mario": true
+  },
+  "$1686": {
+    "Inedible": false,
+    "Stay in Yoshi's mouth": true,
+    "Weird ground behaviour": false,
+    "Don't interact with other sprites": false,
+    "Don't change direction if touched": false,
+    "Don't turn into coin when goal passed": false,
+    "Spawn a new sprite": false,
+    "Don't interact with objects": false
+  },
+  "$190F": {
+    "Make platform passable from below": false,
+    "Don't erase when goal passed": false,
+    "Can't be killed by sliding": false,
+    "Takes 5 fireballs to kill": false,
+    "Can be jumped on with upwards Y speed": false,
+    "Death frame two tiles high": true,
+    "Don't turn into a coin with silver POW": false,
+    "Don't get stuck in walls (carryable sprites)": true
+  },
+  "AsmFile": "AutoSpin-JumpShell.asm",
+  "ActLike": 6,
+  "Type": 1,
+  "Extra Property Byte 1": 0,
+  "Extra Property Byte 2": 0,
+  "Additional Byte Count (extra bit clear)": 2,
+  "Additional Byte Count (extra bit set)": 2,
+  "Map16": "igCaAIsAmwCAAZoAgQGbAIAJnAiBCZ0I",
+  "Displays": [
+    {
+      "Description": "Regular Auto Spin-Jump Shell that switches between regular shell and spiny shell depending on spin/jump type & automatically switches players jump type after interaction. Can be set to use 2 palettes or rotate through disco palettes.\n\nExtra Bit:\nClear = 2 Palettes\nSet = Disco Palette.\n\nExtra Byte 1:\n00 = Stationary/Carryable\n01 = Kicked/Disco\n\nExtra Byte 2:\n00 = Regular Shell\n01 = Disco Shell",
+      "ExtraBit": false,
+      "Tiles": [
+        {
+          "X offset": 8,
+          "Y offset": -8,
+          "map16 tile": 770
+        },
+        {
+          "X offset": 0,
+          "Y offset": 0,
+          "map16 tile": 50
+        }
+      ],
+      "Value": 0,
+      "Index": 1,
+      "DisplayText": "",
+      "UseText": false
+    },
+    {
+      "Description": "Disco Auto Spin-Jump Shell that switches between regular shell and spiny shell depending on spin/jump type & automatically switches players jump type after interaction. Can be set to use 2 palettes or rotate through disco palettes.\n\nExtra Bit:\nClear = 2 Palettes\nSet = Disco Palette.\n\nExtra Byte 1:\n00 = Stationary/Carryable\n01 = Kicked/Disco\n\nExtra Byte 2:\n00 = Regular Shell\n01 = Disco Shell",
+      "ExtraBit": true,
+      "Tiles": [
+        {
+          "X offset": 8,
+          "Y offset": -8,
+          "map16 tile": 769
+        },
+        {
+          "X offset": 0,
+          "Y offset": 0,
+          "map16 tile": 768
+        }
+      ],
+      "Value": 1,
+      "Index": 1,
+      "DisplayText": "",
+      "UseText": false
+    }
+  ],
+  "Collection": [
+    {
+      "Name": "Auto Spin-Jump Shell (2 Palette/Stunned/Regular)",
+      "ExtraBit": false,
+      "Extra Property Byte 1": 0,
+      "Extra Property Byte 2": 0,
+      "Extra Property Byte 3": 0,
+      "Extra Property Byte 4": 0,
+      "Extra Property Byte 5": 0,
+      "Extra Property Byte 6": 0,
+      "Extra Property Byte 7": 0,
+      "Extra Property Byte 8": 0,
+      "Extra Property Byte 9": 0,
+      "Extra Property Byte 10": 0,
+      "Extra Property Byte 11": 0,
+      "Extra Property Byte 12": 0
+    },
+    {
+      "Name": "Auto Spin-Jump Shell (2 Palette/Kicked/Regular)",
+      "ExtraBit": false,
+      "Extra Property Byte 1": 1,
+      "Extra Property Byte 2": 0,
+      "Extra Property Byte 3": 0,
+      "Extra Property Byte 4": 0,
+      "Extra Property Byte 5": 0,
+      "Extra Property Byte 6": 0,
+      "Extra Property Byte 7": 0,
+      "Extra Property Byte 8": 0,
+      "Extra Property Byte 9": 0,
+      "Extra Property Byte 10": 0,
+      "Extra Property Byte 11": 0,
+      "Extra Property Byte 12": 0
+    },
+    {
+      "Name": "Auto Spin-Jump Shell (2 Palette/Stunned/Disco)",
+      "ExtraBit": false,
+      "Extra Property Byte 1": 0,
+      "Extra Property Byte 2": 1,
+      "Extra Property Byte 3": 0,
+      "Extra Property Byte 4": 0,
+      "Extra Property Byte 5": 0,
+      "Extra Property Byte 6": 0,
+      "Extra Property Byte 7": 0,
+      "Extra Property Byte 8": 0,
+      "Extra Property Byte 9": 0,
+      "Extra Property Byte 10": 0,
+      "Extra Property Byte 11": 0,
+      "Extra Property Byte 12": 0
+    },
+    {
+      "Name": "Auto Spin-Jump Shell (2 Palette/Kicked/Disco)",
+      "ExtraBit": false,
+      "Extra Property Byte 1": 1,
+      "Extra Property Byte 2": 1,
+      "Extra Property Byte 3": 0,
+      "Extra Property Byte 4": 0,
+      "Extra Property Byte 5": 0,
+      "Extra Property Byte 6": 0,
+      "Extra Property Byte 7": 0,
+      "Extra Property Byte 8": 0,
+      "Extra Property Byte 9": 0,
+      "Extra Property Byte 10": 0,
+      "Extra Property Byte 11": 0,
+      "Extra Property Byte 12": 0
+    },
+    {
+      "Name": "Auto Spin-Jump Shell (Disco Palette/Stunned/Disco)",
+      "ExtraBit": true,
+      "Extra Property Byte 1": 0,
+      "Extra Property Byte 2": 1,
+      "Extra Property Byte 3": 0,
+      "Extra Property Byte 4": 0,
+      "Extra Property Byte 5": 0,
+      "Extra Property Byte 6": 0,
+      "Extra Property Byte 7": 0,
+      "Extra Property Byte 8": 0,
+      "Extra Property Byte 9": 0,
+      "Extra Property Byte 10": 0,
+      "Extra Property Byte 11": 0,
+      "Extra Property Byte 12": 0
+    },
+    {
+      "Name": "Auto Spin-Jump Shell (Disco Palette/Kicked/Disco)",
+      "ExtraBit": true,
+      "Extra Property Byte 1": 1,
+      "Extra Property Byte 2": 1,
+      "Extra Property Byte 3": 0,
+      "Extra Property Byte 4": 0,
+      "Extra Property Byte 5": 0,
+      "Extra Property Byte 6": 0,
+      "Extra Property Byte 7": 0,
+      "Extra Property Byte 8": 0,
+      "Extra Property Byte 9": 0,
+      "Extra Property Byte 10": 0,
+      "Extra Property Byte 11": 0,
+      "Extra Property Byte 12": 0
+    }
+  ],
+  "DisplayType": "ExByte"
+}

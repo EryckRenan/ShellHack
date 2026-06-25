@@ -1,0 +1,2086 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Cracka's Shell Hack Baserom</title>
+	<link rel="stylesheet" href="https://unpkg.com/@smwcentral/spc-player@2.0.1/dist/spc_player.css">
+	<style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Press+Start+2P&display=swap');
+        :root {
+            --color-primary: #3b82f6; --color-primary-dark: #2563eb;
+            --color-success: #22c55e; --color-success-dark: #16a34a;
+            --color-danger: #ef4444; --color-danger-dark: #dc2626;
+            --color-warning: #eab308; --color-warning-dark: #ca8a04;
+            --bg-gradient-start: #e8f0fe; --bg-gradient-end: #d4e4fc;
+            --card-bg: #f8faff; --text-primary: #1e293b; --text-secondary: #64748b;
+            --border-color: #c7d6ed;
+            --shadow-sm: 0 1px 3px 0 rgba(59, 130, 246, 0.08);
+            --shadow-md: 0 4px 8px -1px rgba(59, 130, 246, 0.12), 0 2px 4px -1px rgba(59, 130, 246, 0.06);
+            --shadow-lg: 0 10px 20px -3px rgba(59, 130, 246, 0.12), 0 4px 8px -2px rgba(59, 130, 246, 0.06);
+            --header-bg: linear-gradient(135deg, #f0f5ff 0%, #e4ecfb 100%);
+            --input-bg: #eef3fb;
+        }
+        [data-theme="dark"] {
+            --bg-gradient-start: #0f172a; --bg-gradient-end: #1e293b;
+            --card-bg: #1e293b; --text-primary: #f1f5f9; --text-secondary: #94a3b8;
+            --border-color: #334155;
+            --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.3);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.4);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.4);
+            --header-bg: #1e293b; --input-bg: #1e293b;
+        }
+        * { margin:0; padding:0; box-sizing:border-box; }
+        body { font-family: 'Inter', system-ui, sans-serif; background: linear-gradient(135deg, var(--bg-gradient-start), var(--bg-gradient-end)); color: var(--text-primary); min-height: 100vh; padding: 2rem; line-height: 1.5; }
+        .container { max-width: 1000px; margin: 0 auto; background: var(--card-bg); border-radius: 1rem; box-shadow: var(--shadow-lg); overflow: hidden; backdrop-filter: blur(10px); border: 1px solid var(--border-color); padding: 2rem; }
+        .header-with-toggle { display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem; }
+        .theme-toggle { width: 40px; height: 40px; border-radius: 50%; border: 1px solid var(--border-color); background: var(--card-bg); cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; transition: all 0.2s; }
+        .theme-toggle:hover { background: var(--bg-gradient-start); border-color: var(--color-warning); transform: scale(1.05); }
+        h1 { font-size: 2rem; font-family: 'Press Start 2P', cursive; background: linear-gradient(135deg, #e53e3e, #f6ad55, #ecc94b, #48bb78, #4299e1, #9f7aea); background-size: 300% 300%; -webkit-background-clip: text; -webkit-text-fill-color: transparent; animation: gradientShift 6s ease infinite; line-height: 1.4; margin: 0; }
+        @keyframes gradientShift { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
+        .hack-description { text-align: center; color: var(--text-secondary); font-size: 1.1rem; margin-bottom: 2rem; }
+        .category-section { margin-bottom: 3rem; }
+        .category-section h2 { color: var(--color-primary); border-bottom: 2px solid var(--border-color); padding-bottom: 0.5rem; margin-bottom: 1.5rem; font-size: 1.5rem; display: flex; align-items: center; }
+        .category-section h2::after { content: ""; flex: 1; height: 2px; background: linear-gradient(to right, var(--color-primary), transparent); margin-left: 1rem; }
+        .credits-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1.5rem; }
+        .credit-item { background: var(--card-bg); border: 1px solid var(--border-color); border-left: 4px solid var(--color-primary); border-radius: 0.75rem; padding: 1.25rem; transition: all 0.2s; box-shadow: var(--shadow-sm); }
+        [data-theme="dark"] .credit-item { border-left: 4px solid var(--border-color); }
+        [data-theme="dark"] .credit-item:hover { border-left-color: var(--color-primary); }
+        .credit-item:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); border-color: var(--color-primary); background: linear-gradient(to right, var(--card-bg), var(--bg-gradient-start)); }
+        .credit-item h3 { margin: 0 0 0.5rem 0; font-size: 1.1rem; font-weight: 600; }
+        .credit-item h3 a { color: var(--text-primary); text-decoration: none; transition: color 0.2s; }
+        .credit-item h3 a:hover { color: var(--color-primary); }
+        .author { color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 1rem; }
+        .music-player { margin: 1rem 0; padding: 0.75rem; background: var(--bg-gradient-start); border-radius: 0.5rem; border: 1px solid var(--border-color); }
+        .play-button { width: 100%; padding: 0.6rem; background: linear-gradient(135deg, var(--color-primary), var(--color-primary-dark)); color: white; border: none; border-radius: 0.5rem; cursor: pointer; font-weight: 500; transition: all 0.2s; }
+        .play-button:hover { transform: translateY(-1px); box-shadow: 0 2px 4px rgba(0,0,0,0.2); }
+        .play-button:disabled { opacity: 0.7; cursor: not-allowed; }
+        .image-gallery img { max-width: 100%; border-radius: 0.5rem; border: 1px solid var(--border-color); cursor: pointer; }
+        details { margin-top: 1rem; }
+        summary { cursor: pointer; color: var(--color-primary); font-weight: 500; user-select: none; }
+        .description { margin-top: 0.5rem; padding: 1rem; background: var(--input-bg); border-radius: 0.5rem; color: var(--text-primary); font-size: 0.9rem; border: 1px solid var(--border-color); }
+        .download-link { display: inline-block; margin-top: 1rem; padding: 0.5rem 1rem; background: linear-gradient(135deg, var(--color-success), var(--color-success-dark)); color: white; text-decoration: none; border-radius: 0.5rem; font-size: 0.875rem; font-weight: 500; transition: all 0.2s; }
+        .download-link:hover { transform: translateY(-1px); box-shadow: 0 2px 4px rgba(0,0,0,0.2); }
+        .search-input { width: 100%; padding: 0.75rem 1rem; border: 1px solid var(--border-color); border-radius: 0.5rem; background: var(--input-bg); color: var(--text-primary); font-family: inherit; font-size: 1rem; transition: border-color 0.2s; }
+        .search-input:focus { outline: none; border-color: var(--color-primary); box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1); }
+        .footer { text-align: center; margin-top: 3rem; padding-top: 2rem; border-top: 1px solid var(--border-color); color: var(--text-secondary); font-size: 0.875rem; }
+        .footer a { color: var(--color-primary); text-decoration: none; font-weight: 500; }
+        .footer a:hover { text-decoration: underline; }
+        @media (max-width: 640px) { body { padding: 1rem; } .container { padding: 1rem; border-radius: 0; box-shadow: none; } .credits-grid { grid-template-columns: 1fr; } }
+    </style>
+</head>
+<body>
+	<div id="spc-player-container"><input type="checkbox" id="spc-player-toggle"/><input type="checkbox" id="spc-player-loop" checked/><div id="spc-player-interface" class="spc-player"><div id="spc-player-header" class="header"><div class="group-left"><label for="spc-player-toggle" class="toggle header-button" title="Toggle player"><svg width="24" height="24" viewBox="0 0 24 24" class="shrink"><path d="m 9,5 3,3 3,-3 z m -4,6 v 2 h 14 v -2 z m 7,5 -3,3 h 6 z"/></svg><svg width="24" height="24" viewBox="0 0 24 24" class="expand"><path d="m 9,7 3,-3 3,3 z m -4,4 v 2 h 14 v -2 z m 7,9 -2.798151,-3 H 15 Z"/></svg></label><span>SPC Player</span></div><div class="now-playing"><span class="title"></span></div><div class="group-right"><a class="stop close header-button" title="Close"><svg width="24" height="24" viewBox="0 0 24 24"><path d="M 7.38,5.62 5.62,7.38 10.23,12 5.62,16.62 7.38,18.38 12,13.77 16.62,18.38 18.38,16.62 13.77,12 18.38,7.38 16.62,5.62 12,10.23 Z"/></svg></a></div></div><div id="spc-player-content" class="content"><div class="track-info"><h2 class="title">Song Title</h2><h3 class="subtitle"></h3><div class="details"></div></div><div class="seek-container"><span class="track-time-elapsed"></span><div class="seek"><span class="seek-preview"></span></div><span class="track-duration"></span></div><div id="spc-player-controls" class="controls"><div class="group-left"><a class="play hidden" title="Resume"><svg width="24" height="24" viewBox="0 0 24 24"><path d="M7 5v14l12-7Z"/></svg></a><a class="pause" title="Pause"><svg width="24" height="24" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg></a><a class="restart" title="Restart"><svg width="24" height="24" viewBox="0 0 24 24"><path d="M12,5V1l-5,5 5,5V7c3.31,0 6,2.69 6,6 0,3.31-2.69,6-6,6-3.31,0-6-2.69-6-6H4c0,4.42 3.58,8 8,8s8-3.58 8-8-3.58-8-8-8z"/></svg></a><label for="spc-player-loop" class="loop" title="Loop"><svg width="24" height="24" viewBox="0 0 24 24"><path d="M12 4V1L8 5l4 4V6c3.31 0 6 2.69 6 6 0 1.01-.25 1.97-.7 2.8l1.46 1.46C19.54 15.03 20 13.57 20 12c0-4.42-3.58-8-8-8zm0 14c-3.31 0-6-2.69-6-6 0-1.01.25-1.97.7-2.8L5.24 7.74C4.46 8.97 4 10.43 4 12c0 4.42 3.58 8 8 8v3l4-4-4-4v3z"/></svg></label></div><div id="spc-player-volume" class="volume"><span class="volume-level">100%</span><svg width="24" height="24" viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg><div class="volume-control"><input type="range" id="volume-slider" title="Volume"/><div class="volume-track"><div class="volume-fill"></div><div class="volume-thumb"></div></div></div></div></div><div id="track-list-container" class="hidden"><div class="overflow-indicator top"></div><div class="track-list-scrollbox"><ul class="track-list"></ul></div><div class="overflow-indicator bottom"></div></div></div></div></div>
+	<script src="https://unpkg.com/@smwcentral/spc-player@2.0.1/dist/spc.js"></script>
+	<script>const PROXY_URL='https://saphros.de/smwcredits/proxy.php';let currentMusicId=null;function stopSpc(){try{const b=SMWCentral&&SMWCentral.SPCPlayer&&SMWCentral.SPCPlayer.Backend;if(b&&b.status===1)b.stopSPC();const p=document.getElementById('spc-player-interface');if(p)p.classList.remove('shown')}catch(e){console.error(e)}}async function playMusic(musicId,button){try{if(typeof SMWCentral==='undefined'||!SMWCentral.SPCPlayer)throw new Error('SPC Player not loaded');if(currentMusicId===musicId){stopSpc();button.textContent='▶ Play Preview';currentMusicId=null;return}if(currentMusicId!==null)stopSpc();button.textContent='Loading...';button.disabled=true;const apiUrl='https://www.smwcentral.net/ajax.php?a=getfilepreview&s=smwmusic&id='+musicId+'&index=0';const response=await fetch(PROXY_URL+'?url='+encodeURIComponent(apiUrl));const data=await response.json();if(!data.data)throw new Error('No SPC data');SMWCentral.SPCPlayer.loadSong({index:0,files:[data.filename||'music.spc'],filename:data.filename||'music.spc',title:data.title||'Unknown',game:data.game||'',comment:data.comment||'',date:data.date||'',duration:data.duration||0,fade:data.fade||1000,author:data.author||'',data:data.data});currentMusicId=musicId;button.textContent='⏸ Stop';button.disabled=false;document.querySelectorAll('.play-button').forEach(btn=>{if(btn!==button){btn.textContent='▶ Play Preview';btn.disabled=false}});const toggle=document.getElementById('spc-player-toggle');if(toggle){const check=setInterval(()=>{if(!toggle.checked){button.textContent='▶ Play Preview';currentMusicId=null;clearInterval(check)}},500)}}catch(e){console.error(e);button.textContent='▶ Play Preview';button.disabled=false;alert('Failed: '+e.message)}}function toggleTheme(){const t=document.documentElement.getAttribute('data-theme')==='dark'?'light':'dark';document.documentElement.setAttribute('data-theme',t);localStorage.setItem('credits-theme',t);const icon=document.querySelector('.theme-icon');if(icon)icon.textContent=t==='dark'?'☀️':'🌙'}function filterCredits(){const q=document.getElementById('creditsSearchInput');if(!q)return;const val=q.value.toLowerCase();document.querySelectorAll('.category-section').forEach(section=>{let visible=0;section.querySelectorAll('.credit-item').forEach(item=>{const match=item.textContent.toLowerCase().includes(val);item.style.display=match?'':'none';if(match)visible++});section.style.display=visible?'':'none'})}function nextImage(img){const gallery=img.parentElement;const images=JSON.parse(gallery.dataset.images);if(images.length<=1)return;const idx=(images.indexOf(img.src)+1)%images.length;img.src=images[idx];const counter=gallery.querySelector('.image-counter');if(counter)counter.textContent=(idx+1)+'/'+images.length}document.addEventListener('DOMContentLoaded',()=>{const t=localStorage.getItem('credits-theme')||'dark';document.documentElement.setAttribute('data-theme',t);const icon=document.querySelector('.theme-icon');if(icon)icon.textContent=t==='dark'?'☀️':'🌙'});</script>
+	<div class="container">
+		<div class="header-with-toggle">
+			<h1>Cracka's Shell Hack Baserom</h1>
+			<button class="theme-toggle" onclick="toggleTheme()" title="Toggle Dark/Light Mode">
+				<span class="theme-icon">☀️</span>
+			</button>
+		</div>
+		<p class="hack-description">Made from RHR Baserom 5.12</p>
+		<div class="search-container" style="margin: 2rem 0;">
+			<input type="text" id="creditsSearchInput" placeholder="Search resources..." class="search-input" oninput="filterCredits()">
+		</div>
+		<div id="creditsContent">
+		<section class="category-section">
+			<h2>Blocks</h2>
+			<div class="credits-grid">
+		<div class="credit-item">
+			<h3><a href="https://www.smwcentral.net/?p=section&a=details&id=22543" target="_blank">Carryable Sprite Spawner Blocks Pack</a></h3>
+			<p class="author">by Nowieso</p>
+			
+			
+				<div class="image-gallery" data-images='["https://dl.smwcentral.net/image/65298.gif"]'>
+					<img src="https://dl.smwcentral.net/image/65298.gif" alt="Carryable Sprite Spawner Blocks Pack" onclick="nextImage(this)">
+					
+				</div>
+			
+			
+			<details>
+				<summary>Description</summary>
+				<div class="description">
+					This is a pack containing 10 custom blocks that can spawn every carryable vanilla sprite in Mario's hands if the player is holding a run button. It works with:<br>
+<br>
+- Baby Yoshi<br>
+- Buzzy Beetle<br>
+- Bob-Omb<br>
+- Galoomba<br>
+- Key<br>
+- Mechakoopa<br>
+- P-Switch<br>
+- Shell<br>
+- Spring<br>
+- Throwblock<br>
+<br>
+Make sure to check out the ASM files for some customization options. Also remember that the mechakoopa, beetle and bomb sprites need tileset specific graphics.<br>
+<br>
+V1.1:<br>
+- Fixed an issue with the position of the spawned sprite<br>
+
+				</div>
+				<a href="https://dl.smwcentral.net/22543/Carryable%20Sprite%20Spawner%20Blocks%20Pack_1.1.zip" class="download-link" download>↓ Download</a>
+			</details>
+			
+		</div>
+	
+		<div class="credit-item">
+			<h3><a href="https://www.smwcentral.net/?p=section&a=details&id=23550" target="_blank">Collectable ON/OFF block</a></h3>
+			<p class="author">by Darolac</p>
+			
+			
+				<div class="image-gallery" data-images='["https://dl.smwcentral.net/image/68062.gif"]'>
+					<img src="https://dl.smwcentral.net/image/68062.gif" alt="Collectable ON/OFF block" onclick="nextImage(this)">
+					
+				</div>
+			
+			
+			<details>
+				<summary>Description</summary>
+				<div class="description">
+					This ON/OFF blocks can be collected and will disappear leaving only a little spark behind them.
+				</div>
+				<a href="https://dl.smwcentral.net/23550/onoff.zip" class="download-link" download>↓ Download</a>
+			</details>
+			
+		</div>
+	
+		<div class="credit-item">
+			<h3><a href="https://www.smwcentral.net/?p=section&a=details&id=3941" target="_blank">Collectable Shell Coins</a></h3>
+			<p class="author">by wiiqwertyuiop</p>
+			
+			
+			
+			<details>
+				<summary>Description</summary>
+				<div class="description">
+					Coins that can be collected by throwing a shell at them, in addition to being collectable by Mario. Also comes with a Yoshi Coin one - note that this one is only one 16x16 block. <br>
+<br>
+Note: Don't put them by walls!
+				</div>
+				<a href="https://dl.smwcentral.net/3941/Shellable.zip" class="download-link" download>↓ Download</a>
+			</details>
+			
+		</div>
+	
+		<div class="credit-item">
+			<h3><a href="https://www.smwcentral.net/?p=section&a=details&id=22749" target="_blank">Customizable Animated Boost Blocks Pack</a></h3>
+			<p class="author">by Nowieso, swunsh_</p>
+			
+			
+				<div class="image-gallery" data-images='["https://dl.smwcentral.net/image/65785.gif"]'>
+					<img src="https://dl.smwcentral.net/image/65785.gif" alt="Customizable Animated Boost Blocks Pack" onclick="nextImage(this)">
+					
+				</div>
+			
+			
+			<details>
+				<summary>Description</summary>
+				<div class="description">
+					A pack of animated boost blocks that can send the player in any direction. They are very customizable, so make sure to check out the ASM files!<br>
+<br>
+ASM made by Nowieso, graphics made by swunsh_ .
+				</div>
+				<a href="https://dl.smwcentral.net/22749/Boost%20Blocks%20Pack.zip" class="download-link" download>↓ Download</a>
+			</details>
+			
+		</div>
+	
+		<div class="credit-item">
+			<h3><a href="https://www.smwcentral.net/?p=section&a=details&id=22898" target="_blank">Customizable Sprite Killer</a></h3>
+			<p class="author">by Nowieso</p>
+			
+			
+				<div class="image-gallery" data-images='["https://dl.smwcentral.net/image/66146.gif"]'>
+					<img src="https://dl.smwcentral.net/image/66146.gif" alt="Customizable Sprite Killer" onclick="nextImage(this)">
+					
+				</div>
+			
+			
+			<details>
+				<summary>Description</summary>
+				<div class="description">
+					A block that kills sprites touching it. <br>
+<br>
+This version does not have the issue that kicked sprites touching it can turn the block into a "brown used block" and generate Yoshi-Wings, Keys  or other sprites.<br>
+<br>
+It comes with some customization options, so make sure to check out the ASM file!
+				</div>
+				<a href="https://dl.smwcentral.net/22898/Sprite%20Killer.zip" class="download-link" download>↓ Download</a>
+			</details>
+			
+		</div>
+	
+		<div class="credit-item">
+			<h3><a href="https://www.patreon.com/posts/directional-35380449" target="_blank">Directional Kaizo Blocks</a></h3>
+			<p class="author">by dtothefourth</p>
+			
+			
+			
+			<details>
+				<summary>Description</summary>
+				<div class="description">
+					Kaizo blocks that update from the left right or top.
+				</div>
+				<a href="https://www.patreon.com/posts/directional-35380449" class="download-link" download>↓ Download</a>
+			</details>
+			
+		</div>
+	
+		<div class="credit-item">
+			<h3><a href="https://www.smwcentral.net/?p=section&a=details&id=42051" target="_blank">Endless Throw Block</a></h3>
+			<p class="author">by AmperSam</p>
+			
+			
+				<div class="image-gallery" data-images='["https://dl.smwcentral.net/image/122834.gif","https://dl.smwcentral.net/image/122835.gif"]'>
+					<img src="https://dl.smwcentral.net/image/122834.gif" alt="Endless Throw Block" onclick="nextImage(this)">
+					<span class="image-counter">1/2</span>
+				</div>
+			
+			
+			<details>
+				<summary>Description</summary>
+				<div class="description">
+					The ol' infinite or endless supply throw block. This is a simple block that spawns a throw block in Mario's hands when touching it and pressing grab. It has an option to make it a limited-spawner (melts other blocks).<br>
+<br>
+Credit unnecessary.
+				</div>
+				<a href="https://dl.smwcentral.net/42051/endlessthrowblock.zip" class="download-link" download>↓ Download</a>
+			</details>
+			
+		</div>
+	
+		<div class="credit-item">
+			<h3><a href="https://www.smwcentral.net/?p=section&a=details&id=41117" target="_blank">Key Lock Blocks</a></h3>
+			<p class="author">by HammerBrother</p>
+			
+			
+				<div class="image-gallery" data-images='["https://dl.smwcentral.net/image/119773.gif","https://dl.smwcentral.net/image/119774.gif","https://dl.smwcentral.net/image/119775.gif"]'>
+					<img src="https://dl.smwcentral.net/image/119773.gif" alt="Key Lock Blocks" onclick="nextImage(this)">
+					<span class="image-counter">1/3</span>
+				</div>
+			
+			
+			<details>
+				<summary>Description</summary>
+				<div class="description">
+					This package contains many key block barriers in different shapes:<br>
+<br>
+-A 2 block long (vertically and horizontally)<br>
+-A 3 block long (vertically and horizontally)<br>
+-A 32x32 px (2x2 16x16) block<br>
+<br>
+And also an option if you want a stackable key counter like in the zelda series.
+				</div>
+				<a href="https://dl.smwcentral.net/41117/Key%20Lock%20Blocks.zip" class="download-link" download>↓ Download</a>
+			</details>
+			
+		</div>
+	
+		<div class="credit-item">
+			<h3><a href="https://www.smwcentral.net/?p=section&a=details&id=19967" target="_blank">Mario Solid and Sprite Solid Blocks</a></h3>
+			<p class="author">by ASMagician Maks</p>
+			
+			
+				<div class="image-gallery" data-images='["https://dl.smwcentral.net/image/58392.gif","https://dl.smwcentral.net/image/58393.gif","https://dl.smwcentral.net/image/58394.gif"]'>
+					<img src="https://dl.smwcentral.net/image/58392.gif" alt="Mario Solid and Sprite Solid Blocks" onclick="nextImage(this)">
+					<span class="image-counter">1/3</span>
+				</div>
+			
+			
+			<details>
+				<summary>Description</summary>
+				<div class="description">
+					The classic blocks that are only solid for Mario or sprites which makes a lot of new setups possible.<br>
+This version allows you to make multiple different blocks like ledges and slopes only solid for either just by using 1 asm file.<br>
+It also contains settings for whether blocks solid for Mario should also be solid for his fireballs and/or Yoshi and vice versa.<br>
+
+				</div>
+				<a href="https://dl.smwcentral.net/19967/mario%20solid%20and%20sprite%20solid%20blocks.zip" class="download-link" download>↓ Download</a>
+			</details>
+			
+		</div>
+	
+		<div class="credit-item">
+			<h3><a href="https://www.smwcentral.net/?p=section&a=details&id=3985" target="_blank">Passable By Shells</a></h3>
+			<p class="author">by wiiqwertyuiop</p>
+			
+			
+			
+			<details>
+				<summary>Description</summary>
+				<div class="description">
+					A block that is only passable by shells.
+				</div>
+				<a href="https://dl.smwcentral.net/3985/shellonly.zip" class="download-link" download>↓ Download</a>
+			</details>
+			
+		</div>
+	
+		<div class="credit-item">
+			<h3><a href="https://www.patreon.com/posts/remote-unlock-49677792" target="_blank">Remote Unlock Key Doors</a></h3>
+			<p class="author">by dtothefourth</p>
+			
+			
+			
+			<details>
+				<summary>Description</summary>
+				<div class="description">
+					Expansion of the locked door blocks which adds an option to allow them to be opened with a thrown / non-carried key
+				</div>
+				<a href="https://www.patreon.com/posts/remote-unlock-49677792" class="download-link" download>↓ Download</a>
+			</details>
+			
+		</div>
+	
+		<div class="credit-item">
+			<h3><a href="https://www.smwcentral.net/?p=section&a=details&id=31281" target="_blank">Simple Walljump</a></h3>
+			<p class="author">by xhsdf</p>
+			
+			
+				<div class="image-gallery" data-images='["https://dl.smwcentral.net/image/91273.gif","https://dl.smwcentral.net/image/91274.gif"]'>
+					<img src="https://dl.smwcentral.net/image/91273.gif" alt="Simple Walljump" onclick="nextImage(this)">
+					<span class="image-counter">1/2</span>
+				</div>
+			
+			
+			<details>
+				<summary>Description</summary>
+				<div class="description">
+					Simple wall jump block used in Super Foo World. Some people asked for this.<br>
+<br>
+<br>
+- Block will activate even without the player holding against the wall<br>
+- will launch the player quite far if dpad is neutraled<br>
+- preserves type of jump (normal, spin, duck)
+				</div>
+				<a href="https://dl.smwcentral.net/31281/walljump.zip" class="download-link" download>↓ Download</a>
+			</details>
+			
+		</div>
+	
+		<div class="credit-item">
+			<h3><a href="https://www.smwcentral.net/?p=section&a=details&id=41591" target="_blank">Sprite Pipes</a></h3>
+			<p class="author">by CarlSagan42</p>
+			
+			
+				<div class="image-gallery" data-images='["https://dl.smwcentral.net/image/121612.gif","https://dl.smwcentral.net/image/121613.gif","https://dl.smwcentral.net/image/121614.gif","https://dl.smwcentral.net/image/121615.gif","https://dl.smwcentral.net/image/121616.gif"]'>
+					<img src="https://dl.smwcentral.net/image/121612.gif" alt="Sprite Pipes" onclick="nextImage(this)">
+					<span class="image-counter">1/5</span>
+				</div>
+			
+			
+			<details>
+				<summary>Description</summary>
+				<div class="description">
+					These are pipes that allow both Mario and sprites to enter. They are designed to be very simple to use, needing only one UberASM and blocks. <br>
+<br>
+Currently, the pipes work with vanilla 16x16 sprites, as well as yoshi and kicked sprites, and also with Mario regardless of powerup state. Mario can carry items into the pipes, and if either Mario or a sprite has their exit blocked, they'll simply turn around and go back the other way.<br>
+<br>
+In the future, bigger pipes which support larger sprites could be added.<br>
+<br>
+I have always loved the screen scrolling pipes created by HammerBrother, and I wondered what it would be like if sprites could also enter them. This is my attempt to realize that dream!<br>
+<br>
+Huge thank you to TheBourgyman for the awesome glass pipe GFx.
+				</div>
+				<a href="https://dl.smwcentral.net/41591/Sprite%20Pipes%201.0.zip" class="download-link" download>↓ Download</a>
+			</details>
+			
+		</div>
+	
+		<div class="credit-item">
+			<h3><a href="https://www.smwcentral.net/?p=section&a=details&id=32053" target="_blank">Sprite/Shell Speed Limiter</a></h3>
+			<p class="author">by xhsdf</p>
+			
+			
+				<div class="image-gallery" data-images='["https://dl.smwcentral.net/image/93657.gif"]'>
+					<img src="https://dl.smwcentral.net/image/93657.gif" alt="Sprite/Shell Speed Limiter" onclick="nextImage(this)">
+					
+				</div>
+			
+			
+			<details>
+				<summary>Description</summary>
+				<div class="description">
+					Limits the speed of a sprite to a configurable limit. Tested with shells.<br>
+Can be used to make shells easier to hit or make their speed consistent. Sprites will keep their new speed even after leaving the block.
+				</div>
+				<a href="https://dl.smwcentral.net/32053/sprite_speed_limit.asm.zip" class="download-link" download>↓ Download</a>
+			</details>
+			
+		</div>
+	
+		<div class="credit-item">
+			<h3><a href="https://www.smwcentral.net/?p=section&a=details&id=14496" target="_blank">Sticky Ceiling</a></h3>
+			<p class="author">by MellyMellouange</p>
+			
+			
+				<div class="image-gallery" data-images='["https://dl.smwcentral.net/image/41252.gif","https://dl.smwcentral.net/image/41253.gif","https://dl.smwcentral.net/image/41254.gif"]'>
+					<img src="https://dl.smwcentral.net/image/41252.gif" alt="Sticky Ceiling" onclick="nextImage(this)">
+					<span class="image-counter">1/3</span>
+				</div>
+			
+			
+			<details>
+				<summary>Description</summary>
+				<div class="description">
+					A ceiling that the player will stick to when going upwards and holding a Jump button. <br>
+<br>
+Enemies will also stick to the ceiling as long as they have upwards vertical speed. Sprites in "Stunned" or "Thrown" state will stick to the ceiling until they either move away from it, or the player grabs it.<br>
+<br>
+When going downwards, the player and any sprite will just fall through.<br>
+<br>
+Represented by Yellow Glass in the gif set.
+				</div>
+				<a href="https://dl.smwcentral.net/14496/stickyceiling.zip" class="download-link" download>↓ Download</a>
+			</details>
+			
+		</div>
+	
+		<div class="credit-item">
+			<h3><a href="https://www.smwcentral.net/?p=section&a=details&id=41236" target="_blank">Super Mario Bros. 3 Screen Scrolling Pipes v4.0.2</a></h3>
+			<p class="author">by HammerBrother</p>
+			
+			
+				<div class="image-gallery" data-images='["https://dl.smwcentral.net/image/120138.gif","https://dl.smwcentral.net/image/120139.gif","https://dl.smwcentral.net/image/120140.gif","https://dl.smwcentral.net/image/120141.gif","https://dl.smwcentral.net/image/120142.gif","https://dl.smwcentral.net/image/120143.gif","https://dl.smwcentral.net/image/120144.gif","https://dl.smwcentral.net/image/120145.gif","https://dl.smwcentral.net/image/120146.gif","https://dl.smwcentral.net/image/120147.gif","https://dl.smwcentral.net/image/120148.gif","https://dl.smwcentral.net/image/120149.gif","https://dl.smwcentral.net/image/120150.gif","https://dl.smwcentral.net/image/120151.gif"]'>
+					<img src="https://dl.smwcentral.net/image/120138.gif" alt="Super Mario Bros. 3 Screen Scrolling Pipes v4.0.2" onclick="nextImage(this)">
+					<span class="image-counter">1/14</span>
+				</div>
+			
+			
+			<details>
+				<summary>Description</summary>
+				<div class="description">
+					See tutorial <a href="https://www.smwcentral.net/?p=section&a=details&id=24974">here</a>. The blocks section has a small 1MIB limit preventing me from submitting this as a whole.<br>
+<br>
+These pipes, when entered, will cause the player to travel through them within the same level rather than refreshing the screen. Useful for maze levels for those who refuse to use screen exits.<br>
+<br>
+Notes:<br>
+* If there are at least 2 sprites on screen, and Mario enters a pipe, he will partially disappear as he enters a pipe. You should patch <a href="https://smwc.me/s/40702">NMSTL</a> to prevent that.<br>
+* If you have a low-gravity generator that does <div class="code inline filter-noemote filter-nobr"><pre>DEC $7D</pre></div> (Mario's Y speed), make sure that you add a check that if $9D is nonzero, or the low nibble (low 4 bits, %----XXXX) of RAM address <div class="code inline filter-noemote filter-nobr"><pre>!pipe_dir</pre></div> is non-zero, then skip/return, because otherwise Mario will rise up slowly while traveling through horizontal pipes. You absolutely don't want to touch his physics while inside pipes.<br>
+<br>
+GitHub: <a href="https://github.com/GhbSmwc/SMB3_ScreenScrollingPipes" rel="nofollow">https://github.com/GhbSmwc/SMB3_ScreenScrollingPipes</a><br>
+<br>
+<div class="collapse"><div class="collapse-header"><span>Changelog</span></div><div class="collapse-content">Version 4.0.0 updates:<br>
+-Added screen scrolling *warp* pipes<br>
+-Cap cannons<br>
+-Several bug fixes<br>
+-Blocks rearranged<br>
+-Vertical pipes (normal-size) enterable-width can now be customized<br>
+v4.0.1:<br>
+-Fixed a potential issue where setting $13FB (often set by yoshi growing animation) during pipe transition does not freeze the timer !Freeram_SSP_PipeTmr. Most likely this bug will happen with other ASM resources using $13FB<br>
+<br>
+See more in Version_History.txt.</div></div><br>
+
+				</div>
+				<a href="https://dl.smwcentral.net/41236/SMB3_ScreenScrollingPipes-master.zip" class="download-link" download>↓ Download</a>
+			</details>
+			
+		</div>
+	
+		<div class="credit-item">
+			<h3><a href="https://www.smwcentral.net/?p=section&a=details&id=15345" target="_blank">Switchable One-Way Blocks</a></h3>
+			<p class="author">by Thomas</p>
+			
+			
+				<div class="image-gallery" data-images='["https://dl.smwcentral.net/image/43928.gif"]'>
+					<img src="https://dl.smwcentral.net/image/43928.gif" alt="Switchable One-Way Blocks" onclick="nextImage(this)">
+					
+				</div>
+			
+			
+			<details>
+				<summary>Description</summary>
+				<div class="description">
+					This blocks Mario, sprites, and fireballs in one of two directions depending on a specified switch. Which directions and what switch can be easily changed.
+				</div>
+				<a href="https://dl.smwcentral.net/15345/one_way_onoff.zip" class="download-link" download>↓ Download</a>
+			</details>
+			
+		</div>
+	</div>
+		</section>
+	
+		<section class="category-section">
+			<h2>Graphics</h2>
+			<div class="credits-grid">
+		<div class="credit-item">
+			<h3><a href="https://www.smwcentral.net/?p=section&a=details&id=33198" target="_blank">Arrows and Item Indicators</a></h3>
+			<p class="author">by ECS.98</p>
+			
+			
+				<div class="image-gallery" data-images='["https://dl.smwcentral.net/image/97479.png","https://dl.smwcentral.net/image/97480.png","https://dl.smwcentral.net/image/97481.png","https://dl.smwcentral.net/image/97482.png","https://dl.smwcentral.net/image/97483.png","https://dl.smwcentral.net/image/97484.png"]'>
+					<img src="https://dl.smwcentral.net/image/97479.png" alt="Arrows and Item Indicators" onclick="nextImage(this)">
+					<span class="image-counter">1/6</span>
+				</div>
+			
+			
+			<details>
+				<summary>Description</summary>
+				<div class="description">
+					This is a pack of tiles intended to be used as item indicators. Essentially, they were made as a way to show where the player should throw/drop/use an item.<br>
+Think of it as in those kaizo levels where a coin is used to indicate where a shell should be thrown.<br>
+It also comes with arrow graphics in all 8 directions and "correct" and "wrong" symbols, so hopefully it can be useful in a variety of situations.<br>
+<br>
+Note: This uses a handful of palette rows to accomodate for the palettes of all different sprites, but uses the right side of them, so the only palette that is overwritten is the Pink Berry's.<br>
+If you don't use all indicators, you might not need all the palettes. (The readme contains detailed information on palette usage)
+				</div>
+				<a href="https://dl.smwcentral.net/33198/Arrows%20and%20Item%20Indicators.zip" class="download-link" download>↓ Download</a>
+			</details>
+			
+		</div>
+	
+		<div class="credit-item">
+			<h3><a href="https://www.smwcentral.net/?p=section&a=details&id=39481" target="_blank">Death/Skull Blocks</a></h3>
+			<p class="author">by AmperSam</p>
+			
+			
+				<div class="image-gallery" data-images='["https://dl.smwcentral.net/image/114424.png","https://dl.smwcentral.net/image/114425.png"]'>
+					<img src="https://dl.smwcentral.net/image/114424.png" alt="Death/Skull Blocks" onclick="nextImage(this)">
+					<span class="image-counter">1/2</span>
+				</div>
+			
+			
+			<details>
+				<summary>Description</summary>
+				<div class="description">
+					Assorted skull blocks I've made over the years. Use with <a href="https://www.smwcentral.net/?p=section&a=details&id=27268">death blocks</a> or as a muncher reskin. Though my suggestion is to reserve it for death blocks because 💀 = dead.<br>
+<br>
+Uses vanilla palettes. Credit unnecessary.
+				</div>
+				<a href="https://dl.smwcentral.net/39481/Death%20Skull%20Blocks%20Package.zip" class="download-link" download>↓ Download</a>
+			</details>
+			
+		</div>
+	
+		<div class="credit-item">
+			<h3><a href="https://www.smwcentral.net/?p=section&a=details&id=41139" target="_blank">ON/OFF Coins</a></h3>
+			<p class="author">by AmperSam</p>
+			
+			
+				<div class="image-gallery" data-images='["https://dl.smwcentral.net/image/119831.gif","https://dl.smwcentral.net/image/119832.png"]'>
+					<img src="https://dl.smwcentral.net/image/119831.gif" alt="ON/OFF Coins" onclick="nextImage(this)">
+					<span class="image-counter">1/2</span>
+				</div>
+			
+			
+			<details>
+				<summary>Description</summary>
+				<div class="description">
+					An animated ON/OFF coin graphic, as seen in the <a href="https://www.smwcentral.net/?p=viewthread&t=121513">RHR Baserom</a>, to be used with something like <a href="https://www.smwcentral.net/?p=section&a=details&id=23550">Collectable ON/OFF block</a>.<br>
+<br>
+Credit is unnecessary.
+				</div>
+				<a href="https://dl.smwcentral.net/41139/on-off-coins.zip" class="download-link" download>↓ Download</a>
+			</details>
+			
+		</div>
+	
+		<div class="credit-item">
+			<h3><a href="https://www.smwcentral.net/?p=section&a=details&id=37408" target="_blank">Redrawn Styled Hurt/Death Block</a></h3>
+			<p class="author">by Hammerer</p>
+			
+			
+				<div class="image-gallery" data-images='["https://dl.smwcentral.net/image/106919.png","https://dl.smwcentral.net/image/106920.png","https://dl.smwcentral.net/image/106921.png","https://dl.smwcentral.net/image/106922.png"]'>
+					<img src="https://dl.smwcentral.net/image/106919.png" alt="Redrawn Styled Hurt/Death Block" onclick="nextImage(this)">
+					<span class="image-counter">1/4</span>
+				</div>
+			
+			
+			<details>
+				<summary>Description</summary>
+				<div class="description">
+					A redrawn styled death block useful for signaling a hurting block. It acts as 12F (the piranha plant act as that hurts the player) but you can set it as 130, 25 or whatever you want. <br>
+<br>
+It uses only 3 tiles from BG3 so probably won't take up much slot, and uses the blank part of palette row 7 (along with black and white used colors).<br>
+<br>
+You can also use this graphic for custom blocks like <a href="https://smwc.me/s/9473">this</a> and <a href="https://smwc.me/s/27268">this</a>.
+				</div>
+				<a href="https://dl.smwcentral.net/37408/Death%20Block%20Redrawn.zip" class="download-link" download>↓ Download</a>
+			</details>
+			
+		</div>
+	
+		<div class="credit-item">
+			<h3><a href="https://www.smwcentral.net/?p=section&a=details&id=41138" target="_blank">Small Animated One-Ways</a></h3>
+			<p class="author">by AmperSam</p>
+			
+			
+				<div class="image-gallery" data-images='["https://dl.smwcentral.net/image/119829.gif","https://dl.smwcentral.net/image/119830.png"]'>
+					<img src="https://dl.smwcentral.net/image/119829.gif" alt="Small Animated One-Ways" onclick="nextImage(this)">
+					<span class="image-counter">1/2</span>
+				</div>
+			
+			
+			<details>
+				<summary>Description</summary>
+				<div class="description">
+					A set of graphics, as seen in the <a href="https://www.smwcentral.net/?p=viewthread&t=121513">RHR Baserom</a>, to be used with the <a href="https://www.smwcentral.net/?p=section&a=details&id=33312">One-Way Blocks</a>.<br>
+<br>
+Credit is unnecessary.
+				</div>
+				<a href="https://dl.smwcentral.net/41138/16x16-one-ways.zip" class="download-link" download>↓ Download</a>
+			</details>
+			
+		</div>
+	
+		<div class="credit-item">
+			<h3><a href="https://www.smwcentral.net/?p=section&a=details&id=40928" target="_blank">Super Mario All-Stars: Super Mario Bros. 3 -  Munchers</a></h3>
+			<p class="author">by SuperWaluigiBro</p>
+			
+			
+				<div class="image-gallery" data-images='["https://dl.smwcentral.net/image/119514.gif","https://dl.smwcentral.net/image/119515.png"]'>
+					<img src="https://dl.smwcentral.net/image/119514.gif" alt="Super Mario All-Stars: Super Mario Bros. 3 -  Munchers" onclick="nextImage(this)">
+					<span class="image-counter">1/2</span>
+				</div>
+			
+			
+			<details>
+				<summary>Description</summary>
+				<div class="description">
+					The graphics of the Munchers seen in the SMAS version of Super Mario Bros. 3. 
+				</div>
+				<a href="https://dl.smwcentral.net/40928/SMAS%20SMB3%20-%20Munchers.zip" class="download-link" download>↓ Download</a>
+			</details>
+			
+		</div>
+	
+		<div class="credit-item">
+			<h3><a href="https://www.smwcentral.net/?p=section&a=details&id=21671" target="_blank">Super Mario Maker 2 - P-Switch Block</a></h3>
+			<p class="author">by Ralshi02</p>
+			
+			
+				<div class="image-gallery" data-images='["https://dl.smwcentral.net/image/98301.gif","https://dl.smwcentral.net/image/98302.png","https://dl.smwcentral.net/image/98303.png","https://dl.smwcentral.net/image/98304.png","https://dl.smwcentral.net/image/98305.png","https://dl.smwcentral.net/image/98306.png","https://dl.smwcentral.net/image/98307.png"]'>
+					<img src="https://dl.smwcentral.net/image/98301.gif" alt="Super Mario Maker 2 - P-Switch Block" onclick="nextImage(this)">
+					<span class="image-counter">1/7</span>
+				</div>
+			
+			
+			<details>
+				<summary>Description</summary>
+				<div class="description">
+					The P-Switch block from Super Mario Maker 2.<br>
+<br>
+To use with <a href="https://www.smwcentral.net/?p=section&a=details&id=15344">these blocks</a>.
+				</div>
+				<a href="https://dl.smwcentral.net/21671/SMM2%20-%20P-Switch%20Block.zip" class="download-link" download>↓ Download</a>
+			</details>
+			
+		</div>
+	
+		<div class="credit-item">
+			<h3><a href="https://www.smwcentral.net/?p=section&a=details&id=24465" target="_blank">Super Mario Maker 2: SMB1/SMB3/SMW - Spike Trap</a></h3>
+			<p class="author">by Ralshi02</p>
+			
+			
+				<div class="image-gallery" data-images='["https://dl.smwcentral.net/image/70351.png","https://dl.smwcentral.net/image/70352.gif","https://dl.smwcentral.net/image/70353.png","https://dl.smwcentral.net/image/70354.png"]'>
+					<img src="https://dl.smwcentral.net/image/70351.png" alt="Super Mario Maker 2: SMB1/SMB3/SMW - Spike Trap" onclick="nextImage(this)">
+					<span class="image-counter">1/4</span>
+				</div>
+			
+			
+			<details>
+				<summary>Description</summary>
+				<div class="description">
+					The Spike Trap from Super Mario Maker 2 in the SMB1, SMB3 and SMW style.<br>
+<br>
+-The SMB1 version has 4 alternative palettes<br>
+-The SMB3 version has 3 alternative palettes<br>
+-The SMW version uses vanilla palette 4.<br>
+-Credit not needed <br>
+<br>
+UPDATE:<br>
+<br>
+Optimised .bin files
+				</div>
+				<a href="https://dl.smwcentral.net/24465/SMM2_Spike_Trap.zip" class="download-link" download>↓ Download</a>
+			</details>
+			
+		</div>
+	
+		<div class="credit-item">
+			<h3><a href="https://www.smwcentral.net/?p=section&a=details&id=24096" target="_blank">Super Mario Maker 2: Super Mario World - Big Sign and Arrows</a></h3>
+			<p class="author">by Ralshi02</p>
+			
+			
+				<div class="image-gallery" data-images='["https://dl.smwcentral.net/image/100895.png","https://dl.smwcentral.net/image/100896.png","https://dl.smwcentral.net/image/100897.png"]'>
+					<img src="https://dl.smwcentral.net/image/100895.png" alt="Super Mario Maker 2: Super Mario World - Big Sign and Arrows" onclick="nextImage(this)">
+					<span class="image-counter">1/3</span>
+				</div>
+			
+			
+			<details>
+				<summary>Description</summary>
+				<div class="description">
+					The Big Signs (normal and snow version) and the Arrows from Super Mario Maker 2 in the Super Mario World style.<br>
+(the diagonal arrows are custom)<br>
+<br>
+Super Mario Bros. 3 version available <a href="https://www.smwcentral.net/?p=section&a=details&id=24115">here</a>.<br>
+Super Mario Bros. version available <a href="https://www.smwcentral.net/?p=section&a=details&id=24116">here</a>.
+				</div>
+				<a href="https://dl.smwcentral.net/24096/SMM2%20SMW%20Sign.zip" class="download-link" download>↓ Download</a>
+			</details>
+			
+		</div>
+	
+		<div class="credit-item">
+			<h3><a href="https://www.smwcentral.net/?p=section&a=details&id=19123" target="_blank">Super Mario Maker 2: Super Mario World - ON/OFF Blocks</a></h3>
+			<p class="author">by Ralshi02</p>
+			
+			
+				<div class="image-gallery" data-images='["https://dl.smwcentral.net/image/96047.gif","https://dl.smwcentral.net/image/96048.gif","https://dl.smwcentral.net/image/96049.png","https://dl.smwcentral.net/image/96050.png"]'>
+					<img src="https://dl.smwcentral.net/image/96047.gif" alt="Super Mario Maker 2: Super Mario World - ON/OFF Blocks" onclick="nextImage(this)">
+					<span class="image-counter">1/4</span>
+				</div>
+			
+			
+			<details>
+				<summary>Description</summary>
+				<div class="description">
+					These are the ON/OFF block graphics from Super Mario Maker 2, both the ON/OFF switch block and the solid/not solid blocks. <br>
+<br>
+To actually get the ON/OFF functionality, please get the blocks from here: <a href="https://www.smwcentral.net/?p=section&a=details&id=15344">Switch Pack</a><br>
+<br>
+Note: To get the full experience, replace the original GFX33 with this one to get the  alternating white/black letters and to get the ON/OFF switches to use the correct blue and red colors. Replace GFX03 if you want the bounce sprite to be consistent with these graphics.<br>
+<br>
+<i>Moderator's Note: GFX03 doesn't work very well because it only contains the OFF frame (instead of an "empty" frame like the vanilla one) making the transition inconsistent. Heavily suggested to just stay with the vanilla sprite, but it's up to you ultimately.</i>
+				</div>
+				<a href="https://dl.smwcentral.net/19123/SMM2%20SMW%20-%20ON-OFF%20Blocks.zip" class="download-link" download>↓ Download</a>
+			</details>
+			
+		</div>
+	</div>
+		</section>
+	
+		<section class="category-section">
+			<h2>UberASM</h2>
+			<div class="credits-grid">
+		<div class="credit-item">
+			<h3><a href="https://www.patreon.com/posts/customizable-33289295" target="_blank">Customizable Meters</a></h3>
+			<p class="author">by dtothefourth</p>
+			
+			
+			
+			<details>
+				<summary>Description</summary>
+				<div class="description">
+					An UberASM which makes it easy to display any value as a text and/or bar on the screen.
+
+Has options like vertical, horizontal, wide, any length, value ranges, background / overlay, sprite indexing, and more.
+
+Includes a required patch and a few examples and graphics.
+				</div>
+				<a href="https://www.patreon.com/posts/customizable-33289295" class="download-link" download>↓ Download</a>
+			</details>
+			
+		</div>
+	
+		<div class="credit-item">
+			<h3><a href="https://www.patreon.com/posts/27729540" target="_blank">Shell Regrab</a></h3>
+			<p class="author">by dtothefourth</p>
+			
+			
+				<div class="image-gallery" data-images='["https://x.com/i/status/1141078867773480961"]'>
+					<img src="https://x.com/i/status/1141078867773480961" alt="Shell Regrab" onclick="nextImage(this)">
+					
+				</div>
+			
+			
+			<details>
+				<summary>Description</summary>
+				<div class="description">
+					UberASM which when applied to a level allows a shell to be immediately grabbed again while bouncing off of it . Requested by GlitchCat7
+				</div>
+				<a href="https://www.patreon.com/posts/27729540" class="download-link" download>↓ Download</a>
+			</details>
+			
+		</div>
+	
+		<div class="credit-item">
+			<h3><a href="https://www.patreon.com/posts/smm-death-icons-47092041" target="_blank">SMM Death Icons</a></h3>
+			<p class="author">by dtothefourth</p>
+			
+			
+			
+			<details>
+				<summary>Description</summary>
+				<div class="description">
+					Maker Style death icons that show the spots you have died
+				</div>
+				<a href="https://www.patreon.com/posts/smm-death-icons-47092041" class="download-link" download>↓ Download</a>
+			</details>
+			
+		</div>
+	
+		<div class="credit-item">
+			<h3><a href="https://www.patreon.com/posts/sprite-info-34680870" target="_blank">Sprite Info</a></h3>
+			<p class="author">by dtothefourth</p>
+			
+			
+			
+			<details>
+				<summary>Description</summary>
+				<div class="description">
+					UberASM which displays a chosen value for every sprite
+				</div>
+				<a href="https://www.patreon.com/posts/sprite-info-34680870" class="download-link" download>↓ Download</a>
+			</details>
+			
+		</div>
+	
+		<div class="credit-item">
+			<h3><a href="https://www.patreon.com/posts/throw-speed-47723585" target="_blank">Throw Speed Tweak</a></h3>
+			<p class="author">by dtothefourth</p>
+			
+			
+			
+			<details>
+				<summary>Description</summary>
+				<div class="description">
+					UberASM that lets you tweak the throw physics for that level
+				</div>
+				<a href="https://www.patreon.com/posts/throw-speed-47723585" class="download-link" download>↓ Download</a>
+			</details>
+			
+		</div>
+	</div>
+		</section>
+	
+		<section class="category-section">
+			<h2>UberASM</h2>
+			<div class="credits-grid">
+		<div class="credit-item">
+			<h3><a href="https://www.smwcentral.net/?p=section&a=details&id=27644" target="_blank">Customizable Layer 2 Smash</a></h3>
+			<p class="author">by Kevin</p>
+			
+			
+				<div class="image-gallery" data-images='["https://dl.smwcentral.net/image/80126.gif","https://dl.smwcentral.net/image/80127.gif","https://dl.smwcentral.net/image/80128.gif"]'>
+					<img src="https://dl.smwcentral.net/image/80126.gif" alt="Customizable Layer 2 Smash" onclick="nextImage(this)">
+					<span class="image-counter">1/3</span>
+				</div>
+			
+			
+			<details>
+				<summary>Description</summary>
+				<div class="description">
+					This code replicates the behavior of the vanilla Layer 2 Smash sprites, meaning that it has 3 movement phases: "go up" phase, "go down a bit" phase and "smash down" phase.<br>
+You can customize its behavior by changing the position, speed and waiting time for each of the phases, and set different values for each screen. You can also change the "screen shake" timer (or disable it) for each screen. By changing these values you can also change the nature of the phases as well: for example, you could make it smash up and down without a middle phase, or make the middle phase go back up a bit instead of down.<br>
+You can also choose to move it horizontally or vertically, as well as moving layer 1 instead of layer 2.<br>
+Check out the asm file for more info. Comes with some example values (used for the first GIF) to show how they work.
+				</div>
+				<a href="https://dl.smwcentral.net/27644/Layer2Smash.zip" class="download-link" download>↓ Download</a>
+			</details>
+			
+		</div>
+	
+		<div class="credit-item">
+			<h3><a href="https://www.smwcentral.net/?p=section&a=details&id=26397" target="_blank">Disable Controller Buttons</a></h3>
+			<p class="author">by janklorde</p>
+			
+			
+				<div class="image-gallery" data-images='["https://dl.smwcentral.net/image/75795.gif"]'>
+					<img src="https://dl.smwcentral.net/image/75795.gif" alt="Disable Controller Buttons" onclick="nextImage(this)">
+					
+				</div>
+			
+			
+			<details>
+				<summary>Description</summary>
+				<div class="description">
+					This is a simple uberASM that allows you to disable any single or combination of controller inputs for the duration of a level. <br>
+You cannot disable combinations of buttons without also disabling them individually. <br>
+For example, if you wanted Y and B to function individually but disable Y+B pressed together, this is not possible with this patch in its current form.<br>
+<br>
+Could be used to disable spin jump or regular jump in a level, or any directional input, or any combination of these.<br>
+Can also be used to disable L/R, so you could use this to disable screen scrolling on a per level basis if you so desired.<br>
+<br>
+Credit is always appreciated :)<br>
+<br>
+<br>
+
+				</div>
+				<a href="https://dl.smwcentral.net/26397/DisableButtons.zip" class="download-link" download>↓ Download</a>
+			</details>
+			
+		</div>
+	
+		<div class="credit-item">
+			<h3><a href="https://www.smwcentral.net/?p=section&a=details&id=21711" target="_blank">Flip On/Off on LR v1.0</a></h3>
+			<p class="author">by Tattletale</p>
+			
+			
+				<div class="image-gallery" data-images='["https://dl.smwcentral.net/image/63003.gif"]'>
+					<img src="https://dl.smwcentral.net/image/63003.gif" alt="Flip On/Off on LR v1.0" onclick="nextImage(this)">
+					
+				</div>
+			
+			
+			<details>
+				<summary>Description</summary>
+				<div class="description">
+					Flips On/Off flag when you press either L or R.
+				</div>
+				<a href="https://dl.smwcentral.net/21711/OnOffOnLRv1.0.zip" class="download-link" download>↓ Download</a>
+			</details>
+			
+		</div>
+	
+		<div class="credit-item">
+			<h3><a href="https://www.smwcentral.net/?p=section&a=details&id=40850" target="_blank">Horizontal/Vertical Level Wrap</a></h3>
+			<p class="author">by Thomas</p>
+			
+			
+				<div class="image-gallery" data-images='["https://dl.smwcentral.net/image/118964.gif","https://dl.smwcentral.net/image/118965.gif"]'>
+					<img src="https://dl.smwcentral.net/image/118964.gif" alt="Horizontal/Vertical Level Wrap" onclick="nextImage(this)">
+					<span class="image-counter">1/2</span>
+				</div>
+			
+			
+			<details>
+				<summary>Description</summary>
+				<div class="description">
+					This contains two level routines to wrap Mario/sprites when they cross certain edges of the screen.<br>
+<br>
+One of the routines handles horizontal level wrapping (which links the top and bottom of the screen), while the other handles vertical level wrapping (which links the left and right edges). The latter requires a small additional patch in order to work correctly.<br>
+<br>
+<i>Tester's note: do not use the horizontal wrap with the vertical scroll enabled.</i>
+				</div>
+				<a href="https://dl.smwcentral.net/40850/LevelWraps.zip" class="download-link" download>↓ Download</a>
+			</details>
+			
+		</div>
+	
+		<div class="credit-item">
+			<h3><a href="https://www.smwcentral.net/?p=section&a=details&id=35463" target="_blank">Mid-air Jump Changer</a></h3>
+			<p class="author">by RussianMan</p>
+			
+			
+				<div class="image-gallery" data-images='["https://dl.smwcentral.net/image/104347.gif"]'>
+					<img src="https://dl.smwcentral.net/image/104347.gif" alt="Mid-air Jump Changer" onclick="nextImage(this)">
+					
+				</div>
+			
+			
+			<details>
+				<summary>Description</summary>
+				<div class="description">
+					Allows player to change jump mid-air. Pressing A while jumping causes player to spin and pressing B while spin-jumping cancels spin. Not to be confused with <a href="https://www.smwcentral.net/?p=section&a=details&id=14759">Airjump and airspin</a>.<br>
+Credit is optional.<br>
+<br>
+Minor update: Fixed underwater.<br>
+Semi-major update: Added a check for AddMusicK-modified ROMs to avoid conflicting with custom music, and included an option for no jump change sound effect at all.
+				</div>
+				<a href="https://dl.smwcentral.net/35463/midair_change_jump.zip" class="download-link" download>↓ Download</a>
+			</details>
+			
+		</div>
+	
+		<div class="credit-item">
+			<h3><a href="https://www.smwcentral.net/?p=section&a=details&id=40804" target="_blank">Offscreen Indicator</a></h3>
+			<p class="author">by Thomas</p>
+			
+			
+				<div class="image-gallery" data-images='["https://dl.smwcentral.net/image/118784.gif","https://dl.smwcentral.net/image/118785.gif"]'>
+					<img src="https://dl.smwcentral.net/image/118784.gif" alt="Offscreen Indicator" onclick="nextImage(this)">
+					<span class="image-counter">1/2</span>
+				</div>
+			
+			
+			<details>
+				<summary>Description</summary>
+				<div class="description">
+					This will display an 8x8 or 16x16 sprite tile at the top or bottom of the screen at Mario's X position whenever he goes offscreen. This way, the player can tell where he is even though they can't see him.<br>
+<br>
+This update makes it so you can optionally have the marker scale away from the edge of the screen based on how far Mario is offscreen, as well.<br>
+<br>
+Note: due to the timing of how sprite graphical data is handled, this code only works in level ASM, not game mode ASM. If you want to apply this to all levels, use the <a href="https://www.smwcentral.net/?p=section&a=details&id=36861">patch version</a>.
+				</div>
+				<a href="https://dl.smwcentral.net/40804/OffscreenIndicator.zip" class="download-link" download>↓ Download</a>
+			</details>
+			
+		</div>
+	
+		<div class="credit-item">
+			<h3><a href="https://www.smwcentral.net/?p=section&a=details&id=31513" target="_blank">Offscreen Indicator for Sprites</a></h3>
+			<p class="author">by Kevin</p>
+			
+			
+				<div class="image-gallery" data-images='["https://dl.smwcentral.net/image/92034.gif"]'>
+					<img src="https://dl.smwcentral.net/image/92034.gif" alt="Offscreen Indicator for Sprites" onclick="nextImage(this)">
+					
+				</div>
+			
+			
+			<details>
+				<summary>Description</summary>
+				<div class="description">
+					This UberASM will show an indicator for sprites that are offscreen vertically. Check out the asm file for customization options.
+				</div>
+				<a href="https://dl.smwcentral.net/31513/sprites_offscreen_indicator.zip" class="download-link" download>↓ Download</a>
+			</details>
+			
+		</div>
+	
+		<div class="credit-item">
+			<h3><a href="https://www.smwcentral.net/?p=section&a=details&id=29511" target="_blank">Overworld Text Display</a></h3>
+			<p class="author">by Kevin</p>
+			
+			
+				<div class="image-gallery" data-images='["https://dl.smwcentral.net/image/85352.gif"]'>
+					<img src="https://dl.smwcentral.net/image/85352.gif" alt="Overworld Text Display" onclick="nextImage(this)">
+					
+				</div>
+			
+			
+			<details>
+				<summary>Description</summary>
+				<div class="description">
+					This UberASM will display some text/info on the Overworld layer 3 depending on the level Mario is standing on. Meant to be used for collabs to show the level's author name on the border, but you can use it for other stuff too. Check out the readme for instructions.
+				</div>
+				<a href="https://dl.smwcentral.net/29511/ow_author_display.zip" class="download-link" download>↓ Download</a>
+			</details>
+			
+		</div>
+	
+		<div class="credit-item">
+			<h3><a href="https://www.smwcentral.net/?p=section&a=details&id=27201" target="_blank">Spawn Carried Sprites with L/R</a></h3>
+			<p class="author">by Koopster</p>
+			
+			
+				<div class="image-gallery" data-images='["https://dl.smwcentral.net/image/78565.gif"]'>
+					<img src="https://dl.smwcentral.net/image/78565.gif" alt="Spawn Carried Sprites with L/R" onclick="nextImage(this)">
+					
+				</div>
+			
+			
+			<details>
+				<summary>Description</summary>
+				<div class="description">
+					Allows the player to use L/R to spawn a sprite, normal or custom, in a carried state in Mario's hands. This code also allows for each of the shoulder buttons to spawn a different sprite.<br>
+<br>
+Includes checks so sprites won't spawn when they shouldn't, such as when something's already being carried. It's possible to toggle it being possible to spawn an item during flight.
+				</div>
+				<a href="https://dl.smwcentral.net/27201/lrspawncarried.zip" class="download-link" download>↓ Download</a>
+			</details>
+			
+		</div>
+	
+		<div class="credit-item">
+			<h3><a href="https://www.smwcentral.net/?p=section&a=details&id=25430" target="_blank">Spawn Sprites in Yoshi's Mouth v1.1</a></h3>
+			<p class="author">by Djief</p>
+			
+			
+				<div class="image-gallery" data-images='["https://dl.smwcentral.net/image/73259.gif"]'>
+					<img src="https://dl.smwcentral.net/image/73259.gif" alt="Spawn Sprites in Yoshi's Mouth v1.1" onclick="nextImage(this)">
+					
+				</div>
+			
+			
+			<details>
+				<summary>Description</summary>
+				<div class="description">
+					Press L or R to spawn an item in Yoshi's mouth. Works with shells of different colours, Goombas, Springs, P-Switches and Keys. Did not test every other sprites but I don't think anything else works properly. File includes settings at the top to select which sprite to use, timer for Yoshi's swallowing, and sounds.<br>
+<br>
+<a href="https://www.smwcentral.net/?p=viewthread&t=99181">Based on code posted by Thomas here</a><br>
+<br>
+Edited to add sounds options.<br>
+<br>
+v1.1 Fixed a bug where you could spawn a null item by pressing R the frame after Y<br>
+<br>
+
+				</div>
+				<a href="https://dl.smwcentral.net/25430/YoshiItems.zip" class="download-link" download>↓ Download</a>
+			</details>
+			
+		</div>
+	
+		<div class="credit-item">
+			<h3><a href="https://www.smwcentral.net/?p=section&a=details&id=21745" target="_blank">Sticky Hands</a></h3>
+			<p class="author">by Darolac</p>
+			
+			
+				<div class="image-gallery" data-images='["https://dl.smwcentral.net/image/63057.gif"]'>
+					<img src="https://dl.smwcentral.net/image/63057.gif" alt="Sticky Hands" onclick="nextImage(this)">
+					
+				</div>
+			
+			
+			<details>
+				<summary>Description</summary>
+				<div class="description">
+					This code makes it so the first carriable sprite that Mario takes on a level can't be discarded, so Mario must keep carrying it until the end of the level.
+				</div>
+				<a href="https://dl.smwcentral.net/21745/Stickyhands.zip" class="download-link" download>↓ Download</a>
+			</details>
+			
+		</div>
+	
+		<div class="credit-item">
+			<h3><a href="https://www.smwcentral.net/?p=section&a=details&id=26582" target="_blank">Summon Closest Sprite v1.2</a></h3>
+			<p class="author">by JamesD28</p>
+			
+			
+				<div class="image-gallery" data-images='["https://dl.smwcentral.net/image/76344.gif","https://dl.smwcentral.net/image/76345.gif","https://dl.smwcentral.net/image/76346.gif","https://dl.smwcentral.net/image/76347.gif"]'>
+					<img src="https://dl.smwcentral.net/image/76344.gif" alt="Summon Closest Sprite v1.2" onclick="nextImage(this)">
+					<span class="image-counter">1/4</span>
+				</div>
+			
+			
+			<details>
+				<summary>Description</summary>
+				<div class="description">
+					This code allows Mario to summon the closest carryable sprite, horizontally, into his hands. The closest sprite will be put into his hands instantly as long as he isn't already holding something, and it will also detect kicked sprites. Could be useful for puzzle levels, or Kaizo levels involving summoning sprites in a tight order to perform specific tricks.<br>
+Summon is performed by holding X or Y (by default), then tapping L or R.<br>
+<br>
+Usage note: If using in your hack, it may be wise to let the player know that it only measures horizontal distance, not vertical.<br>
+<br>
+Update v1.1: Bug fixes, and made some of jankier "features" of the code into optional defines. Also made a few small optimizations, moved the SFX/Bank to defines, and allowed the user to customize the hold input.<br>
+<br>
+v1.2: Fixed a bug where springboards could be "revived" and summoned in dead/despawned states.
+				</div>
+				<a href="https://dl.smwcentral.net/26582/SpriteSummon1.2.zip" class="download-link" download>↓ Download</a>
+			</details>
+			
+		</div>
+	
+		<div class="credit-item">
+			<h3><a href="https://www.smwcentral.net/?p=section&a=details&id=41977" target="_blank">Super Mario 3D World Style Entering Shells</a></h3>
+			<p class="author">by yoshifanatic</p>
+			
+			
+				<div class="image-gallery" data-images='["https://dl.smwcentral.net/image/122585.gif","https://dl.smwcentral.net/image/122586.gif","https://dl.smwcentral.net/image/122587.gif"]'>
+					<img src="https://dl.smwcentral.net/image/122585.gif" alt="Super Mario 3D World Style Entering Shells" onclick="nextImage(this)">
+					<span class="image-counter">1/3</span>
+				</div>
+			
+			
+			<details>
+				<summary>Description</summary>
+				<div class="description">
+					This UberASM recreates the ability to enter shells as seen in Super Mario 3D World. You can enter any unoccupied koopa shell, bounce around and jump while in it, then get ejected out after a while from Mario getting dizzy. Features a lot of customization options to tweak its behavior, with the defaults being how its like in Super Mario 3D World.<br>
+<br>
+Insert as level or game mode 14 ASM.<br>
+<br>
+Requested by <span class="un-outer" title="Gamer collin"><a href="/?p=profile&amp;id=71087" style="color: var(--user-color-1);" class="un">Gamer collin</a></span>.
+				</div>
+				<a href="https://dl.smwcentral.net/41977/3DWorldShells.zip" class="download-link" download>↓ Download</a>
+			</details>
+			
+		</div>
+	</div>
+		</section>
+	
+		<section class="category-section">
+			<h2>Sprites</h2>
+			<div class="credits-grid">
+		<div class="credit-item">
+			<h3><a href="https://www.patreon.com/posts/any-sprite-boo-32460906" target="_blank">Any Sprite Fishing Boo</a></h3>
+			<p class="author">by dtothefourth</p>
+			
+			
+			
+			<details>
+				<summary>Description</summary>
+				<div class="description">
+					Fishing Boo which can be set to carry any sprite at the end of its line and have respawning sprites
+
+Also by default is remapped to only use SP3 so can use any SP4 sprites with it, and includes a modified SP3 graphics file to work with that.
+				</div>
+				<a href="https://www.patreon.com/posts/any-sprite-boo-32460906" class="download-link" download>↓ Download</a>
+			</details>
+			
+		</div>
+	
+		<div class="credit-item">
+			<h3><a href="https://www.patreon.com/posts/avoiding-disco-36585225" target="_blank">Avoiding Disco Shell</a></h3>
+			<p class="author">by dtothefourth</p>
+			
+			
+				<div class="image-gallery" data-images='["https://x.com/i/status/1255936270225813517"]'>
+					<img src="https://x.com/i/status/1255936270225813517" alt="Avoiding Disco Shell" onclick="nextImage(this)">
+					
+				</div>
+			
+			
+			<details>
+				<summary>Description</summary>
+				<div class="description">
+					Disco shell that moves away from Mario instead of chasing
+				</div>
+				<a href="https://www.patreon.com/posts/avoiding-disco-36585225" class="download-link" download>↓ Download</a>
+			</details>
+			
+		</div>
+	
+		<div class="credit-item">
+			<h3><a href="https://bin.smwcentral.net/u/48182/BaronShells.zip" target="_blank">Baron Shells</a></h3>
+			<p class="author">by Brakkie</p>
+			
+			
+			
+			<details>
+				<summary>Description</summary>
+				<div class="description">
+					No description available
+				</div>
+				<a href="https://bin.smwcentral.net/u/48182/BaronShells.zip" class="download-link" download>↓ Download</a>
+			</details>
+			
+		</div>
+	
+		<div class="credit-item">
+			<h3><a href="https://www.smwcentral.net/?p=section&a=details&id=20424" target="_blank">Base Bro + Bomb and Shell Bro v1.0</a></h3>
+			<p class="author">by JackTheSpades</p>
+			
+			
+				<div class="image-gallery" data-images='["https://dl.smwcentral.net/image/60401.gif","https://dl.smwcentral.net/image/60402.gif"]'>
+					<img src="https://dl.smwcentral.net/image/60401.gif" alt="Base Bro + Bomb and Shell Bro v1.0" onclick="nextImage(this)">
+					<span class="image-counter">1/2</span>
+				</div>
+			
+			
+			<details>
+				<summary>Description</summary>
+				<div class="description">
+					Bro sprite that throws a sprite.<br>
+What sprite is determined by the first extra property byte in the CFG editor and the tables inside the asm file.<br>
+<br>
+Comes with Shell Bro and Bomb Bro.<br>
+<br>
+v1.0<br>
+-----<br>
+Tattletale - moved out of pixi.
+				</div>
+				<a href="https://dl.smwcentral.net/20424/baseBroBombAndShell_v1.0.zip" class="download-link" download>↓ Download</a>
+			</details>
+			
+		</div>
+	
+		<div class="credit-item">
+			<h3><a href="https://www.smwcentral.net/?p=section&a=details&id=23035" target="_blank">Bubble With Sprite Inside</a></h3>
+			<p class="author">by Nowieso</p>
+			
+			
+				<div class="image-gallery" data-images='["https://dl.smwcentral.net/image/66621.gif"]'>
+					<img src="https://dl.smwcentral.net/image/66621.gif" alt="Bubble With Sprite Inside" onclick="nextImage(this)">
+					
+				</div>
+			
+			
+			<details>
+				<summary>Description</summary>
+				<div class="description">
+					A disassembly of sprite 9D, the flying bubble with a sprite inside. <br>
+<br>
+It comes with some customization options as well as CFG files for the sprites that can be inside the bubble, so you are no longer dependant on X-Positions.
+				</div>
+				<a href="https://dl.smwcentral.net/23035/Bubble%20Disassembly.zip" class="download-link" download>↓ Download</a>
+			</details>
+			
+		</div>
+	
+		<div class="credit-item">
+			<h3><a href="https://www.patreon.com/posts/cannon-spawner-38584173" target="_blank">Cannon Spawner</a></h3>
+			<p class="author">by dtothefourth</p>
+			
+			
+			
+			<details>
+				<summary>Description</summary>
+				<div class="description">
+					Sprite that fires a specified sprite with options like switch triggers, speed, frequency, direction, etc.
+				</div>
+				<a href="https://www.patreon.com/posts/cannon-spawner-38584173" class="download-link" download>↓ Download</a>
+			</details>
+			
+		</div>
+	
+		<div class="credit-item">
+			<h3><a href="https://www.patreon.com/posts/cannon-spawner-38630248" target="_blank">Cannon Spawner (Extended)</a></h3>
+			<p class="author">by dtothefourth</p>
+			
+			
+			
+			<details>
+				<summary>Description</summary>
+				<div class="description">
+					Cannon spawner which has more settings enterable in LM via extra bytes but requires at least Pixi 1.2.11
+				</div>
+				<a href="https://www.patreon.com/posts/cannon-spawner-38630248" class="download-link" download>↓ Download</a>
+			</details>
+			
+		</div>
+	
+		<div class="credit-item">
+			<h3><a href="https://www.patreon.com/posts/custom-throw-32543186" target="_blank">Custom Throw Block</a></h3>
+			<p class="author">by dtothefourth</p>
+			
+			
+			
+			<details>
+				<summary>Description</summary>
+				<div class="description">
+					A highly customizable version of the vanilla throw block.
+
+Includes options like -
+
+    Customizable vanish timer or disabled vanishing
+
+    Changing speed and momentum options
+
+    Disabling the breaking on walls/ceilings during upthrows
+
+    Choosing whether to allow spin jumps, normal bounces, or both
+
+    Spawning a sprite when breaking
+
+    Customizing the flashing animation
+
+    Freezing with on/off or p-switches
+
+    Setting tiles that launch it like triangles
+				</div>
+				<a href="https://www.patreon.com/posts/custom-throw-32543186" class="download-link" download>↓ Download</a>
+			</details>
+			
+		</div>
+	
+		<div class="credit-item">
+			<h3><a href="https://www.patreon.com/posts/disco-any-sprite-52273622" target="_blank">Disco Any Sprite</a></h3>
+			<p class="author">by dtothefourth</p>
+			
+			
+			
+			<details>
+				<summary>Description</summary>
+				<div class="description">
+					Acts as a wrapper for any normal or custom sprite, allowing it to easily be made to move like a disco shell vertically and/or horizontally
+				</div>
+				<a href="https://www.patreon.com/posts/disco-any-sprite-52273622" class="download-link" download>↓ Download</a>
+			</details>
+			
+		</div>
+	
+		<div class="credit-item">
+			<h3><a href="https://www.patreon.com/posts/27669194" target="_blank">Disco Platform</a></h3>
+			<p class="author">by dtothefourth</p>
+			
+			
+				<div class="image-gallery" data-images='["https://x.com/i/status/1140225376846786560"]'>
+					<img src="https://x.com/i/status/1140225376846786560" alt="Disco Platform" onclick="nextImage(this)">
+					
+				</div>
+			
+			
+			<details>
+				<summary>Description</summary>
+				<div class="description">
+					Rideable platform that also acts like a disco shell. Usable with vanilla platform graphics (SP3 13). Requested by clarkeg02
+				</div>
+				<a href="https://www.patreon.com/posts/27669194" class="download-link" download>↓ Download</a>
+			</details>
+			
+		</div>
+	
+		<div class="credit-item">
+			<h3><a href="https://www.patreon.com/posts/spiked-disco-27361674" target="_blank">Disco Spiny Shell</a></h3>
+			<p class="author">by dtothefourth</p>
+			
+			
+			
+			<details>
+				<summary>Description</summary>
+				<div class="description">
+					Acts like a normal disco shell but must be spin jumped on. Works with vanilla graphics as long as spiny is available (SP4 02) - Requested by Tubbaluvin
+				</div>
+				<a href="https://www.patreon.com/posts/spiked-disco-27361674" class="download-link" download>↓ Download</a>
+			</details>
+			
+		</div>
+	
+		<div class="credit-item">
+			<h3><a href="https://github.com/spooonsss/smw-flyin-disco" target="_blank">Flyin Disco Shell</a></h3>
+			<p class="author">by spooonsss</p>
+			
+			
+			
+			<details>
+				<summary>Description</summary>
+				<div class="description">
+					~Flyin' Disco Shell~
+
+(DD/MM/YYYY)
+V.1.0 (17.03.2019)
+- Initial release
+
+V.1.0.1 (15.05.2019)
+- Fixed strange offscreen glitch that marked sprite as "process offscreen" and "spawn when nearby" which leads to sprite staying alive offscreen AND it's duplication when approaching it's spawn point.
+
+V.1.1 (11.09.2021)
+- Made use of PIXI's new print state, which fixes sprite interaction (for example one flying disco shell vs. another flying disco shell would result in one staying alive, even though both should be dead)
+- (Mod edit:) Fixed a bug where following movement had a tendency to break for speeds above $40.
+
+v.1.2 (20.08.2024) (spooonsss)
+- Draw after moving to match vanilla shell
+- Set 'don't get stuck in walls bit' to set position after striking a block correctly
+- Use correct mario position for SubHorzPos to follow mario accurately
+- Update position based on speed before SubHorzPos to follow mario accurately
+- X-flip shell tile when facing left to match vanilla graphics
+				</div>
+				<a href="https://github.com/spooonsss/smw-flyin-disco" class="download-link" download>↓ Download</a>
+			</details>
+			
+		</div>
+	
+		<div class="credit-item">
+			<h3><a href="https://www.smwcentral.net/?p=section&a=details&id=39686" target="_blank">Flying Buzzy Beetle</a></h3>
+			<p class="author">by AmperSam</p>
+			
+			
+				<div class="image-gallery" data-images='["https://dl.smwcentral.net/image/117189.gif"]'>
+					<img src="https://dl.smwcentral.net/image/117189.gif" alt="Flying Buzzy Beetle" onclick="nextImage(this)">
+					
+				</div>
+			
+			
+			<details>
+				<summary>Description</summary>
+				<div class="description">
+					A flying Buzzy Beetle that behaves like the Para-Beetle from Super Mario Bros. 3. Extra bit controls whether it sinks or rises, and extra bytes control initial direction and speed.<br>
+<br>
+I made this because I wanted an "SMW native" para-beetle. Based loosely on <a href="https://smwc.me/s/16211">Para-Beetle</a> by <span class="un-outer"><a href="/?p=profile&amp;id=657" style="color: #ff9bae; font-style: italic;" class="un">Romi</a></span> and <span class="un-outer"><a href="/?p=profile&amp;id=3471" style="color: #ff9f9b;" class="un">imamelia</a></span>
+				</div>
+				<a href="https://dl.smwcentral.net/39686/flying-buzzy-beetle.zip" class="download-link" download>↓ Download</a>
+			</details>
+			
+		</div>
+	
+		<div class="credit-item">
+			<h3><a href="https://www.patreon.com/posts/flying-throw-28782456" target="_blank">Flying Throw Block</a></h3>
+			<p class="author">by dtothefourth</p>
+			
+			
+			
+			<details>
+				<summary>Description</summary>
+				<div class="description">
+					Like a winged ? block, but a throw block. With configurable direction, movement, speed, turn around etc.
+
+Inludes a pal file to apply the throwblock colors to the first sprite palette.
+				</div>
+				<a href="https://www.patreon.com/posts/flying-throw-28782456" class="download-link" download>↓ Download</a>
+			</details>
+			
+		</div>
+	
+		<div class="credit-item">
+			<h3><a href="https://www.smwcentral.net/?p=section&a=details&id=36847" target="_blank">Fully-grown Colored Yoshis</a></h3>
+			<p class="author">by andy_k_250</p>
+			
+			
+				<div class="image-gallery" data-images='["https://dl.smwcentral.net/image/106083.gif","https://dl.smwcentral.net/image/106084.gif","https://dl.smwcentral.net/image/106085.gif"]'>
+					<img src="https://dl.smwcentral.net/image/106083.gif" alt="Fully-grown Colored Yoshis" onclick="nextImage(this)">
+					<span class="image-counter">1/3</span>
+				</div>
+			
+			
+			<details>
+				<summary>Description</summary>
+				<div class="description">
+					These are Red, Blue, and Yellow Yoshis that can be placed directly into a level in their fully-grown states, much like the standard Green Yoshi.<br>
+<br>
+This sprite was originally part of <a href="https://smwc.me/185495">andy_k_250's Custom Tweaked Sprites pack</a>, and was resubmitted separately after the remoderation for ease of search and to fit current standards. They were made as a demo of the ability for mikeyk's Spritetool (also inherited by PIXI) to create tweaked copies of vanilla sprites without altering the vanilla sprites themselves, via a .cfg file that does not reference an .asm file at all. Therefore, the lack of .asm files in this download is not only intentional, it is the main idea.
+				</div>
+				<a href="https://dl.smwcentral.net/36847/Colored%20Yoshis.zip" class="download-link" download>↓ Download</a>
+			</details>
+			
+		</div>
+	
+		<div class="credit-item">
+			<h3><a href="https://www.smwcentral.net/?p=section&a=details&id=29851" target="_blank">Ghost Shell</a></h3>
+			<p class="author">by MarkAlarm</p>
+			
+			
+				<div class="image-gallery" data-images='["https://dl.smwcentral.net/image/86557.gif"]'>
+					<img src="https://dl.smwcentral.net/image/86557.gif" alt="Ghost Shell" onclick="nextImage(this)">
+					
+				</div>
+			
+			
+			<details>
+				<summary>Description</summary>
+				<div class="description">
+					This is a shell that lacks the ability to interact with other sprites. Credit unnecessary, but appreciated.<br>
+<br>
+You're able to customize a few of the properties of the ghost shell, such as its palette (defaults to grey) and initial kick speed. It makes use of two extra bytes to pull this off. Check the .asm file for more details, since it documents these things in a bit more depth.<br>
+<br>
+The lack of sprite interaction includes other ghost shells, so you can build levels that either utilize this mechanic to create more interesting obstacles or use it to avoid setups where shells bonk each other and die. This would mainly be useful for kaizo/shell levels.
+				</div>
+				<a href="https://dl.smwcentral.net/29851/Ghost%20Shell.zip" class="download-link" download>↓ Download</a>
+			</details>
+			
+		</div>
+	
+		<div class="credit-item">
+			<h3><a href="https://www.smwcentral.net/?p=section&a=details&id=25443" target="_blank">Invincible Shellboard</a></h3>
+			<p class="author">by Kevin, crm0622</p>
+			
+			
+				<div class="image-gallery" data-images='["https://dl.smwcentral.net/image/73286.png","https://dl.smwcentral.net/image/73287.png","https://dl.smwcentral.net/image/73288.gif","https://dl.smwcentral.net/image/73454.gif"]'>
+					<img src="https://dl.smwcentral.net/image/73286.png" alt="Invincible Shellboard" onclick="nextImage(this)">
+					<span class="image-counter">1/4</span>
+				</div>
+			
+			
+			<details>
+				<summary>Description</summary>
+				<div class="description">
+					A fliped disco shell(board) that you can ride (...Or can just get "pushed" by it depend method because why not? :P) and you can get nice X-speed boost jump when you take off from the shell(board) depends it's kicked speed. ("Kicked speed = Player's X-speed", when you interact with it basically.)<br>
+<br>
+You cannot stop it normally once you kicked, except some cases...<br>
+Also, It never "die" from stuffs in normal ways either. (Again, exception exists too... Like "Sprite kill block" and lava etc.)<br>
+<br>
+Based upon "Koopas + Shells + Disco Shell" by KevinM heavily, so please give big credits to him! :)<br>
+<br>
+And special thanks to JamesD28 for give tips about kill/ride routines!<br>
+Without his help, I would still really struggle with about both routines no doubt. :D<br>
+<br>
+Also, certains some customizable options too! (Check asm file for more info.)<br>
+<br>
+(Pretty much required to patch "Player X Speed Fix" or something like that if you want full advantage of X-speed boost when you take off from kicked shell properly. It is due to one glitch that make you not able to jump properly at all when your X-speed exceeds on "certain" point.)<br>
+<br>
+[Update log]<br>
+<s>v1.1: Fixed small quirk when you trying to cape spin on the shell(board) if "!SpinBoostTimer = $00".</s><br>
+<s>v1.11: Added "!InterruptNoInteractTime" option which let you set the timer for disable contact on player when shell(board) got interrupt by anything.</s><br>
+v1.2 : Rewrote ride routine completely so riding is now way more less janky now.<br>
+(Also, added some minor visual effect. :P)<br>
+v1.21 : Merged old/new method into one file, and added two options about insta-glide from shell(board). (Also fixed cape interaction stuffs too!)<br>
+v1.22 : Fixed a bit more so you can ride on shell(board) properly during goal sequence after touched goal tape/orb. (Only applied if "!RidingMethod" value is 0, which is default now.)<br>
+v1.3 : Revised "!RidingMethod = 1" to something more interesting than before... Check out! :) (Special thanks to JamesD28 for help me figure this properly.)
+				</div>
+				<a href="https://dl.smwcentral.net/25443/InvincibleShellboardV1.3.zip" class="download-link" download>↓ Download</a>
+			</details>
+			
+		</div>
+	
+		<div class="credit-item">
+			<h3><a href="https://www.smwcentral.net/?p=section&a=details&id=22324" target="_blank">Invincible/Flashing Shell</a></h3>
+			<p class="author">by Sonikku</p>
+			
+			
+				<div class="image-gallery" data-images='["https://dl.smwcentral.net/image/64632.gif"]'>
+					<img src="https://dl.smwcentral.net/image/64632.gif" alt="Invincible/Flashing Shell" onclick="nextImage(this)">
+					
+				</div>
+			
+			
+			<details>
+				<summary>Description</summary>
+				<div class="description">
+					Like the shells when Yellow Shellless Koopa's jump into shells, but turns into a flashing shell instantly. It's invincible to stomps like the original, follows the player, etc. It also can be eaten by Yoshi, and gives him the ability to fly and ground pound, not to mention the fire ability when spit out.<br>
+No credit needed, PM me if you encounter any major glitches with this sprite.<br>
+<br>
+(Rykon-V73): Added .json file for the sprite.<br>
+
+				</div>
+				<a href="https://dl.smwcentral.net/22324/InvincibleShell_edited.zip" class="download-link" download>↓ Download</a>
+			</details>
+			
+		</div>
+	
+		<div class="credit-item">
+			<h3><a href="https://www.smwcentral.net/?p=section&a=details&id=15775" target="_blank">Koopa Shell, spawns kicked</a></h3>
+			<p class="author">by Arinsu</p>
+			
+			
+				<div class="image-gallery" data-images='["https://dl.smwcentral.net/image/45224.gif"]'>
+					<img src="https://dl.smwcentral.net/image/45224.gif" alt="Koopa Shell, spawns kicked" onclick="nextImage(this)">
+					
+				</div>
+			
+			
+			<details>
+				<summary>Description</summary>
+				<div class="description">
+					This will spawn a koopa shell in a kicked state. Requested by lolyoshi. Includes one cfg file for each shell color.<br>
+SA-1 compatible.
+				</div>
+				<a href="https://dl.smwcentral.net/15775/Koopa%20Shell%2C%20kicked.zip" class="download-link" download>↓ Download</a>
+			</details>
+			
+		</div>
+	
+		<div class="credit-item">
+			<h3><a href="https://www.smwcentral.net/?p=section&a=details&id=23125" target="_blank">Koopas + Shells + Disco Shell</a></h3>
+			<p class="author">by Kevin</p>
+			
+			
+				<div class="image-gallery" data-images='["https://dl.smwcentral.net/image/66859.gif","https://dl.smwcentral.net/image/66860.gif","https://dl.smwcentral.net/image/66861.gif"]'>
+					<img src="https://dl.smwcentral.net/image/66859.gif" alt="Koopas + Shells + Disco Shell" onclick="nextImage(this)">
+					<span class="image-counter">1/3</span>
+				</div>
+			
+			
+			<details>
+				<summary>Description</summary>
+				<div class="description">
+					This is a disassembly (+ some added features) of sprites 4-7, the normal Koopas, and DA-DF, the Shells (normal and Disco variant). It includes a lot of options that can be set either with the extra bytes or with the defines (check out the asm files for more info).<br>
+It's included a json file for each Koopa color that will set up a list of sprites in LM's menu with all the main variants (Koopa, stationary Shell with or without a Koopa inside, kicked Shell, Disco Shell).
+				</div>
+				<a href="https://dl.smwcentral.net/23125/KoopaShell.zip" class="download-link" download>↓ Download</a>
+			</details>
+			
+		</div>
+	
+		<div class="credit-item">
+			<h3><a href="https://www.smwcentral.net/?p=files&u=33916" target="_blank">L/R Triggers Bouncing Disco Shell</a></h3>
+			<p class="author">by westslasher2</p>
+			
+			
+			
+			<details>
+				<summary>Description</summary>
+				<div class="description">
+					Super Sheffy World 2 ASM.zip
+				</div>
+				<a href="https://www.smwcentral.net/?p=files&u=33916" class="download-link" download>↓ Download</a>
+			</details>
+			
+		</div>
+	
+		<div class="credit-item">
+			<h3><a href="https://www.smwcentral.net/?p=section&a=details&id=33712" target="_blank">Line-Guided Any Sprite v1.3</a></h3>
+			<p class="author">by Kevin, dtothefourth</p>
+			
+			
+				<div class="image-gallery" data-images='["https://dl.smwcentral.net/image/99293.gif","https://dl.smwcentral.net/image/99294.gif","https://dl.smwcentral.net/image/99295.gif","https://dl.smwcentral.net/image/99296.gif","https://dl.smwcentral.net/image/99297.gif"]'>
+					<img src="https://dl.smwcentral.net/image/99293.gif" alt="Line-Guided Any Sprite v1.3" onclick="nextImage(this)">
+					<span class="image-counter">1/5</span>
+				</div>
+			
+			
+			<details>
+				<summary>Description</summary>
+				<div class="description">
+					This sprite acts as a wrapper for any normal or custom sprite*, allowing it to easily be made line-guided at the cost of an extra sprite slot.<br>
+Check out the asm file for info on how to use it.<br>
+<br>
+Original sprite by dtothefourth, I optimized it a bit and made some fixes:<br>
+- Now it works properly with Yoshi and with carryable sprites.<br>
+- Now it works properly when Yoshi or Baby Yoshi eat the sprite.<br>
+- Now the sprite won't respawn when the wrapped sprite is killed or collected (e.g. sprite killed with a spin jump, collected powerup).<br>
+- Now compatible with Line Guide Acts-Like fix.<br>
+<br>
+v1.1 update:<br>
+- Small code optimizations.<br>
+- Added an option in the 4th extra byte to be used with platforms: if set, Mario will move with the platform instead of sliding on it (like normal line-guided platforms do).<br>
+- Now the sprite uses 8 extra bytes: the last 4 set the 4 extra bytes for the spawned sprite.<br>
+<br>
+v1.2 update:<br>
+- Fixed a bug where if the wrapped sprite failed to spawn (due to sprite slots being full) the wrapper would be erased forever, instead of being able to respawn (thanks to MarioFanGamer for pointing this out).<br>
+- Added a second platform option, to make it compatible with sprites that use custom platform code (for example, <a href="https://www.smwcentral.net/?p=section&a=details&id=24667">this</a>) (thanks to MarioFanGamer for suggesting this).<br>
+- Now the sprite uses 9 extra bytes: the 5th one sets the speed multiplier for the sprite (if you want to make it move faster).<br>
+- Fixed an issue where the sprite would despawn immediately after spawning when using a non-zero offset and spawning it from a specific direction.<br>
+<br>
+v1.3 update:<br>
+- Fixed bug where on spawn this sprite could cause an unrelated sprite to teleport to its location (thanks mellonpizza for finding the fix)<br>
+<br>
+<span style="font-size: 8pt;">*Some sprites may not work properly, for example Rotating Platform and Ball n' Chain.</span>
+				</div>
+				<a href="https://dl.smwcentral.net/33712/Line-Guided%20Any%20Sprite.zip" class="download-link" download>↓ Download</a>
+			</details>
+			
+		</div>
+	
+		<div class="credit-item">
+			<h3><a href="https://www.patreon.com/posts/44646628" target="_blank">MotorShell</a></h3>
+			<p class="author">by dtothefourth</p>
+			
+			
+			
+			<details>
+				<summary>Description</summary>
+				<div class="description">
+					Shell that alternates between normal and spiny every time it is bounced on
+				</div>
+				<a href="https://www.patreon.com/posts/44646628" class="download-link" download>↓ Download</a>
+			</details>
+			
+		</div>
+	
+		<div class="credit-item">
+			<h3><a href="https://www.patreon.com/posts/on-off-disco-26844539" target="_blank">On/Off Disco Shell</a></h3>
+			<p class="author">by dtothefourth</p>
+			
+			
+				<div class="image-gallery" data-images='["https://x.com/i/status/1128160471947911168"]'>
+					<img src="https://x.com/i/status/1128160471947911168" alt="On/Off Disco Shell" onclick="nextImage(this)">
+					
+				</div>
+			
+			
+			<details>
+				<summary>Description</summary>
+				<div class="description">
+					Second Disco Shell variant, this one is activated based on On/Off switches
+				</div>
+				<a href="https://www.patreon.com/posts/on-off-disco-26844539" class="download-link" download>↓ Download</a>
+			</details>
+			
+		</div>
+	
+		<div class="credit-item">
+			<h3><a href="https://www.smwcentral.net/?p=section&a=details&id=39702" target="_blank">Para-Spiny v1.2</a></h3>
+			<p class="author">by Arinsu</p>
+			
+			
+				<div class="image-gallery" data-images='["https://dl.smwcentral.net/image/115325.gif"]'>
+					<img src="https://dl.smwcentral.net/image/115325.gif" alt="Para-Spiny v1.2" onclick="nextImage(this)">
+					
+				</div>
+			
+			
+			<details>
+				<summary>Description</summary>
+				<div class="description">
+					A spiny that flies in a pattern like the red parakoopas. The extra bit will determine the direction.<br>
+Requested by allowiscous.<br>
+<br>
+Now the graphics routine makes sense and the horizontal spiny hovers vertically similar to the red parakoopa.<br>
+<br>
+Now SA-1 hybrid.<br>
+<br>
+v1.1 (spooonsss):<br>
+Add define to disable up/down movement of the horizontally-moving spiny<br>
+Convert .cfg to .json<br>
+Optimize asm<br>
+v1.2 (spooonsss, MFG):<br>
+Fix bug where horizontally-moving paraspiny moved up-left and down-right, instead making it move only left to right (while oscillating up and down)<br>
+Fix bug where the wrong despawn range has been used (originally used the scale platforms).
+				</div>
+				<a href="https://dl.smwcentral.net/39702/ParaSpiny%20v1.2.zip" class="download-link" download>↓ Download</a>
+			</details>
+			
+		</div>
+	
+		<div class="credit-item">
+			<h3><a href="https://www.smwcentral.net/?p=section&a=details&id=33868" target="_blank">Parachute Goomba / Parachute Bob-Omb</a></h3>
+			<p class="author">by Nowieso</p>
+			
+			
+				<div class="image-gallery" data-images='["https://dl.smwcentral.net/image/99828.gif"]'>
+					<img src="https://dl.smwcentral.net/image/99828.gif" alt="Parachute Goomba / Parachute Bob-Omb" onclick="nextImage(this)">
+					
+				</div>
+			
+			
+			<details>
+				<summary>Description</summary>
+				<div class="description">
+					A disassembly of sprites 3F and 40, the parachute Goomba and parachute Bob-Omb.
+				</div>
+				<a href="https://dl.smwcentral.net/33868/Parachute%20disassembly.zip" class="download-link" download>↓ Download</a>
+			</details>
+			
+		</div>
+	
+		<div class="credit-item">
+			<h3><a href="https://www.smwcentral.net/?p=section&a=details&id=32255" target="_blank">Parachute Spiny</a></h3>
+			<p class="author">by RussianMan</p>
+			
+			
+				<div class="image-gallery" data-images='["https://dl.smwcentral.net/image/94227.gif"]'>
+					<img src="https://dl.smwcentral.net/image/94227.gif" alt="Parachute Spiny" onclick="nextImage(this)">
+					
+				</div>
+			
+			
+			<details>
+				<summary>Description</summary>
+				<div class="description">
+					This is a spiny that uses a parachute to descend.<br>
+<br>
+Requested by <span class="un-outer"><a href="/?p=profile&amp;id=50633" style="color: light-dark(hsl(337deg 100% 40%), hsl(337deg 100% 80%));" class="un">SmashNcrab</a></span>.
+				</div>
+				<a href="https://dl.smwcentral.net/32255/ParachuteSpiny.zip" class="download-link" download>↓ Download</a>
+			</details>
+			
+		</div>
+	
+		<div class="credit-item">
+			<h3><a href="https://www.smwcentral.net/?p=section&a=details&id=40772" target="_blank">Pipe Spawner</a></h3>
+			<p class="author">by dtothefourth</p>
+			
+			
+			
+			<details>
+				<summary>Description</summary>
+				<div class="description">
+					Maker style pipe spawners that can spawn sprites in all 4 directions with various options
+				</div>
+				<a href="https://www.smwcentral.net/?p=section&a=details&id=40772" class="download-link" download>↓ Download</a>
+			</details>
+			
+		</div>
+	
+		<div class="credit-item">
+			<h3><a href="https://www.smwcentral.net/?p=section&a=details&id=3356" target="_blank">Pix</a></h3>
+			<p class="author">by yoshicookiezeus</p>
+			
+			
+				<div class="image-gallery" data-images='["https://dl.smwcentral.net/image/46432.png","https://dl.smwcentral.net/image/46433.png"]'>
+					<img src="https://dl.smwcentral.net/image/46432.png" alt="Pix" onclick="nextImage(this)">
+					<span class="image-counter">1/2</span>
+				</div>
+			
+			
+			<details>
+				<summary>Description</summary>
+				<div class="description">
+					Five different-coloured crystal sprites that bounce around diagonally. Each crystal has two hit points (can be changed), and depending on its palette, can either get hurt by a Koopa shell that matches its own colour, or get hurt by any stunned sprite. Also includes a shooter that spawns random Koopa shells.
+				</div>
+				<a href="https://dl.smwcentral.net/3356/Pix.zip" class="download-link" download>↓ Download</a>
+			</details>
+			
+		</div>
+	
+		<div class="credit-item">
+			<h3><a href="https://www.patreon.com/posts/expanded-pack-46846106" target="_blank">Platform Megapack</a></h3>
+			<p class="author">by dtothefourth</p>
+			
+			
+			
+			<details>
+				<summary>Description</summary>
+				<div class="description">
+					Adds 1 tiles platforms, solid platforms, and sticky platforms to the platform megapack
+				</div>
+				<a href="https://www.patreon.com/posts/expanded-pack-46846106" class="download-link" download>↓ Download</a>
+			</details>
+			
+		</div>
+	
+		<div class="credit-item">
+			<h3><a href="https://www.patreon.com/posts/programmable-31931267" target="_blank">Programmable Block Bridge</a></h3>
+			<p class="author">by dtothefourth</p>
+			
+			
+			
+			<details>
+				<summary>Description</summary>
+				<div class="description">
+					Block bridges with customizable phases, size, switch/touch triggers and diagonal support
+
+Includes a second example with four rotating phases and diagonal
+				</div>
+				<a href="https://www.patreon.com/posts/programmable-31931267" class="download-link" download>↓ Download</a>
+			</details>
+			
+		</div>
+	
+		<div class="credit-item">
+			<h3><a href="https://www.smwcentral.net/?p=section&a=details&id=38579" target="_blank">Shady Koopa</a></h3>
+			<p class="author">by Arinsu</p>
+			
+			
+				<div class="image-gallery" data-images='["https://dl.smwcentral.net/image/111680.gif","https://dl.smwcentral.net/image/111681.gif"]'>
+					<img src="https://dl.smwcentral.net/image/111680.gif" alt="Shady Koopa" onclick="nextImage(this)">
+					<span class="image-counter">1/2</span>
+				</div>
+			
+			
+			<details>
+				<summary>Description</summary>
+				<div class="description">
+					This Koopa will become a rainbow shell when stomped. Additionally, if flipped with a feather, it will ram towards the player. Inspired by the Paper Mario: The Thousand Year Door enemy of the same name.<br>
+<br>
+Shell-less Koopa was made by <span class="un-outer"><span title="Staff Member" class="icon icon-staff"></span>&nbsp;<a href="/?p=profile&amp;id=7012" style="color: #ff9bea;" class="un">Thomas</a></span>.
+				</div>
+				<a href="https://dl.smwcentral.net/38579/Shady%20Koopa%20update.zip" class="download-link" download>↓ Download</a>
+			</details>
+			
+		</div>
+	
+		<div class="credit-item">
+			<h3><a href="https://www.smwcentral.net/?p=section&a=details&id=19660" target="_blank">Shell Shooter</a></h3>
+			<p class="author">by MarioFanGamer</p>
+			
+			
+				<div class="image-gallery" data-images='["https://dl.smwcentral.net/image/57662.gif"]'>
+					<img src="https://dl.smwcentral.net/image/57662.gif" alt="Shell Shooter" onclick="nextImage(this)">
+					
+				</div>
+			
+			
+			<details>
+				<summary>Description</summary>
+				<div class="description">
+					This type shooter spawns kicked Koopa shells instead of bullet bills. It can be used to shoot any carryable sprite instead of just Koopa shells.<br>
+<br>
+Also includes a GIEPY version.
+				</div>
+				<a href="https://dl.smwcentral.net/19660/Shell%20Shooter.zip" class="download-link" download>↓ Download</a>
+			</details>
+			
+		</div>
+	
+		<div class="credit-item">
+			<h3><a href="https://www.patreon.com/posts/spiked-normal-27517140" target="_blank">Spiny Shell</a></h3>
+			<p class="author">by dtothefourth</p>
+			
+			
+				<div class="image-gallery" data-images='["https://x.com/i/status/1137910914357825537"]'>
+					<img src="https://x.com/i/status/1137910914357825537" alt="Spiny Shell" onclick="nextImage(this)">
+					
+				</div>
+			
+			
+			<details>
+				<summary>Description</summary>
+				<div class="description">
+					Functions like a regular shell but must be spin jumped on Usable with vanilla graphics as long as spiny is available (SP4 02)
+				</div>
+				<a href="https://www.patreon.com/posts/spiked-normal-27517140" class="download-link" download>↓ Download</a>
+			</details>
+			
+		</div>
+	
+		<div class="credit-item">
+			<h3><a href="https://www.smwcentral.net/?p=section&a=details&id=26541" target="_blank">Sprite Offsetter</a></h3>
+			<p class="author">by Koopster</p>
+			
+			
+				<div class="image-gallery" data-images='["https://dl.smwcentral.net/image/76215.gif"]'>
+					<img src="https://dl.smwcentral.net/image/76215.gif" alt="Sprite Offsetter" onclick="nextImage(this)">
+					
+				</div>
+			
+			
+			<details>
+				<summary>Description</summary>
+				<div class="description">
+					A sprite that allows you to spawn another sprite, regular or custom, in an offset position by the pixel.<br>
+<br>
+Aditionally, for regular sprites that are position-dependent (such as P-switches, Bowser statues, etc.), the properties will be read before the sprite is offset, allowing position limitations to be circumvented.<br>
+<br>
+The latest update allows for up to 4 extra bytes to be set for custom sprites.
+				</div>
+				<a href="https://dl.smwcentral.net/26541/spriteoffsetter.zip" class="download-link" download>↓ Download</a>
+			</details>
+			
+		</div>
+	
+		<div class="credit-item">
+			<h3><a href="https://www.patreon.com/posts/29603060" target="_blank">Stopped Shell</a></h3>
+			<p class="author">by dtothefourth</p>
+			
+			
+				<div class="image-gallery" data-images='["https://x.com/i/status/1167929598106976259"]'>
+					<img src="https://x.com/i/status/1167929598106976259" alt="Stopped Shell" onclick="nextImage(this)">
+					
+				</div>
+			
+			
+			<details>
+				<summary>Description</summary>
+				<div class="description">
+					Stays in place like being on a 1F0 but without the need for one which can get in the way of tricks or other sprites.
+				</div>
+				<a href="https://www.patreon.com/posts/29603060" class="download-link" download>↓ Download</a>
+			</details>
+			
+		</div>
+	
+		<div class="credit-item">
+			<h3><a href="https://www.patreon.com/posts/surfing-disco-31622077" target="_blank">Surfing Disco Shell</a></h3>
+			<p class="author">by dtothefourth</p>
+			
+			
+			
+			<details>
+				<summary>Description</summary>
+				<div class="description">
+					Disco shell that skips along water/lava, allowing it to be ridden across
+				</div>
+				<a href="https://www.patreon.com/posts/surfing-disco-31622077" class="download-link" download>↓ Download</a>
+			</details>
+			
+		</div>
+	
+		<div class="credit-item">
+			<h3><a href="https://www.patreon.com/posts/26844434" target="_blank">Waiting Disco Shell</a></h3>
+			<p class="author">by dtothefourth</p>
+			
+			
+				<div class="image-gallery" data-images='["https://x.com/i/status/1128158842989240320"]'>
+					<img src="https://x.com/i/status/1128158842989240320" alt="Waiting Disco Shell" onclick="nextImage(this)">
+					
+				</div>
+			
+			
+			<details>
+				<summary>Description</summary>
+				<div class="description">
+					One of a few Disco Shell variants I made based on a request by Deakula
+
+This one is inactive until kicked or tossed and then becomes a regular disco shell
+				</div>
+				<a href="https://www.patreon.com/posts/26844434" class="download-link" download>↓ Download</a>
+			</details>
+			
+		</div>
+	</div>
+		</section>
+	
+		<section class="category-section">
+			<h2>Patches</h2>
+			<div class="credits-grid">
+		<div class="credit-item">
+			<h3><a href="https://www.smwcentral.net/?p=tweaks&a=details&id=72" target="_blank">Allow Spin Jumping With Item</a></h3>
+			<p class="author">by aroohwahoou</p>
+			
+			
+			
+			<details>
+				<summary>Description</summary>
+				<div class="description">
+					Allows the player to spin jump while carrying an item by just pressing A, rather than having to throw the item and catch it while jumping.
+				</div>
+				<a href="https://www.smwcentral.net/?p=tweaks&a=details&id=72" class="download-link" download>↓ Download</a>
+			</details>
+			
+		</div>
+	
+		<div class="credit-item">
+			<h3><a href="https://www.smwcentral.net/?p=section&a=details&id=20162" target="_blank">Mario Idle/Sleep Patch</a></h3>
+			<p class="author">by Iceguy</p>
+			
+			
+				<div class="image-gallery" data-images='["https://dl.smwcentral.net/image/59113.gif"]'>
+					<img src="https://dl.smwcentral.net/image/59113.gif" alt="Mario Idle/Sleep Patch" onclick="nextImage(this)">
+					
+				</div>
+			
+			
+			<details>
+				<summary>Description</summary>
+				<div class="description">
+					This patch will make the player go idle and sleep if he doesn't press a button for a while, like in SM64. It remaps the Rip Van Fish's Z tiles. The pose and time it takes to be idle is configurable in the ASM file.
+				</div>
+				<a href="https://dl.smwcentral.net/20162/idle.zip" class="download-link" download>↓ Download</a>
+			</details>
+			
+		</div>
+	</div>
+		</section>
+	</div>
+		<div class="footer">
+			<div class="footer-section">Resources provided by <a href="https://www.smwcentral.net" target="_blank">SMW Central</a></div>
+			<div class="footer-section">SPC Player by <a href="https://github.com/telinc1" target="_blank">telinc1</a></div>
+			<div class="footer-section">Generated with <a href="https://saphros.de/smwcredits/" target="_blank">SMW Credits Generator</a></div>
+		</div>
+	</div>
+</body>
+</html>

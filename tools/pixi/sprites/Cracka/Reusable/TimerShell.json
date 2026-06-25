@@ -1,0 +1,342 @@
+{
+  "$1656": {
+    "Object Clipping": 0,
+    "Can be jumped on": true,
+    "Dies when jumped on": false,
+    "Hop in/kick shell": false,
+    "Disappears in cloud of smoke": false
+  },
+  "$1662": {
+    "Sprite Clipping": 0,
+    "Use shell as death frame": true,
+    "Fall straight down when killed": false
+  },
+  "$166E": {
+    "Use second graphics page": false,
+    "Palette": 4,
+    "Disable fireball killing": false,
+    "Disable cape killing": false,
+    "Disable water splash": false,
+    "Don't interact with Layer 2": false
+  },
+  "$167A": {
+    "Don't disable cliping when starkilled": false,
+    "Invincible to star/cape/fire/bounce blk.": false,
+    "Process when off screen": false,
+    "Don't change into shell when stunned": false,
+    "Can't be kicked like shell": false,
+    "Process interaction with Mario every frame": false,
+    "Gives power-up when eaten by yoshi": false,
+    "Don't use default interaction with Mario": true
+  },
+  "$1686": {
+    "Inedible": false,
+    "Stay in Yoshi's mouth": true,
+    "Weird ground behaviour": false,
+    "Don't interact with other sprites": false,
+    "Don't change direction if touched": false,
+    "Don't turn into coin when goal passed": false,
+    "Spawn a new sprite": false,
+    "Don't interact with objects": false
+  },
+  "$190F": {
+    "Make platform passable from below": false,
+    "Don't erase when goal passed": false,
+    "Can't be killed by sliding": false,
+    "Takes 5 fireballs to kill": false,
+    "Can be jumped on with upwards Y speed": false,
+    "Death frame two tiles high": true,
+    "Don't turn into a coin with silver POW": false,
+    "Don't get stuck in walls (carryable sprites)": true
+  },
+  "AsmFile": "TimerShell.asm",
+  "ActLike": 5,
+  "Type": 1,
+  "Extra Property Byte 1": 0,
+  "Extra Property Byte 2": 0,
+  "Additional Byte Count (extra bit clear)": 0,
+  "Additional Byte Count (extra bit set)": 4,
+  "Map16": "jVydXIxcnFwZDBkMjEycTBlEGURsRBlEQgxSDEMMUwyNWJ1YjFicWP8EGQRcBP8E",
+  "Displays": [
+    {
+      "Description": "Star Power Timer Shell:\n- Extra Byte 1: Sets Timer Type\n(00 = Star Power, 01 = Start Power - Invincible To Star Power, 02 = Blue P-Switch, 03 = Invulnerability)\n- Extra Byte 2: Shell Type\n(00 = Regular, 60 = 1 Bounce, 80 = Infinite Bounces)",
+      "ExtraBit": true,
+      "Tiles": [
+        {
+          "X offset": 6,
+          "Y offset": -8,
+          "map16 tile": 531
+        },
+        {
+          "X offset": 0,
+          "Y offset": 0,
+          "map16 tile": 51
+        }
+      ],
+      "Value": 0,
+      "Index": 1,
+      "DisplayText": "",
+      "UseText": false
+    },
+    {
+      "Description": "Blue P-Switch Timer Shell:\n- Extra Byte 1: Sets Timer Type\n(00 = Star Power, 01 = Start Power - Invincible To Star Power, 02 = Blue P-Switch, 03 = Invulnerability)\n- Extra Byte 2: Shell Type\n(00 = Regular, 60 = 1 Bounce, 80 = Infinite Bounces)\n",
+      "ExtraBit": true,
+      "Tiles": [
+        {
+          "X offset": 8,
+          "Y offset": -8,
+          "map16 tile": 771
+        },
+        {
+          "X offset": 0,
+          "Y offset": 0,
+          "map16 tile": 50
+        }
+      ],
+      "Value": 2,
+      "Index": 1,
+      "DisplayText": "",
+      "UseText": false
+    },
+    {
+      "Description": "Star Power Timer (Invincible) Shell:\n- Extra Byte 1: Sets Timer Type\n(00 = Star Power, 01 = Start Power - Invincible To Star Power, 02 = Blue P-Switch, 03 = Invulnerability)\n- Extra Byte 2: Shell Type\n(00 = Regular, 60 = 1 Bounce, 80 = Infinite Bounces)\n",
+      "ExtraBit": true,
+      "Tiles": [
+        {
+          "X offset": 6,
+          "Y offset": -8,
+          "map16 tile": 531
+        },
+        {
+          "X offset": 0,
+          "Y offset": 0,
+          "map16 tile": 51
+        },
+        {
+          "X offset": 0,
+          "Y offset": 0,
+          "map16 tile": 266
+        }
+      ],
+      "Value": 1,
+      "Index": 1,
+      "DisplayText": "",
+      "UseText": false
+    },
+    {
+      "Description": "Invulnerability Timer Shell:\n- Extra Byte 1: Sets Timer Type\n(00 = Star Power, 01 = Start Power - Invincible To Star Power, 02 = Blue P-Switch, 03 = Invulnerability)\n- Extra Byte 2: Shell Type\n(00 = Regular, 60 = 1 Bounce, 80 = Infinite Bounces)\n",
+      "ExtraBit": true,
+      "Tiles": [
+        {
+          "X offset": 8,
+          "Y offset": -8,
+          "map16 tile": 773
+        },
+        {
+          "X offset": 0,
+          "Y offset": 0,
+          "map16 tile": 772
+        }
+      ],
+      "Value": 3,
+      "Index": 1,
+      "DisplayText": "",
+      "UseText": false
+    }
+  ],
+  "Collection": [
+    {
+      "Name": "Set Star Power Timer Shell",
+      "ExtraBit": true,
+      "Extra Property Byte 1": 0,
+      "Extra Property Byte 2": 0,
+      "Extra Property Byte 3": 0,
+      "Extra Property Byte 4": 0,
+      "Extra Property Byte 5": 0,
+      "Extra Property Byte 6": 0,
+      "Extra Property Byte 7": 0,
+      "Extra Property Byte 8": 0,
+      "Extra Property Byte 9": 0,
+      "Extra Property Byte 10": 0,
+      "Extra Property Byte 11": 0,
+      "Extra Property Byte 12": 0
+    },
+    {
+      "Name": "Set Star Power Timer Shell (1 Bounce)",
+      "ExtraBit": true,
+      "Extra Property Byte 1": 0,
+      "Extra Property Byte 2": 96,
+      "Extra Property Byte 3": 0,
+      "Extra Property Byte 4": 0,
+      "Extra Property Byte 5": 0,
+      "Extra Property Byte 6": 0,
+      "Extra Property Byte 7": 0,
+      "Extra Property Byte 8": 0,
+      "Extra Property Byte 9": 0,
+      "Extra Property Byte 10": 0,
+      "Extra Property Byte 11": 0,
+      "Extra Property Byte 12": 0
+    },
+    {
+      "Name": "Set Star Power Timer Shell (∞ Bounces)",
+      "ExtraBit": true,
+      "Extra Property Byte 1": 0,
+      "Extra Property Byte 2": 128,
+      "Extra Property Byte 3": 0,
+      "Extra Property Byte 4": 0,
+      "Extra Property Byte 5": 0,
+      "Extra Property Byte 6": 0,
+      "Extra Property Byte 7": 0,
+      "Extra Property Byte 8": 0,
+      "Extra Property Byte 9": 0,
+      "Extra Property Byte 10": 0,
+      "Extra Property Byte 11": 0,
+      "Extra Property Byte 12": 0
+    },
+    {
+      "Name": "Set Star Power Timer Invincible Shell",
+      "ExtraBit": true,
+      "Extra Property Byte 1": 1,
+      "Extra Property Byte 2": 0,
+      "Extra Property Byte 3": 0,
+      "Extra Property Byte 4": 0,
+      "Extra Property Byte 5": 0,
+      "Extra Property Byte 6": 0,
+      "Extra Property Byte 7": 0,
+      "Extra Property Byte 8": 0,
+      "Extra Property Byte 9": 0,
+      "Extra Property Byte 10": 0,
+      "Extra Property Byte 11": 0,
+      "Extra Property Byte 12": 0
+    },
+    {
+      "Name": "Set Star Power Timer Invincible Shell (1 Bounce)",
+      "ExtraBit": true,
+      "Extra Property Byte 1": 1,
+      "Extra Property Byte 2": 96,
+      "Extra Property Byte 3": 0,
+      "Extra Property Byte 4": 0,
+      "Extra Property Byte 5": 0,
+      "Extra Property Byte 6": 0,
+      "Extra Property Byte 7": 0,
+      "Extra Property Byte 8": 0,
+      "Extra Property Byte 9": 0,
+      "Extra Property Byte 10": 0,
+      "Extra Property Byte 11": 0,
+      "Extra Property Byte 12": 0
+    },
+    {
+      "Name": "Set Star Power Timer Invincible Shell (∞ Bounces)",
+      "ExtraBit": true,
+      "Extra Property Byte 1": 1,
+      "Extra Property Byte 2": 128,
+      "Extra Property Byte 3": 0,
+      "Extra Property Byte 4": 0,
+      "Extra Property Byte 5": 0,
+      "Extra Property Byte 6": 0,
+      "Extra Property Byte 7": 0,
+      "Extra Property Byte 8": 0,
+      "Extra Property Byte 9": 0,
+      "Extra Property Byte 10": 0,
+      "Extra Property Byte 11": 0,
+      "Extra Property Byte 12": 0
+    },
+    {
+      "Name": "Set Blue P-Switch Timer Shell",
+      "ExtraBit": true,
+      "Extra Property Byte 1": 2,
+      "Extra Property Byte 2": 0,
+      "Extra Property Byte 3": 0,
+      "Extra Property Byte 4": 0,
+      "Extra Property Byte 5": 0,
+      "Extra Property Byte 6": 0,
+      "Extra Property Byte 7": 0,
+      "Extra Property Byte 8": 0,
+      "Extra Property Byte 9": 0,
+      "Extra Property Byte 10": 0,
+      "Extra Property Byte 11": 0,
+      "Extra Property Byte 12": 0
+    },
+    {
+      "Name": "Set Blue P-Switch Timer Shell (1 Bounce)",
+      "ExtraBit": true,
+      "Extra Property Byte 1": 2,
+      "Extra Property Byte 2": 96,
+      "Extra Property Byte 3": 0,
+      "Extra Property Byte 4": 0,
+      "Extra Property Byte 5": 0,
+      "Extra Property Byte 6": 0,
+      "Extra Property Byte 7": 0,
+      "Extra Property Byte 8": 0,
+      "Extra Property Byte 9": 0,
+      "Extra Property Byte 10": 0,
+      "Extra Property Byte 11": 0,
+      "Extra Property Byte 12": 0
+    },
+    {
+      "Name": "Set Blue P-Switch Timer Shell (∞ Bounces)",
+      "ExtraBit": true,
+      "Extra Property Byte 1": 2,
+      "Extra Property Byte 2": 128,
+      "Extra Property Byte 3": 0,
+      "Extra Property Byte 4": 0,
+      "Extra Property Byte 5": 0,
+      "Extra Property Byte 6": 0,
+      "Extra Property Byte 7": 0,
+      "Extra Property Byte 8": 0,
+      "Extra Property Byte 9": 0,
+      "Extra Property Byte 10": 0,
+      "Extra Property Byte 11": 0,
+      "Extra Property Byte 12": 0
+    },
+    {
+      "Name": "Set Invulnerability Timer Shell",
+      "ExtraBit": true,
+      "Extra Property Byte 1": 3,
+      "Extra Property Byte 2": 0,
+      "Extra Property Byte 3": 0,
+      "Extra Property Byte 4": 0,
+      "Extra Property Byte 5": 0,
+      "Extra Property Byte 6": 0,
+      "Extra Property Byte 7": 0,
+      "Extra Property Byte 8": 0,
+      "Extra Property Byte 9": 0,
+      "Extra Property Byte 10": 0,
+      "Extra Property Byte 11": 0,
+      "Extra Property Byte 12": 0
+    },
+    {
+      "Name": "Set Invulnerability Timer Shell (1 Bounce)",
+      "ExtraBit": true,
+      "Extra Property Byte 1": 3,
+      "Extra Property Byte 2": 96,
+      "Extra Property Byte 3": 0,
+      "Extra Property Byte 4": 0,
+      "Extra Property Byte 5": 0,
+      "Extra Property Byte 6": 0,
+      "Extra Property Byte 7": 0,
+      "Extra Property Byte 8": 0,
+      "Extra Property Byte 9": 0,
+      "Extra Property Byte 10": 0,
+      "Extra Property Byte 11": 0,
+      "Extra Property Byte 12": 0
+    },
+    {
+      "Name": "Set Invulnerability Timer Shell (∞ Bounces)",
+      "ExtraBit": true,
+      "Extra Property Byte 1": 3,
+      "Extra Property Byte 2": 128,
+      "Extra Property Byte 3": 0,
+      "Extra Property Byte 4": 0,
+      "Extra Property Byte 5": 0,
+      "Extra Property Byte 6": 0,
+      "Extra Property Byte 7": 0,
+      "Extra Property Byte 8": 0,
+      "Extra Property Byte 9": 0,
+      "Extra Property Byte 10": 0,
+      "Extra Property Byte 11": 0,
+      "Extra Property Byte 12": 0
+    }
+  ],
+  "DisplayType": "ExByte"
+}
